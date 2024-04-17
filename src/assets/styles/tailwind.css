@@ -110,6 +110,29 @@ a:hover {
   background-size: 100% 80%;
 }
 
+.contact-bg{
+  background-image: url("../images/bg-design/contact-bg.png");
+  background-position: center 40px;
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-color: #214260;
+  ;
+}
+
+.form-text-input {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  margin-right: 1rem;
+  width: 90%;
+  border-bottom-width: 1px;
+  border-color: #8D8D8D;
+}
+
+.dark .form-text-input {
+  border-color: #4a5568;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

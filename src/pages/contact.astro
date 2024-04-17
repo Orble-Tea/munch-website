@@ -1,40 +1,108 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
-import HeroText from '~/components/widgets/HeroText.astro';
-import ContactUs from '~/components/widgets/Contact.astro';
-import Features2 from '~/components/widgets/Features2.astro';
+import Layout from "~/layouts/PageLayout.astro";
+import HeroText from "~/components/widgets/HeroText.astro";
+import ContactUs from "~/components/widgets/Contact.astro";
+import Features2 from "~/components/widgets/Features2.astro";
+import Content from "~/components/widgets/Content.astro";
+import Image from "~/components/common/Image.astro";
+
+import contactTitle from "~/assets/images/contact-title.png";
+import Button from "~/components/ui/Button.astro";
 
 const metadata = {
-  title: 'Contact',
+  title: "Contact",
 };
+
+const textInputs = [
+  { name: "firstname", label: "First Name" },
+  { name: "lastname", label: "Last Name" },
+  { name: "phone", label: "Phone Number" },
+  { name: "email", label: "Email" },
+];
 ---
 
 <Layout metadata={metadata}>
   <!-- HeroText Widget ******************* -->
+  <div class="contact-bg h-56">
+    <div class="flex h-auto justify-center items-center">
+      <Image
+        src={contactTitle}
+        alt="Get In Touch"
+        width="700em"
+        class="mt-28"
+      />
+    </div>
+  </div>
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
+  <div class="h-auto flex justify-center items-center">
+    <form
+      action=""
+      class="h-auto w-auto flex-col justify-center items-center m-4 border-red-700 border-2 rounded-md shadow-lg"
+    >
+      <div class="grid grid-cols-2 gap-4">
+        {
+          textInputs.map(({ name, label }) => (
+            <div class="flex flex-col m-4">
+              <label for={name} class="text-lg">
+                {label}
+              </label>
+              <input
+                type="text"
+                name={name}
+                id={name}
+                class="border-2 border-gray-300 rounded-md p-2"
+              />
+            </div>
+          ))
+        }
+        <label for="subject" class="text-lg"> Subject </label>
+        <div class="flex flex-row m-4">
+          {
+            ["Partnerships", "Inquiry", "Customer Support", "Other"].map(
+              (subject) => (
+                <div class="flex items-center">
+                  <input
+                    type="radio"
+                    id={subject.toLowerCase().replace(/\s/g, "-")}
+                    name="subject"
+                    value={subject.toLowerCase().replace(/\s/g, "-")}
+                    class="mr-2"
+                  />
+                  <label for={subject.toLowerCase().replace(/\s/g, "-")}>
+                    {subject}
+                  </label>
+                </div>
+              )
+            )
+          }
+        </div>
+      </div>
+
+      <Button text="SEND MESSAGE" class="dark-button-class w-9" />
+    </form>
+  </div>
 
   <ContactUs
     title="Drop us a message today!"
     subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
     inputs={[
       {
-        type: 'text',
-        name: 'name',
-        label: 'Name',
+        type: "text",
+        name: "name",
+        label: "Name",
       },
       {
-        type: 'email',
-        name: 'email',
-        label: 'Email',
+        type: "email",
+        name: "email",
+        label: "Email",
       },
     ]}
     textarea={{
-      label: 'Message',
+      label: "Message",
     }}
     disclaimer={{
       label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+        "By submitting this contact form, you acknowledge and agree to the collection of your personal information.",
     }}
     description="Our support team typically responds within 24 business hours."
   />
@@ -45,33 +113,33 @@ const metadata = {
     title="We are here to help!"
     items={[
       {
-        title: 'General support',
+        title: "General support",
         description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
       },
       {
-        title: 'Contact sales',
+        title: "Contact sales",
         description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
+          "Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.",
       },
       {
-        title: 'Technical support',
+        title: "Technical support",
         description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
+          "Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.",
       },
       {
-        title: 'Phone',
-        description: '+1 (234) 567-890',
-        icon: 'tabler:headset',
+        title: "Phone",
+        description: "+1 (234) 567-890",
+        icon: "tabler:headset",
       },
       {
-        title: 'Email',
-        description: 'contact@support.com',
-        icon: 'tabler:mail',
+        title: "Email",
+        description: "contact@support.com",
+        icon: "tabler:mail",
       },
       {
-        title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
-        icon: 'tabler:map-pin',
+        title: "Location",
+        description: "1234 Lorem Ipsum St, 12345, Miami, EEUU",
+        icon: "tabler:map-pin",
       },
     ]}
   />
