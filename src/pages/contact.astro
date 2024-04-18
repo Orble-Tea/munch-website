@@ -7,6 +7,7 @@ import Content from "~/components/widgets/Content.astro";
 import Image from "~/components/common/Image.astro";
 
 import contactTitle from "~/assets/images/contact-title.png";
+import contactBar from "~/assets/images/lines/contact-bar.png";
 import Button from "~/components/ui/Button.astro";
 
 const metadata = {
@@ -23,8 +24,8 @@ const textInputs = [
 
 <Layout metadata={metadata}>
   <!-- HeroText Widget ******************* -->
-  <div class="contact-bg h-56">
-    <div class="flex h-auto justify-center items-center">
+  <div id="header" class="flex flex-col items-center">
+    <div class="contact-bg h-56 w-full flex justify-center">
       <Image
         src={contactTitle}
         alt="Get In Touch"
@@ -32,35 +33,45 @@ const textInputs = [
         class="mt-28"
       />
     </div>
+
+    <!-- <Image src={contactBar} alt="bar" class="mt-6" width={1200} /> -->
   </div>
 
-  <div class="h-auto flex justify-center items-center">
-    <form
-      action=""
-      class="h-auto w-auto flex-col justify-center items-center m-4 border-red-700 border-2 rounded-md shadow-lg"
-    >
-      <div class="grid grid-cols-2 gap-4">
-        {
-          textInputs.map(({ name, label }) => (
-            <div class="flex flex-col m-4">
-              <label for={name} class="text-lg">
-                {label}
-              </label>
-              <input
-                type="text"
-                name={name}
-                id={name}
-                class="border-2 border-gray-300 rounded-md p-2"
-              />
-            </div>
-          ))
-        }
+  <div id="form-container" class="bg-contact-form h-[1962px]">
+    <div class="flex justify-center">
+      <h1>
+        Fill out the form below for inquiries, partnership opportunities, and/or
+        customer support!
+      </h1>
+    </div>
+
+    <div id="form" class="flex justify-center p-8">
+      <form action="" class="border-red-700 border-2 rounded-md shadow-lg">
+        <div class="grid grid-cols-2 gap-4">
+          {
+            textInputs.map(({ name, label }) => (
+              <div class="flex flex-col m-4 ">
+                <label for={name} class="text-sm">
+                  {label}
+                </label>
+                <input
+                  type="text"
+                  name={name}
+                  id={name}
+                  class="border-b-2 border-gray-300 w-64"
+                />
+              </div>
+            ))
+          }
+        </div>
+
         <label for="subject" class="text-lg"> Subject </label>
-        <div class="flex flex-row m-4">
+
+        <div id="radio-select" class="flex justify-between">
           {
             ["Partnerships", "Inquiry", "Customer Support", "Other"].map(
               (subject) => (
-                <div class="flex items-center">
+                <>
                   <input
                     type="radio"
                     id={subject.toLowerCase().replace(/\s/g, "-")}
@@ -71,15 +82,29 @@ const textInputs = [
                   <label for={subject.toLowerCase().replace(/\s/g, "-")}>
                     {subject}
                   </label>
-                </div>
+                </>
               )
             )
           }
         </div>
-      </div>
 
-      <Button text="SEND MESSAGE" class="dark-button-class w-9" />
-    </form>
+        <label for="message" class="text-lg"> Message </label>
+        <input
+          type="text"
+          name="message"
+          id="message"
+          class="border-b-2 border-gray-300 p-2 w-64"
+        />
+
+        <div class="flex justify-end">
+          <button
+            type="submit"
+            class="dark-button-class bg-[#214260] rounded-[5px] border-black border-[3px] text-white uppercase"
+            >Send Message</button
+          >
+        </div>
+      </form>
+    </div>
   </div>
 
   <ContactUs

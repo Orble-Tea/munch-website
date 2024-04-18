@@ -111,7 +111,7 @@ a:hover {
 }
 
 .contact-bg{
-  background-image: url("../images/bg-design/contact-bg.png");
+  background-image: url("../images/bg-design/contact-header-bg.png");
   background-position: center 40px;
   background-size: 80%;
   background-repeat: no-repeat;
@@ -119,14 +119,10 @@ a:hover {
   ;
 }
 
-.form-text-input {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  padding-left: 1rem;
-  margin-right: 1rem;
-  width: 90%;
-  border-bottom-width: 1px;
-  border-color: #8D8D8D;
+.bg-contact-form{
+  background-image: url("../images/bg-design/contact-form-bg.png");
+  background-repeat: no-repeat;
+  background-size: 100% 1962px;
 }
 
 .dark .form-text-input {
