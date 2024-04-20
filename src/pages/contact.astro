@@ -13,159 +13,127 @@ import Button from "~/components/ui/Button.astro";
 const metadata = {
   title: "Contact",
 };
-
-const textInputs = [
-  { name: "firstname", label: "First Name" },
-  { name: "lastname", label: "Last Name" },
-  { name: "phone", label: "Phone Number" },
-  { name: "email", label: "Email" },
-];
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
-  <div id="header" class="flex flex-col items-center">
-    <div class="contact-bg h-56 w-full flex justify-center">
+  <div id="header" class="flex flex-col flex-shrink-0 items-center">
+    <div class="contact-bg h-[273px] w-[1440px] flex">
       <Image
         src={contactTitle}
         alt="Get In Touch"
-        width="700em"
-        class="mt-28"
+        width="692px"
+        height="71px"
+        class="mt-[136px] mx-auto"
       />
     </div>
-
-    <!-- <Image src={contactBar} alt="bar" class="mt-6" width={1200} /> -->
   </div>
 
-  <div id="form-container" class="bg-contact-form h-[1962px]">
+  <div
+    id="form-container"
+    class="bg-contact-form h-[981px] w-[1440px] m-auto font-serif"
+  >
     <div class="flex justify-center">
-      <h1>
-        Fill out the form below for inquiries, partnership opportunities, and/or
-        customer support!
+      <h1 class="w-[815px] contact-subtitle font-serif mt-[71px]">
+        Fill out the contact form below for inquiries, partnership
+        opportunities, and/or customer support!
       </h1>
     </div>
 
-    <div id="form" class="flex justify-center p-8">
-      <form action="" class="border-red-700 border-2 rounded-md shadow-lg">
-        <div class="grid grid-cols-2 gap-4">
-          {
-            textInputs.map(({ name, label }) => (
-              <div class="flex flex-col m-4 ">
-                <label for={name} class="text-sm">
-                  {label}
+    <div id="form" class="flex justify-center mt-[71px]" style="">
+      <div class="bg-white rounded-md w-[710px] p-[65px] contact-form">
+        <form>
+          <div id="textinputs">
+            <div class="flex mb-[45px]">
+              <div>
+                <label for="FirstName" class="contact-label">
+                  First Name
                 </label>
                 <input
                   type="text"
-                  name={name}
-                  id={name}
-                  class="border-b-2 border-gray-300 w-64"
+                  name="FirstName"
+                  class="border-b-2 border-gray-300 w-[278px] mr-[39px] contact-input"
                 />
               </div>
-            ))
-          }
-        </div>
+              <div>
+                <label for="LastName" class="contact-label"> Last Name </label>
+                <input
+                  type="text"
+                  name="LastName"
+                  class="border-b-2 border-gray-300 w-[278px] mr-[39px] contact-input"
+                />
+              </div>
+            </div>
+            <div class="flex mb-[45px]">
+              <div>
+                <label for="Email" class="contact-label"> Email </label>
+                <input
+                  type="text"
+                  name="Email"
+                  class="border-b-2 border-gray-300 w-[278px] mr-[39px] contact-input"
+                />
+              </div>
+              <div>
+                <label for="PhoneNumber" class="contact-label">
+                  Phone Number
+                </label>
+                <input
+                  type="text"
+                  name="PhoneNumber"
+                  class="border-b-2 border-gray-300 w-[278px] mr-[39px] contact-input"
+                />
+              </div>
+            </div>
+          </div>
 
-        <label for="subject" class="text-lg"> Subject </label>
+          <div id="subject-select" class="mt-4 mb-[45px]">
+            <label for="subject" class="contact-label"> Select Subject </label>
 
-        <div id="radio-select" class="flex justify-between">
-          {
-            ["Partnerships", "Inquiry", "Customer Support", "Other"].map(
-              (subject) => (
-                <>
-                  <input
-                    type="radio"
-                    id={subject.toLowerCase().replace(/\s/g, "-")}
-                    name="subject"
-                    value={subject.toLowerCase().replace(/\s/g, "-")}
-                    class="mr-2"
-                  />
-                  <label for={subject.toLowerCase().replace(/\s/g, "-")}>
-                    {subject}
-                  </label>
-                </>
-              )
-            )
-          }
-        </div>
+            <div id="radio-buttons" class="flex mt-[14.63px]">
+              {
+                [
+                  "General Inquiry",
+                  "Partnerships",
+                  "Customer Support",
+                  "Other",
+                ].map((subject) => (
+                  <>
+                    <input
+                      type="radio"
+                      id={subject.toLowerCase().replace(/\s/g, "-")}
+                      name="subject"
+                      value={subject.toLowerCase().replace(/\s/g, "-")}
+                      class="mr-[10px]"
+                    />
+                    <label
+                      for={subject.toLowerCase().replace(/\s/g, "-")}
+                      class="text-sm mr-[17px]"
+                    >
+                      {subject}
+                    </label>
+                  </>
+                ))
+              }
+            </div>
+          </div>
 
-        <label for="message" class="text-lg"> Message </label>
-        <input
-          type="text"
-          name="message"
-          id="message"
-          class="border-b-2 border-gray-300 p-2 w-64"
-        />
+          <div class="flex flex-col my-4">
+            <label for="message" class="contact-label"> Message </label>
+            <input
+              type="text"
+              name="message"
+              id="message"
+              placeholder="Write your message..."
+              class="border-b-2 border-gray-300 w-[595px] contact-input pb-[10px] placeholder-[#BDBDBD]"
+            />
+          </div>
 
-        <div class="flex justify-end">
-          <button
-            type="submit"
-            class="dark-button-class bg-[#214260] rounded-[5px] border-black border-[3px] text-white uppercase"
-            >Send Message</button
-          >
-        </div>
-      </form>
+          <div class="flex justify-end mb-[88px]">
+            <button type="submit" class="contact-btn font-serif"
+              >SEND MESSAGE</button
+            >
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-
-  <ContactUs
-    title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
-    inputs={[
-      {
-        type: "text",
-        name: "name",
-        label: "Name",
-      },
-      {
-        type: "email",
-        name: "email",
-        label: "Email",
-      },
-    ]}
-    textarea={{
-      label: "Message",
-    }}
-    disclaimer={{
-      label:
-        "By submitting this contact form, you acknowledge and agree to the collection of your personal information.",
-    }}
-    description="Our support team typically responds within 24 business hours."
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="We are here to help!"
-    items={[
-      {
-        title: "General support",
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
-      },
-      {
-        title: "Contact sales",
-        description:
-          "Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.",
-      },
-      {
-        title: "Technical support",
-        description:
-          "Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.",
-      },
-      {
-        title: "Phone",
-        description: "+1 (234) 567-890",
-        icon: "tabler:headset",
-      },
-      {
-        title: "Email",
-        description: "contact@support.com",
-        icon: "tabler:mail",
-      },
-      {
-        title: "Location",
-        description: "1234 Lorem Ipsum St, 12345, Miami, EEUU",
-        icon: "tabler:map-pin",
-      },
-    ]}
-  />
 </Layout>
