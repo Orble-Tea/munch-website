@@ -110,6 +110,14 @@ a:hover {
   background-size: 100% 80%;
 }
 
+.home-three-bg{
+  background-image: url("../images/bg-design/home-3-bg.png"), url("../images/bg-design/triangle-bg.png");
+  background-repeat: no-repeat;
+  background-size: 100% 19%, 100% 98.7%;
+  background-position: 0px -100px, 0px 300px
+}
+
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -153,6 +161,39 @@ a:hover {
   margin-left: 10%;
   margin-right: 10%;
 }
+
+.fourbytwogrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  grid-auto-rows: minmax(2fr, auto);
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+
+.threebyone {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  grid-auto-rows: minmax(2fr, auto);
+  margin-left: 10%;
+  margin-right: 5%;
+  margin-top: 50px;
+  grid-row-gap: 10px;
+}
+
+.threebyoneequalmargins {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  grid-auto-rows: minmax(2fr, auto);
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 50px;
+  grid-row-gap: 10px;
+}
+
 
 /* To deprecated */
 
