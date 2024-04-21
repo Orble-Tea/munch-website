@@ -2,6 +2,12 @@
 import { Icon } from 'astro-icon/components';
 import { SITE } from '~/utils/config';
 import { getHomePermalink } from '~/utils/permalinks';
+import Logo from "~/components/Logo.astro";
+import Image from '~/components/common/Image.astro';
+import fb from '~/assets/images/fb.png';
+import ig from '~/assets/images/ig.png';
+import Button from '~/components/ui/Button.astro';
+
 
 interface Link {
   text?: string;
@@ -27,48 +33,21 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
 ---
 
 <footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-gray-200 dark:border-slate-800 not-prose']}>
+  <!--
   <div class="dark:bg-dark absolute inset-0 pointer-events-none" aria-hidden="true"></div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 dark:text-slate-300">
-    <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
+  <div class="relative mx-auto dark:text-slate-300">
+    <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8">
       <div class="col-span-12 lg:col-span-4">
         <div class="mb-2">
-          <a class="inline-block font-bold text-xl" href={getHomePermalink()}>{SITE?.name}</a>
+          <a href={getHomePermalink()}>
+            <Logo />
+          </a>
         </div>
-        <div class="text-sm text-muted">
-          {
-            secondaryLinks.map(({ text, href }) => (
-              <a
-                class="text-muted hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out mr-2 rtl:mr-0 rtl:ml-2"
-                href={href}
-                set:html={text}
-              />
-            ))
-          }
-        </div>
-      </div>
-      {
-        links.map(({ title, links }) => (
-          <div class="col-span-6 md:col-span-3 lg:col-span-2">
-            <div class="dark:text-gray-300 font-medium mb-2">{title}</div>
-            {links && Array.isArray(links) && links.length > 0 && (
-              <ul class="text-sm">
-                {links.map(({ text, href, ariaLabel }) => (
-                  <li class="mb-2">
-                    <a
-                      class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out"
-                      href={href}
-                      aria-label={ariaLabel}
-                    >
-                      <Fragment set:html={text} />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ))
-      }
+
+    <div class="text-sm text-right dark:text-muted">
+      <h1>Copyright 2024 @ Munch Industries</h1>
     </div>
+
     <div class="md:flex md:items-center md:justify-between py-6 md:py-8">
       {
         socialLinks?.length ? (
@@ -90,10 +69,33 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
           ''
         )
       }
-
-      <div class="text-sm mr-4 dark:text-muted">
-        <Fragment set:html={footNote} />
-      </div>
+    </div>
+  </div>
+-->
+  <div class = "threebyone mb-20">
+    <div>
+      <a href={getHomePermalink()}>
+        <Logo />
+      </a>
+    </div>
+    <div class = "col-span-2 flex justify-end h-[10%]">
+      <a href="#" class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-8 inline-flex items-center">
+        Home</a>
+      <a href="#" class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-8 inline-flex items-center">
+        Products</a>
+      <a href="#" class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-8 inline-flex items-center">
+        About Us</a>
+      <Button text="Contact" class="dark-button-class p-8"></Button>
+    </div>
+    <div class = "inline-flex gap-6">
+      <Image src = {ig} alt="Instagram" width={40}/>
+      <Image src = {fb} alt="Facebook" width={40}/>
+    </div>
+    <div>
+      
+    </div>
+    <div class = "text-gray-800 flex justify-end items-center">
+      Copyright 2024 @ Munch Industries
     </div>
   </div>
 </footer>

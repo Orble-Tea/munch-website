@@ -11,6 +11,7 @@ module.exports = {
         default: 'var(--aw-color-text-default)',
         muted: 'var(--aw-color-text-muted)',
         'munch-blue': '#1a2634',
+        'beige': '#F6D5B6',     
       },
       fontFamily: {
         sans: ['Lato'],
