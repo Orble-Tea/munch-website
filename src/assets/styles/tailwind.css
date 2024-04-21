@@ -117,6 +117,7 @@ a:hover {
   background-position: 0px -100px, 0px 300px
 }
 
+/* CONTACT PAGE STUFF */
 .contact-bg{
   background-image: url("../images/bg-design/contact-header-bg.png");
   background-position: 87px 29px;
@@ -188,6 +189,67 @@ font-family: var(--aw-font-serif), ui-serif, Georgia, Cambria, "Times New Roman"
   font-size: 15px;
   font-weight: 600;
 }
+
+/* ABOUT PAGE STUFF */
+.about-title {
+  background-image: url("../images/about-title.png");
+  background-size: 467px auto;
+  background-repeat: no-repeat;
+  
+}
+.about-container {
+  background-image: url("../images/bg-design/about-bg.png");
+  background-repeat: no-repeat; 
+}
+
+.about-subtitle {
+  color: #1A2634;
+text-align: center;
+font-size: 30px;
+font-style: normal;
+font-weight: 300;
+line-height: 45px; /* 150% */
+letter-spacing: 1.5px;
+}
+
+div.our-history {
+  color: #1A2634;
+font-size: 40px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+letter-spacing: 4.8px;
+}
+
+p.our-history {
+  color: #FFF;
+font-size: 24px;
+font-style: normal;
+font-weight: 300;
+line-height: 35px;
+letter-spacing: 1.2px;
+}
+
+p.our-team {
+  color: #1A2634;
+text-align: center;
+font-size: 40px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+letter-spacing: 4.8px;
+}
+
+p.team-info {
+  color: #000;
+font-size: 24px;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+letter-spacing: 1.2px;
+}
+
+/* OTHER STUFF */
 
 .dark .form-text-input {
   border-color: #4a5568;
