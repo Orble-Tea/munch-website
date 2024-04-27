@@ -1,0 +1,100 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Image from '~/components/common/Image.astro';
+import Button from '~/components/ui/Button.astro';
+
+import orblelogo from '~/assets/images/orble-page-logo.png';
+import tealbar from '~/assets/images/teal-bar.png';
+import orblewhite from '~/assets/images/orble-white.png';
+import cad from '~/assets/images/cad-render.png';
+import twomachines from '~/assets/images/two-machine-render.png';
+import pricing from '~/assets/images/pricing.png';
+
+const metadata = {
+  title: 'Orble Tea',
+};
+---
+
+<Layout metadata={metadata}>
+  <div class = "flex justify-left ml-[10%]">
+    <Image src = {orblelogo} alt="Orble Logo" width={700}/>
+  </div>
+  <div class = "flex justify-end mr-[10%] mt-8">
+    <Image src = {tealbar} alt="Bar" width={450}/>
+  </div>
+  <div class = orble-tea-bg-one>
+    <div class = "twobythree">
+      <div class = "col-span-1 row-span-1 mt-28">
+        <Image src = {orblewhite} alt="Orble" width={200}/>
+        <h3 class="text-3xl tracking-normal italic text-white">is a revolutionary boba tea machine</h5>
+        <h3 class="text-l tracking-normal text-munch-blue mt-6">designed to deliver freshly brewed bubble tea with unparalleled convenience and customization.</h3>
+      </div>
+      <div class = "col-span-1 row-span-2">
+        <Image src = {cad} alt="Orble Machine" width={600}/>
+      </div>
+      <div class = "col-span-1 row-span-2 mt-12">
+        <video width="600" controls>
+          <source src="/src/assets/images/render-video.mp4" type="video/mp4">
+          Your browser does not support this video.
+        </video>
+      </div>
+      <div class = "col-span-1 row-span-1">
+        <span class="text-l tracking-normal text-munch-blue mt-6">With its</span>
+        <span class="text-3xl ml-2 tracking-normal italic text-munch-blue">sleek and compact design,</span>
+        <h3 class="text-l tracking-normal text-munch-blue">Orble seamlessly integrates into any food service environment, offering customers a delightful boba tea experience at the touch of a button.</h3>
+        <Image src = {tealbar} alt="Bar" width={400} class = "mt-10 mb-10"/>
+      </div>
+    </div>
+
+    <div class = "twobyone">
+      <div>
+        <Image src = {twomachines} alt="Orble Machines" width={600}/>
+      </div>
+      <div>
+        <h3 class="text-3xl ml-2 tracking-normal underline italic text-munch-blue">Specifications</h3>
+        <h3 class="text-l tracking-normal text-munch-blue mt-8">
+          <span class = "font-bold">Dimensions:</span></br>
+          70 inches (H) x 35.5 inches (W) x 35.5 inches (D) 
+        </h3>
+        
+        <h3 class="text-l tracking-normal text-munch-blue mt-8">
+          <span class = "font-bold"></span>Weight:</span> </br>
+          771 lb. (fully loaded, including water) </br>
+          716 lb. (empty weight) </br>
+          Additional 150 lb. for ice maker
+        </h3>
+        
+        <h3 class="text-l tracking-normal text-munch-blue mt-8">
+          <span class = "font-bold">Capacity:</span> </br>
+          Up to 12 different flavors of tea and toppings
+        </h3>
+
+        <h3 class="text-l tracking-normal text-munch-blue mt-8">
+          <span class = "font-bold">Power:</span> </br>
+          Requires a dedicated 15A outlet, 120V circuit </br>
+          Ice maker requires a separate 15A
+        </h3>
+      </div>
+    </div>
+
+    <div class = "threebyonelesspadding">
+      <div>
+      </div>
+      <div class = "col-span-2">
+        <h3 class="text-l tracking-normal text-munch-blue mt-8">
+          <span class = "font-bold">Interface:</span> Intuitive touchscreen display for easy operation
+        </h3>
+        <h3 class="text-l tracking-normal text-munch-blue mt-12">
+          <span class = "font-bold">Customization:</span> Adjustable sugar levels, ice levels, and topping combinations
+        </h3>
+        <h3 class="text-l tracking-normal text-munch-blue mt-12 mb-14">
+          <span class = "font-bold">Cleaning:</span> Self-cleaning system for hassle-free maintenance
+        </h3>
+      </div>
+    </div>
+  </div>
+
+  <div class = "flex justify-center">
+    <Image src = {pricing} alt="Orble Pricing" width={1000}/>
+  </div>
+</Layout>

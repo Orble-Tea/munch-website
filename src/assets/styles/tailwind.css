@@ -117,6 +117,14 @@ a:hover {
   background-position: 0px -100px, 0px 300px
 }
 
+.orble-tea-bg-one{
+  background-image: url("../images/bg-design/orble-tea-bg.png");
+  background-repeat: no-repeat;
+  background-size: 100% 97%;
+  background-position: 0px 40px
+}
+
+
 
 .grid {
   display: grid;
@@ -191,6 +199,39 @@ a:hover {
   margin-left: 10%;
   margin-right: 10%;
   margin-top: 50px;
+  grid-row-gap: 10px;
+}
+
+.threebyonelesspadding {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0px;
+  grid-auto-rows: minmax(2fr, auto);
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 0px;
+  grid-row-gap: 10px;
+}
+
+.twobythree {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  grid-auto-rows: minmax(2fr, auto);
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 50px;
+  grid-row-gap: 10px;
+}
+
+.twobyone {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  grid-auto-rows: minmax(2fr, auto);
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 100px;
   grid-row-gap: 10px;
 }
 
