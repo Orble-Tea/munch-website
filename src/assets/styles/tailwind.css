@@ -124,7 +124,39 @@ a:hover {
   background-position: 0px 40px
 }
 
+.features-title {
+  color: #FFF;
+text-align: center;
+font-size: 32px;
+font-style: italic;
+font-weight: 500;
+line-height: normal;
+letter-spacing: 3.84px;
+text-decoration-line: underline;
+}
 
+.features-content {
+  color: #000;
+text-align: center;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 0.8px;
+}
+
+button.get-started {
+  color: #FFF;
+font-size: 30px;
+font-style: normal;
+font-weight: 600;
+line-height: 140%; /* 42px */
+letter-spacing: 1.5px;
+}
+
+#orble-video {
+  box-shadow: 19px 21px 0px 0px black;
+}
 
 .grid {
   display: grid;
@@ -223,6 +255,8 @@ a:hover {
   margin-top: 50px;
   grid-row-gap: 10px;
 }
+
+
 
 .twobyone {
   display: grid;
