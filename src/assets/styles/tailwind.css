@@ -117,6 +117,47 @@ a:hover {
   background-position: 0px -100px, 0px 300px
 }
 
+.orble-tea-bg-one{
+  background-image: url("../images/bg-design/orble-tea-bg.png");
+  background-repeat: no-repeat;
+  background-size: 100% 97%;
+  background-position: 0px 40px
+}
+
+.features-title {
+  color: #FFF;
+text-align: center;
+font-size: 32px;
+font-style: italic;
+font-weight: 500;
+line-height: normal;
+letter-spacing: 3.84px;
+text-decoration-line: underline;
+}
+
+.features-content {
+  color: #000;
+text-align: center;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 0.8px;
+}
+
+button.get-started {
+  color: #FFF;
+font-size: 30px;
+font-style: normal;
+font-weight: 600;
+line-height: 140%; /* 42px */
+letter-spacing: 1.5px;
+}
+
+#orble-video {
+  box-shadow: 19px 21px 0px 0px black;
+}
+
 /* CONTACT PAGE STUFF */
 .contact-bg{
   background-image: url("../images/bg-design/contact-header-bg.png");
@@ -328,6 +369,41 @@ letter-spacing: 1.2px;
   margin-left: 10%;
   margin-right: 10%;
   margin-top: 50px;
+  grid-row-gap: 10px;
+}
+
+.threebyonelesspadding {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0px;
+  grid-auto-rows: minmax(2fr, auto);
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 0px;
+  grid-row-gap: 10px;
+}
+
+.twobythree {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  grid-auto-rows: minmax(2fr, auto);
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 50px;
+  grid-row-gap: 10px;
+}
+
+
+
+.twobyone {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  grid-auto-rows: minmax(2fr, auto);
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 100px;
   grid-row-gap: 10px;
 }
 
