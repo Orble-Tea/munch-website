@@ -1,89 +1,99 @@
-import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+import { getPermalink, getBlogPermalink, getAsset } from "./utils/permalinks";
 
 export const headerData = {
   links: [
     {
-      text: 'Products',
+      text: "Products",
       links: [
         {
-          text: 'Orble Tea',
-          href: getPermalink('/orble-tea'),
+          text: "Orble Tea",
+          href: getPermalink("/orble-tea"),
         },
         {
-          text: 'Dumpling Machine',
-          href: getPermalink('/services'),
+          text: "Dumpling Machine",
+          href: getPermalink("/services"),
         },
         {
-          text: 'Smoothie Machine',
-          href: getPermalink('/pricing'),
+          text: "Smoothie Machine",
+          href: getPermalink("/pricing"),
         },
       ],
     },
     {
-      text: 'About Us',
-      href: '#',
+      text: "About Us",
+      href: "/about",
     },
   ],
-  actions: [{ text: 'Contact', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
+  actions: [
+    {
+      text: "CONTACT",
+      href: "/contact",
+      target: "_blank",
+    },
+  ],
 };
 
 export const footerData = {
   links: [
     {
-      title: 'Product',
+      title: "Product",
       links: [
-        { text: 'Features', href: '#' },
-        { text: 'Security', href: '#' },
-        { text: 'Team', href: '#' },
-        { text: 'Enterprise', href: '#' },
-        { text: 'Customer stories', href: '#' },
-        { text: 'Pricing', href: '#' },
-        { text: 'Resources', href: '#' },
+        { text: "Features", href: "#" },
+        { text: "Security", href: "#" },
+        { text: "Team", href: "#" },
+        { text: "Enterprise", href: "#" },
+        { text: "Customer stories", href: "#" },
+        { text: "Pricing", href: "#" },
+        { text: "Resources", href: "#" },
       ],
     },
     {
-      title: 'Platform',
+      title: "Platform",
       links: [
-        { text: 'Developer API', href: '#' },
-        { text: 'Partners', href: '#' },
-        { text: 'Atom', href: '#' },
-        { text: 'Electron', href: '#' },
-        { text: 'AstroWind Desktop', href: '#' },
+        { text: "Developer API", href: "#" },
+        { text: "Partners", href: "#" },
+        { text: "Atom", href: "#" },
+        { text: "Electron", href: "#" },
+        { text: "AstroWind Desktop", href: "#" },
       ],
     },
     {
-      title: 'Support',
+      title: "Support",
       links: [
-        { text: 'Docs', href: '#' },
-        { text: 'Community Forum', href: '#' },
-        { text: 'Professional Services', href: '#' },
-        { text: 'Skills', href: '#' },
-        { text: 'Status', href: '#' },
+        { text: "Docs", href: "#" },
+        { text: "Community Forum", href: "#" },
+        { text: "Professional Services", href: "#" },
+        { text: "Skills", href: "#" },
+        { text: "Status", href: "#" },
       ],
     },
     {
-      title: 'Company',
+      title: "Company",
       links: [
-        { text: 'About', href: '#' },
-        { text: 'Blog', href: '#' },
-        { text: 'Careers', href: '#' },
-        { text: 'Press', href: '#' },
-        { text: 'Inclusion', href: '#' },
-        { text: 'Social Impact', href: '#' },
-        { text: 'Shop', href: '#' },
+        { text: "About", href: "#" },
+        { text: "Blog", href: "#" },
+        { text: "Careers", href: "#" },
+        { text: "Press", href: "#" },
+        { text: "Inclusion", href: "#" },
+        { text: "Social Impact", href: "#" },
+        { text: "Shop", href: "#" },
       ],
     },
   ],
   secondaryLinks: [
-    { text: 'Terms', href: getPermalink('/terms') },
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
+    { text: "Terms", href: getPermalink("/terms") },
+    { text: "Privacy Policy", href: getPermalink("/privacy") },
   ],
   socialLinks: [
-    { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
-    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
+    { ariaLabel: "X", icon: "tabler:brand-x", href: "#" },
+    { ariaLabel: "Instagram", icon: "tabler:brand-instagram", href: "#" },
+    { ariaLabel: "Facebook", icon: "tabler:brand-facebook", href: "#" },
+    { ariaLabel: "RSS", icon: "tabler:rss", href: getAsset("/rss.xml") },
+    {
+      ariaLabel: "Github",
+      icon: "tabler:brand-github",
+      href: "https://github.com/onwidget/astrowind",
+    },
   ],
   footNote: `
     <span class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm bg-[url(https://onwidget.com/favicon/favicon-32x32.png)]"></span>

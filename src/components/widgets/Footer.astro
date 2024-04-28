@@ -79,32 +79,40 @@ const {
 -->
   <div class="w-full h-[4px] bg-black"></div>
 
-  <div class="threebyone mb-20">
+  <div class="threebyone mb-20 font-serif">
     <div>
       <a href={getHomePermalink()}>
         <Logo />
       </a>
     </div>
-    <div class="col-span-2 flex justify-end h-[10%]">
+    <div
+      class="col-span-2 flex justify-end h-[10%] text-xl font-bold text-black"
+    >
       <a
         href="#"
-        class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-8 inline-flex items-center"
+        class="no-underline hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg p-8 inline-flex items-center"
       >
         Home</a
       >
       <a
-        href="#"
-        class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-8 inline-flex items-center"
+        href="/#products"
+        class="no-underline hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg p-8 inline-flex items-center"
       >
         Products</a
       >
       <a
-        href="#"
-        class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-8 inline-flex items-center"
+        href="/about"
+        class="no-underline hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg p-8 inline-flex items-center"
       >
         About Us</a
       >
-      <Button text="Contact" class="dark-button-class p-8" />
+      <form action="/contact">
+        <Button
+          text="CONTACT"
+          class="contact-btn w-[161px] flex justify-center items-center text-xl font-bold"
+          type="submit"
+        />
+      </form>
     </div>
     <div class="inline-flex gap-6">
       <Image src={ig} alt="Instagram" width={40} />

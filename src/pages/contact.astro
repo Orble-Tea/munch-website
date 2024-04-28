@@ -52,6 +52,7 @@ const metadata = {
                   type="text"
                   name="FirstName"
                   class="border-b-2 border-gray-300 w-[278px] mr-[39px] contact-input"
+                  required
                 />
               </div>
               <div>
@@ -60,6 +61,7 @@ const metadata = {
                   type="text"
                   name="LastName"
                   class="border-b-2 border-gray-300 w-[278px] mr-[39px] contact-input"
+                  required
                 />
               </div>
             </div>
@@ -70,6 +72,7 @@ const metadata = {
                   type="text"
                   name="Email"
                   class="border-b-2 border-gray-300 w-[278px] mr-[39px] contact-input"
+                  required
                 />
               </div>
               <div>
@@ -80,6 +83,7 @@ const metadata = {
                   type="text"
                   name="PhoneNumber"
                   class="border-b-2 border-gray-300 w-[278px] mr-[39px] contact-input"
+                  required
                 />
               </div>
             </div>
@@ -103,6 +107,7 @@ const metadata = {
                       name="subject"
                       value={subject.toLowerCase().replace(/\s/g, "-")}
                       class="mr-[10px]"
+                      required
                     />
                     <label
                       for={subject.toLowerCase().replace(/\s/g, "-")}
