@@ -58,7 +58,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 >
   <div class="absolute inset-0"></div>
   <div
-    class="bg-white bg-opacity-40 backdrop-blur-xl bg-black w-full h-32"
+    class="bg-white bg-opacity-40 backdrop-blur-xl w-full h-32"
     style="position: absolute; top: 0; z-index: -100;"
   >
   </div>
@@ -145,7 +145,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
               {actions.map((btnProps) => (
                 <Button
                   {...btnProps}
-                  class="contact-btn ml-2 py-2.5 px-5.5 md:px-6 font-bold text-xl shadow-none w-[215px] h-[65px] no-underline"
+                  class="contact-btn bg-[#214260] ml-2 py-2.5 px-5.5 md:px-6 font-bold text-xl shadow-none w-[215px] h-[65px] no-underline"
                 />
               ))}
             </span>

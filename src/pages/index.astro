@@ -56,7 +56,7 @@ const metadata = {
       </div>
     </div>
 
-    <div class="grid">
+    <div class="grid font-serif">
       <div class="left" style="align-self: flex-end">
         <h1
           class="munch-blue md:text-4.5xl leading-tighter mb-1 font-heading dark:text-gray-200 font-weight-light"
@@ -85,14 +85,18 @@ const metadata = {
           }
         </style>
         <form action="/#products">
-          <Button text="LEARN MORE" class="dark-button-class" type="submit" />
+          <Button
+            text="LEARN MORE"
+            class="contact-btn bg-[#214260] font-serif font-bold"
+            type="submit"
+          />
         </form>
       </div>
     </div>
   </div>
 
   <!-- Part 2 -->
-  <div class="home-two-bg h-screen">
+  <div class="home-two-bg h-screen font-serif font-light">
     <div class="fourbyonegrid mx-auto mb-10" style="padding-top: 150px;">
       <div
         class="hover:scale-110 transition-all duration-500 flex flex-col justify-center items-center"
@@ -171,12 +175,12 @@ const metadata = {
         <Image src={whitebar} alt="Bar" width={80} style="justify-center" />
       </div>
     </div>
-    <div class="mt-12 flex justify-center">
+    <div class="mt-20 flex justify-center">
       <form action="/about">
         <Button
           id="products"
-          text="LEARN MORE"
-          class="justify-center dark-button-class"
+          text="READ MORE"
+          class="justify-center bg-[#ACC6DD] contact-btn font-bold"
           type="submit"
         />
       </form>
@@ -184,7 +188,7 @@ const metadata = {
   </div>
 
   <!-- Part 3 -->
-  <div class="home-three-bg">
+  <div class="home-three-bg font-serif">
     <div
       class="flex justify-left items-center ml-[10%]"
       style="max-width: 80%; height: auto; padding-bottom: 50px;"
@@ -208,28 +212,32 @@ const metadata = {
         <Image src={smoothie} alt="Smoothie Icon" width={80} />
       </div>
       <div>
-        <h3 class="mt-5 text-3xl tracking-normal text-munch-blue">
+        <h3 class="mt-5 text-3xl tracking-normal text-munch-blue font-light">
           bubble tea machine
         </h3>
         <h3
-          class="font-bold mb-10 text-3xl underline tracking-normal text-munch-blue"
+          class="font-semibold mb-10 text-3xl underline tracking-normal text-munch-blue"
         >
           Orble
         </h3>
       </div>
       <div>
-        <h3 class="mt-5 text-3xl tracking-normal text-munch-blue">
+        <h3 class="mt-5 text-3xl tracking-normal text-munch-blue font-light">
           dumpling machine
         </h3>
-        <h3 class="font-bold mb-10 text-3xl tracking-normal text-munch-blue">
+        <h3
+          class="font-semibold mb-10 text-3xl tracking-normal text-munch-blue"
+        >
           incoming
         </h3>
       </div>
       <div>
-        <h3 class="mt-5 text-3xl tracking-normal text-munch-blue">
+        <h3 class="mt-5 text-3xl tracking-normal text-munch-blue font-light">
           smoothie machine
         </h3>
-        <h3 class="font-bold mb-10 text-3xl tracking-normal text-munch-blue">
+        <h3
+          class="font-semibold mb-10 text-3xl tracking-normal text-munch-blue"
+        >
           incoming
         </h3>
       </div>
@@ -252,18 +260,21 @@ const metadata = {
         <h3
           class="text-3xl tracking-normal flex justify-center text-munch-blue"
         >
-          a fully au<b><em>tea</em></b>matic boba machine
+          a fully au<b class="mr-1"><em>tea</em></b>matic boba machine
         </h3>
       </div>
       <div class="col-span-1 row-span-1 flex justify-center">
         <Image src={classic} alt="Classic Milk Tea" width={150} />
       </div>
       <div class="col-span-2 row-span-1 flex flex-row justify-center">
-        <div class="w-48 z-10 mt-8 absolute">
-          <Button
-            text="LEARN MORE"
-            class="bg-beige flex justify-center no-underline hover:no-underline"
-          />
+        <div class="w-[287px] z-10 mt-8 absolute ml-20">
+          <form action="/orble-tea">
+            <Button
+              text="LEARN MORE"
+              type="submit"
+              class="bg-beige font-bold contact-btn flex text-3xl justify-center no-underline hover:no-underline"
+            />
+          </form>
         </div>
         <div class="flex justify-center relative">
           <Image src={bobagroup} alt="Boba Design" width={400} />

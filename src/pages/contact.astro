@@ -17,20 +17,20 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <div id="header" class="flex flex-col flex-shrink-0 items-center">
-    <div class="contact-bg h-[273px] w-[1440px] flex">
+    <div class="contact-bg h-[273px] w-full flex justify-center">
       <Image
         src={contactTitle}
         alt="Get In Touch"
         width="692px"
         height="71px"
-        class="mt-[136px] mx-auto"
+        class="mt-[136px]"
       />
     </div>
   </div>
 
   <div
     id="form-container"
-    class="bg-contact-form h-[981px] w-[1440px] m-auto font-serif"
+    class="bg-contact-form h-[981px] w-[1440px] font-serif mx-auto -mb-[3px]"
   >
     <div class="flex justify-center">
       <h1 class="w-[815px] contact-subtitle font-serif mt-[71px]">
@@ -133,7 +133,7 @@ const metadata = {
           </div>
 
           <div class="flex justify-end mb-[88px]">
-            <button type="submit" class="contact-btn font-serif"
+            <button type="submit" class="contact-btn font-serif bg-[#214260]"
               >SEND MESSAGE</button
             >
           </div>

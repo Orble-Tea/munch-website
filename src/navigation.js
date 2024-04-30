@@ -11,11 +11,11 @@ export const headerData = {
         },
         {
           text: "Dumpling Machine",
-          href: getPermalink("/services"),
+          href: getPermalink("/#products"),
         },
         {
           text: "Smoothie Machine",
-          href: getPermalink("/pricing"),
+          href: getPermalink("/#products"),
         },
       ],
     },
@@ -28,7 +28,6 @@ export const headerData = {
     {
       text: "CONTACT",
       href: "/contact",
-      target: "_blank",
     },
   ],
 };
