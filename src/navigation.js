@@ -27,7 +27,8 @@ export const headerData = {
   actions: [
     {
       text: "CONTACT",
-      href: "/contact",
+      // href: "/contact",
+      href: "mailto:info@orble-tea.com",
     },
   ],
 };

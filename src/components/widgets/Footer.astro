@@ -106,13 +106,15 @@ const {
       >
         About Us</a
       >
-      <form action="/contact">
-        <Button
+      <!-- <form action="/contact"> -->
+      <a href="mailto:info@orble-tea.com"
+        ><Button
           text="CONTACT"
           class="contact-btn w-[161px] flex justify-center items-center text-xl font-bold bg-[#214260]"
           type="submit"
-        />
-      </form>
+        /></a
+      >
+      <!-- </form> -->
     </div>
     <div class="inline-flex gap-6">
       <Image src={ig} alt="Instagram" width={40} />
@@ -120,7 +122,12 @@ const {
     </div>
     <div></div>
     <div class="text-gray-800 flex justify-end items-center">
-      Copyright 2024 @ Munch Industries
+      <div class="flex flex-col">
+        Copyright 2024 @ Munch Industries<br /><a
+          href="mailto:info@orble-tea.com"
+          class="text-right">info@orble-tea.com</a
+        >
+      </div>
     </div>
   </div>
 </footer>

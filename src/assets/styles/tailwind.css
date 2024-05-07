@@ -145,13 +145,13 @@ line-height: normal;
 letter-spacing: 0.8px;
 }
 
-button.get-started {
+.get-started {
   color: #FFF;
-font-size: 30px;
-font-style: normal;
-font-weight: 600;
-line-height: 140%; /* 42px */
-letter-spacing: 1.5px;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 42px */
+  letter-spacing: 1.5px;
 }
 
 #orble-video {
