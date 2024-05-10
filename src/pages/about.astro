@@ -1,228 +1,334 @@
 ---
-import Features2 from '~/components/widgets/Features2.astro';
-import Features3 from '~/components/widgets/Features3.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
-import Layout from '~/layouts/PageLayout.astro';
+import Features2 from "~/components/widgets/Features2.astro";
+import Features3 from "~/components/widgets/Features3.astro";
+import Hero from "~/components/widgets/Hero.astro";
+import Stats from "~/components/widgets/Stats.astro";
+import Steps2 from "~/components/widgets/Steps2.astro";
+import Layout from "~/layouts/PageLayout.astro";
+import Image from "~/components/common/Image.astro";
+
+import aboutTitle from "~/assets/images/about-title.png";
+import aboutMission from "~/assets/images/about-mission.png";
+import dots from "~/assets/images/bg-design/contact-header-bg.png";
+import TeamMember from "~/components/about/TeamMember.astro";
 
 const metadata = {
-  title: 'About us',
+  title: "About us",
 };
+
+const teamMembers = [
+  {
+    name: "Nastassja Kuznetsova",
+    title: "CEO, Founder",
+    image: "~/assets/images/team-headshots/nastassja.jpg",
+    bio: "",
+  },
+  {
+    name: "Jaiman Munshi",
+    title: "Software Engineer",
+    image: "~/assets/images/team-headshots/jaiman.jpg",
+    bio: "",
+  },
+  {
+    name: "Adam Bhaloo",
+    title: "Business Development",
+    image: "~/assets/images/team-headshots/adam.jpg",
+    bio: "",
+  },
+  {
+    name: "Tom Schmitz",
+    title: "Embedded Developer",
+    image: "~/assets/images/team-headshots/tom.png",
+    bio: "",
+  },
+  {
+    name: "Claire Wu",
+    title: "Software Engineer",
+    image: "~/assets/images/team-headshots/claire.jpg",
+    bio: "",
+  },
+  {
+    name: "Janavi Chadha",
+    title: "Project Manager",
+    image: "~/assets/images/team-headshots/janavi.png",
+    bio: "",
+  },
+  {
+    name: "Maya Pasricha",
+    title: "Quality Assurance Engineer",
+    image: "~/assets/images/team-headshots/maya.jpg",
+    bio: "",
+  },
+  {
+    name: "Vidhya Kalimani",
+    title: "Mechanical Engineer",
+    image: "~/assets/images/team-headshots/vidhya.jpg",
+    bio: "",
+  },
+  {
+    name: "Josué León",
+    title: "Mechanical Engineer",
+    image: "~/assets/images/team-headshots/josue.jpg",
+    bio: "",
+  },
+  {
+    name: "Dhanshu Shen",
+    title: "Electrical Engineer",
+    image: "~/assets/images/team-headshots/danshu.jpg",
+    bio: "",
+  },
+  {
+    name: "Ella Phillippy",
+    title: "Marketing Fellow",
+    image: "~/assets/images/team-headshots/ella.jpg",
+    bio: "",
+  },
+  {
+    name: "Kyle Fukumoto",
+    title: "Business Development Fellow",
+    image: "~/assets/images/team-headshots/kyle.png",
+    bio: "",
+  },
+  {
+    name: "Sammi Xu",
+    title: "Business Development Fellow",
+    image: "~/assets/images/team-headshots/sammi.jpg",
+    bio: "",
+  },
+  {
+    name: "Jean Ee Chua",
+    title: "Business Development Fellow",
+    image: "~/assets/images/team-headshots/jean.png",
+    bio: "",
+  },
+  {
+    name: "Sharon Zheng",
+    title: "Embedded Engineer",
+    image: "~/assets/images/team-headshots/sharon.png",
+    bio: "",
+  },
+];
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
-
-  <Hero
-    tagline="About us"
-    image={{
-      src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Caos Image',
-    }}
+  <div
+    id="header"
+    class="flex flex-col items-center flex-shrink-0 bg-[#214260] w-full h-[310px]"
   >
-    <Fragment slot="title">
-      Elevate your online presence with our <br />
-      <span class="text-accent dark:text-white highlight"> Beautiful Website Templates</span>
-    </Fragment>
+    <Image
+      src={dots}
+      alt="dots"
+      width="1266px"
+      height="306px"
+      class="absolute"
+    />
+    <Image
+      src={aboutTitle}
+      alt="dots"
+      width="467px"
+      height="71px"
+      class="absolute mt-[136px]"
+    />
+  </div>
 
-    <Fragment slot="subtitle">
-      Donec efficitur, ipsum quis congue luctus, mauris magna convallis mauris, eu auctor nisi lectus non augue. Donec
-      quis lorem non massa vulputate efficitur ac at turpis. Sed tincidunt ex a nunc convallis, et lobortis nisi tempus.
-      Suspendisse vitae nisi eget tortor luctus maximus sed non lectus.
-    </Fragment>
-  </Hero>
+  <div class="w-full flex flex-col flex-shrink-0 items-center">
+    <div class="blue-bar mt-[22px]">
+      <svg
+        width="1204"
+        height="4"
+        viewBox="0 0 1204 4"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M2 2H1202"
+          stroke="#ACC6DD"
+          stroke-width="4"
+          stroke-linecap="round"></path>
+      </svg>
+    </div>
 
-  <!-- Stats Widget ****************** -->
+    <div id="mission" class="flex flex-col w-auto h-auto items-center">
+      <div
+        class="w-[526px] h-[75px] flex items-center justify-center mt-[41px]"
+      >
+        <svg
+          id="mission-word"
+          width="268"
+          height="26"
+          viewBox="0 0 268 26"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4.20288 0.559999L16.8629 17.06L28.5029 0.559999H32.9429V26H28.5029V8.84C28.5029 7.64 28.6229 6.44 28.8029 5.3C28.5629 6.08 28.0229 7.64 27.1229 8.84L17.3429 21.98H16.0829L5.94288 8.96C5.22289 8.06 4.50289 6.8 4.08288 5.3L4.20288 8.84V26H0.242885V0.559999H4.20288ZM51.8541 0.559999H56.6541V26H51.8541V0.559999ZM97.9618 4.34H80.2018V10.88H96.4618C98.0218 10.88 100.242 11 101.382 12.14C102.522 13.28 102.642 15.44 102.642 16.88V20C102.642 21.44 102.522 23.6 101.382 24.74C100.242 25.88 97.8418 26 96.4618 26H80.5618C79.4818 26 77.1418 25.88 76.0018 24.74C74.8618 23.6 74.7418 21.38 74.7418 20.36V19.28L79.1218 18.38V22.22H98.2018V14.66H81.9418C80.3818 14.66 78.1618 14.54 77.0218 13.4C75.8818 12.26 75.7618 10.1 75.7618 8.66V6.62C75.7618 5.06 75.8818 3.02 77.0818 1.82C78.2818 0.679999 80.4418 0.559999 81.9418 0.559999H96.1018C99.1018 0.559999 100.362 1.22 100.902 1.7C101.802 2.48 102.342 3.92 102.342 5.72V6.74L97.9618 7.7V4.34ZM143.306 4.34H125.546V10.88H141.806C143.366 10.88 145.586 11 146.726 12.14C147.866 13.28 147.986 15.44 147.986 16.88V20C147.986 21.44 147.866 23.6 146.726 24.74C145.586 25.88 143.186 26 141.806 26H125.906C124.826 26 122.486 25.88 121.346 24.74C120.206 23.6 120.086 21.38 120.086 20.36V19.28L124.466 18.38V22.22H143.546V14.66H127.286C125.726 14.66 123.506 14.54 122.366 13.4C121.226 12.26 121.106 10.1 121.106 8.66V6.62C121.106 5.06 121.226 3.02 122.426 1.82C123.626 0.679999 125.786 0.559999 127.286 0.559999H141.446C144.446 0.559999 145.706 1.22 146.246 1.7C147.146 2.48 147.686 3.92 147.686 5.72V6.74L143.306 7.7V4.34ZM166.091 0.559999H170.891V26H166.091V0.559999ZM189.159 20.3V6.62C189.159 5.18 189.279 3.02 190.479 1.82C191.679 0.679999 193.899 0.559999 195.099 0.559999H213.759C215.439 0.559999 217.539 0.679999 218.739 1.88C219.879 3.08 219.999 5.12 219.999 6.62V20C219.999 21.5 219.879 23.54 218.679 24.74C217.479 25.88 215.319 26 213.759 26H195.399C193.359 26 191.499 25.76 190.479 24.8C189.279 23.66 189.159 21.5 189.159 20.3ZM193.959 22.22H215.199V4.34H193.959V22.22ZM242.044 0.559999L260.704 17.18C261.724 18.08 262.744 19.1 263.764 20.66C263.464 18.8 263.344 16.94 263.344 15.92V0.559999H267.784V26H264.484L245.464 9.14C244.924 8.66 243.544 7.34 242.464 5.66C242.704 7.76 242.824 9.02 242.824 10.22V26H238.384V0.559999H242.044Z"
+            fill="#1A2634"></path>
+        </svg>
+      </div>
 
-  <Stats
-    title="Statistics about us"
-    stats={[
-      { title: 'Offices', amount: '4' },
-      { title: 'Employees', amount: '248' },
-      { title: 'Templates', amount: '12' },
-      { title: 'Awards', amount: '24' },
-    ]}
-  />
+      <svg
+        id="mission-bar"
+        xmlns="http://www.w3.org/2000/svg"
+        width="93"
+        height="6"
+        viewBox="0 0 93 6"
+        fill="none"
+        class="mt-[26px]"
+      >
+        <path
+          d="M3 3H90"
+          stroke="#1A2634"
+          stroke-width="5"
+          stroke-linecap="round"></path>
+      </svg>
+    </div>
 
-  <!-- Features3 Widget ************** -->
+    <div
+      class="w-[962px] h-[135px] mt-[47px] font-serif font-light about-subtitle"
+    >
+      At Munch Industries, our mission is to<span
+        class="font-medium font-serif italic"
+      >
+        revolutionize the future of food automation
+      </span>by harnessing the power of cutting-edge technology and innovative
+      solutions.
+    </div>
+  </div>
 
-  <Features3
-    title="Our templates"
-    subtitle="Etiam scelerisque, enim eget vestibulum luctus, nibh mauris blandit nulla, nec vestibulum risus justo ut enim. Praesent lacinia diam et ante imperdiet euismod."
-    columns={3}
-    isBeforeContent={true}
-    items={[
-      {
-        title: 'Educational',
-        description:
-          'Morbi faucibus luctus quam, sit amet aliquet felis tempor id. Cras augue massa, ornare quis dignissim a, molestie vel nulla.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Interior Design',
-        description:
-          'Vivamus porttitor, tortor convallis aliquam pretium, turpis enim consectetur elit, vitae egestas purus erat ac nunc nulla.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Photography',
-        description:
-          'Duis sed lectus in nisl vehicula porttitor eget quis odio. Aliquam erat volutpat. Nulla eleifend nulla id sem fermentum.',
-        icon: 'tabler:template',
-      },
-    ]}
-  />
+  <div
+    id="history"
+    class="flex flex-row flex-shrink-0 mt-[130px] z-10 relative"
+  >
+    <div
+      class="w-[305px] h-[36px] flex justify-center flex-col flex-shrink-0 our-history font-serif ml-[120px]"
+    >
+      our history
+    </div>
+    <div class="flex flex-col">
+      <svg
+        width="895"
+        height="13"
+        viewBox="0 0 895 13"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line y1="6.5" x2="895" y2="6.5" stroke="#ACC6DD" stroke-width="13"
+        ></line>
+      </svg>
+      <div
+        class="w-[895px] h-[630px] flex justify-center items-center bg-[#1A2634] rounded-br-[292px]"
+      >
+        <p class="w-[737px] font-serif our-history">
+          <span class="font-bold">Munch Industries</span> started in 2022 as a senior
+          design project initiated by a group of passionate engineering students
+          from the University of Pennsylvania. Looking to revolutionize the way people
+          get their boba, the team set out to create a fully au<span
+            class="italic mr-[3px]">tea</span
+          >matic boba machine, <a
+            href="/orble"
+            class="tracking-[2.4px] underline underline-offset-4">Orble</a
+          >. Since then, Munch has evolved into a dynamic force in the food
+          automation industry. What started as a single machine has grown into a
+          series of product launches all built upon the foundation of
+          proprietary and patented technologies developed by Munch Industries.
+          With a relentless pursuit of excellence and a commitment to
+          technological advancement, Munch Industries continues to push
+          boundaries and redefine possibilities in the culinary and engineering
+          worlds.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    id="bg-triangles"
+    class="top-0 left-0 w-full h-full z-0 absolute mt-[883px]"
+  >
+    <svg
+      width="100%"
+      height="100%"
+      viewBox="0 0 1440 650"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M0 0L513.5 420H0V0Z" fill="#FFECDB"></path>
+      <path d="M0 113.5L530 420H0V113.5Z" fill="#FFF9EF"></path>
+      <path d="M1441.5 650L982 376L1441.5 376V650Z" fill="#FFECDB"></path>
+      <path d="M1441.5 575.5L982 376L1441.5 376V575.5Z" fill="#FFF9EF"></path>
+    </svg>
+  </div>
 
-  <!-- Features3 Widget ************** -->
+  <div id="team" class="w-full">
+    <div
+      id="team-header"
+      class="w-full justify-center items-center flex flex-row mt-[82px]"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="33"
+        height="6"
+        viewBox="0 0 33 6"
+        fill="none"
+      >
+        <path
+          d="M3 3H30"
+          stroke="#1A2634"
+          stroke-width="5"
+          stroke-linecap="round"></path>
+      </svg>
 
-  <Features3
-    columns={3}
-    isAfterContent={true}
-    items={[
-      {
-        title: 'E-commerce',
-        description:
-          'Rutrum non odio at vehicula. Proin ipsum justo, dignissim in vehicula sit amet, dignissim id quam. Sed ac tincidunt sapien.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Blog',
-        description:
-          'Nullam efficitur volutpat sem sed fringilla. Suspendisse et enim eu orci volutpat laoreet ac vitae libero.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Business',
-        description:
-          'Morbi et elit finibus, facilisis justo ut, pharetra ipsum. Donec efficitur, ipsum quis congue luctus, mauris magna.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Branding',
-        description:
-          'Suspendisse vitae nisi eget tortor luctus maximus sed non lectus. Cras malesuada pretium placerat. Nullam venenatis dolor a ante rhoncus.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Medical',
-        description:
-          'Vestibulum malesuada lacus id nibh posuere feugiat. Nam volutpat nulla a felis ultrices, id suscipit mauris congue. In hac habitasse platea dictumst.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Fashion Design',
-        description:
-          'Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus.',
-        icon: 'tabler:template',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'Colorful Image',
-    }}
-  />
+      <p
+        class="our-team font-serif w-[270px] h-[36px] flex flex-col justify-center flex-shrink-0"
+      >
+        our team
+      </p>
 
-  <!-- Steps2 Widget ****************** -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="33"
+        height="6"
+        viewBox="0 0 33 6"
+        fill="none"
+      >
+        <path
+          d="M3 3H30"
+          stroke="#1A2634"
+          stroke-width="5"
+          stroke-linecap="round"></path>
+      </svg>
+    </div>
 
-  <Steps2
-    title="Our values"
-    subtitle="Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus. Nulla facilisi. Vestibulum malesuada lacus."
-    items={[
-      {
-        title: 'Customer-centric approach',
-        description:
-          'Donec id nibh neque. Quisque et fermentum tortor. Fusce vitae dolor a mauris dignissim commodo. Ut eleifend luctus condimentum.',
-      },
-      {
-        title: 'Constant Improvement',
-        description:
-          'Phasellus laoreet fermentum venenatis. Vivamus dapibus pulvinar arcu eget mattis. Fusce eget mauris leo.',
-      },
-      {
-        title: 'Ethical Practices',
-        description:
-          'Vestibulum imperdiet libero et lectus molestie, et maximus augue porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
-      },
-    ]}
-  />
+    <div
+      id="team-grid"
+      class="w-full h-auto flex flex-col justify-center flex-shrink-0 mr-[75px] mt-[83px] bg-white rounded-b-[100px] z-10"
+    >
+      <div
+        class="grid grid-cols-3 flex-wrap justify-evenly gap-y-[63px] mb-[178px]"
+      >
+        {
+          teamMembers.map(({ name, title, image, bio }, index) => (
+            <TeamMember
+              key={index}
+              name={name}
+              title={title}
+              image={image}
+              bio={bio}
+            />
+          ))
+        }
+      </div>
+    </div>
 
-  <!-- Steps2 Widget ****************** -->
-
-  <Steps2
-    title="Achievements"
-    subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh at nulla."
-    isReversed={true}
-    callToAction={{
-      text: 'See more',
-      href: '/',
-    }}
-    items={[
-      {
-        title: 'Global reach',
-        description: 'Nam malesuada urna in enim imperdiet tincidunt. Phasellus non tincidunt nisi, at elementum mi.',
-        icon: 'tabler:globe',
-      },
-      {
-        title: 'Positive customer feedback and reviews',
-        description:
-          'Cras semper nulla leo, eget laoreet erat cursus sed. Praesent faucibus massa in purus iaculis dictum.',
-        icon: 'tabler:message-star',
-      },
-      {
-        title: 'Awards and recognition as industry experts',
-        description:
-          'Phasellus lacinia cursus velit, eu malesuada magna pretium eu. Etiam aliquet tellus purus, blandit lobortis ex rhoncus vitae.',
-        icon: 'tabler:award',
-      },
-    ]}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Our locations"
-    tagline="Find us"
-    columns={4}
-    items={[
-      {
-        title: 'EE.UU',
-        description: '1234 Lorem Ipsum St, 12345, Miami',
-      },
-      {
-        title: 'Spain',
-        description: '5678 Lorem Ipsum St, 56789, Madrid',
-      },
-      {
-        title: 'Australia',
-        description: '9012 Lorem Ipsum St, 90123, Sydney',
-      },
-      {
-        title: 'Brazil',
-        description: '3456 Lorem Ipsum St, 34567, São Paulo',
-      },
-    ]}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Technical Support"
-    tagline="Contact us"
-    columns={2}
-    items={[
-      {
-        title: 'Chat with us',
-        description:
-          'Integer luctus laoreet libero, auctor varius purus rutrum sit amet. Ut nec molestie nisi, quis eleifend mi.',
-        icon: 'tabler:messages',
-      },
-      {
-        title: 'Call us',
-        description:
-          'Mauris faucibus finibus orci, in posuere elit viverra non. In hac habitasse platea dictumst. Cras lobortis metus a hendrerit congue.',
-        icon: 'tabler:headset',
-      },
-    ]}
-  />
+    <div
+      class="relative flex-shrink-0 bg-[#214260] mt-[-230px] pt-[111px] h-[453px] -z-10 flex justify-center"
+    >
+      <!-- <Dots class="mt-[111px]" /> -->
+      <Image
+        src={dots}
+        alt="dots"
+        width="1266px"
+        height="306px"
+        class="transform scale-y-[-1] scale-x-[-1]"
+      />
+    </div>
+  </div>
 </Layout>

@@ -1,24 +1,28 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
+import path from "path";
+import { fileURLToPath } from "url";
 
-import { defineConfig, squooshImageService } from 'astro/config';
+import { defineConfig, squooshImageService } from "astro/config";
 
-import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
-import mdx from '@astrojs/mdx';
-import partytown from '@astrojs/partytown';
-import icon from 'astro-icon';
-import compress from 'astro-compress';
-import tasks from './src/utils/tasks';
+import sitemap from "@astrojs/sitemap";
+import tailwind from "@astrojs/tailwind";
+import mdx from "@astrojs/mdx";
+import partytown from "@astrojs/partytown";
+import icon from "astro-icon";
+import compress from "astro-compress";
+import tasks from "./src/utils/tasks";
 
-import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin } from './src/utils/frontmatter.mjs';
+import {
+  readingTimeRemarkPlugin,
+  responsiveTablesRehypePlugin,
+} from "./src/utils/frontmatter.mjs";
 
-import { ANALYTICS, SITE } from './src/utils/config.ts';
+import { ANALYTICS, SITE } from "./src/utils/config.ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const whenExternalScripts = (items = []) =>
-  ANALYTICS.vendors.googleAnalytics.id && ANALYTICS.vendors.googleAnalytics.partytown
+  ANALYTICS.vendors.googleAnalytics.id &&
+  ANALYTICS.vendors.googleAnalytics.partytown
     ? Array.isArray(items)
       ? items.map((item) => item())
       : [items()]
@@ -27,9 +31,9 @@ const whenExternalScripts = (items = []) =>
 export default defineConfig({
   site: SITE.site,
   base: SITE.base,
-  trailingSlash: SITE.trailingSlash ? 'always' : 'never',
+  trailingSlash: SITE.trailingSlash ? "always" : "never",
 
-  output: 'static',
+  output: "static",
 
   integrations: [
     tailwind({
@@ -39,31 +43,31 @@ export default defineConfig({
     mdx(),
     icon({
       include: {
-        tabler: ['*'],
-        'flat-color-icons': [
-          'template',
-          'gallery',
-          'approval',
-          'document',
-          'advertising',
-          'currency-exchange',
-          'voice-presentation',
-          'business-contact',
-          'database',
+        tabler: ["*"],
+        "flat-color-icons": [
+          "template",
+          "gallery",
+          "approval",
+          "document",
+          "advertising",
+          "currency-exchange",
+          "voice-presentation",
+          "business-contact",
+          "database",
         ],
       },
     }),
 
     ...whenExternalScripts(() =>
       partytown({
-        config: { forward: ['dataLayer.push'] },
+        config: { forward: ["dataLayer.push"] },
       })
     ),
 
     compress({
       CSS: true,
       HTML: {
-        'html-minifier-terser': {
+        "html-minifier-terser": {
           removeAttributeQuotes: false,
         },
       },
@@ -88,7 +92,7 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        '~': path.resolve(__dirname, './src'),
+        "~": path.resolve(__dirname, "./src"),
       },
     },
   },

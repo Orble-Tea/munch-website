@@ -1,0 +1,29 @@
+---
+import Image from "../common/Image.astro";
+
+const props = Astro.props;
+---
+
+<div class="flex flex-col items-center team-info font-serif">
+  <Image
+    src={props.image}
+    alt={props.name}
+    width="173px"
+    height="173px"
+    class="rounded-full"
+  />
+  <p class="font-normal text-[24px] mt-[31px]">{props.name}</p>
+  <p class="font-bold text-[28px] italic mt-[11px]">{props.title}</p>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="21"
+    height="2"
+    viewBox="0 0 21 2"
+    fill="none"
+    class="mt-[12px]"
+  >
+    <path d="M1 1H20" stroke="black" stroke-width="2" stroke-linecap="round"
+    ></path>
+  </svg>
+  <p class="mt-[12px] text-[18px]">{props.bio}</p>
+</div>
