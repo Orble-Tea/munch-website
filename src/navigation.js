@@ -11,11 +11,11 @@ export const headerData = {
         },
         {
           text: "Dumpling Machine",
-          href: getPermalink("/#products"),
+          href: getPermalink("/dumpling"),
         },
         {
           text: "Smoothie Machine",
-          href: getPermalink("/#products"),
+          href: getPermalink("/smoothie"),
         },
       ],
     },

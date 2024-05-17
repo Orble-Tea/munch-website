@@ -124,6 +124,13 @@ a:hover {
   background-position: 0px 40px
 }
 
+.product-page-bg{
+  background-image: url("../images/bg-design/product-page-bg.png");
+  background-repeat: no-repeat;
+  background-size: 100% 97%;
+  background-position: 0px 40px
+}
+
 .features-title {
   color: #FFF;
 text-align: center;
@@ -300,7 +307,7 @@ letter-spacing: 1.2px;
   gap: 20px;
   grid-auto-rows: minmax(2fr, auto);
   margin-left: 10%;
-  margin-right: 5%;
+  margin-right: 10%;
   margin-top: 50px;
   grid-row-gap: 50px;
 }
