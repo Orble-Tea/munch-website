@@ -123,6 +123,15 @@ a:hover {
   background-size: 100% 97%;
   background-position: 0px 40px
 }
+@media (max-width: 950px) {
+  .orble-tea-bg-one {
+    background-image: url("../images/bg-design/orble-tea-bg.svg");
+    background-repeat: no-repeat; 
+    background-position: 0px 40px;
+    background-size: cover;
+  }
+}
+
 
 .product-page-bg{
   background-image: url("../images/bg-design/product-page-bg.png");
@@ -380,8 +389,7 @@ letter-spacing: 1.2px;
 .threebyonelesspadding {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0px;
-  grid-auto-rows: minmax(2fr, auto);
+  grid-auto-rows: minmax(3fr, auto);
   margin-left: 10%;
   margin-right: 10%;
   margin-top: 0px;
