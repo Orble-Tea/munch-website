@@ -52,7 +52,7 @@ const {
     menuButton.classList.toggle('expanded', expanded);
     const links = document.getElementById('links')!;
     links.classList.toggle('hidden', !expanded);
-    const classes = 'fixed inset-0 top-0 left-0 flex flex-col items-center justify-center h-auto text-xl font-serif gap-10'.split(' ');
+    const classes = 'fixed inset-0 top-0 left-0 flex flex-col items-center justify-center h-auto text-2xl font-serif gap-10'.split(' ');
     classes.forEach((className) => {
       links.classList.toggle(className, expanded);
     });
