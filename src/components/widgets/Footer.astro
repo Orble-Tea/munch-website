@@ -4,8 +4,7 @@ import { SITE } from "~/utils/config";
 import { getHomePermalink } from "~/utils/permalinks";
 import Logo from "~/components/Logo.astro";
 import Image from "~/components/common/Image.astro";
-import fb from "~/assets/images/fb.png";
-import ig from "~/assets/images/ig.png";
+import li from "~/assets/images/linkedin.png"
 import Button from "~/components/ui/Button.astro";
 
 interface Link {
@@ -117,8 +116,9 @@ const {
       <!-- </form> -->
     </div>
     <div class="inline-flex gap-6">
-      <Image src={ig} alt="Instagram" width={40} />
-      <Image src={fb} alt="Facebook" width={40} />
+      <a target="_blank" href="https://www.linkedin.com/company/munch-industries-inc">
+        <Image src={li} alt="LinkedIn" width={40} />
+      </a>
     </div>
     <div></div>
     <div class="text-gray-800 flex justify-end items-center">
