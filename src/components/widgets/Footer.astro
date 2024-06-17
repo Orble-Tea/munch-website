@@ -4,8 +4,7 @@ import { SITE } from "~/utils/config";
 import { getHomePermalink } from "~/utils/permalinks";
 import Logo from "~/components/Logo.astro";
 import Image from "~/components/common/Image.astro";
-import fb from "~/assets/images/fb.png";
-import ig from "~/assets/images/ig.png";
+import li from "~/assets/images/linkedin.png";
 import Button from "~/components/ui/Button.astro";
 
 interface Link {
@@ -38,10 +37,9 @@ const {
 ---
 
 <footer class:list={[{ dark: theme === "dark" }, "relative not-prose"]}>
-  
   <div class="w-full h-[4px] bg-black"></div>
 
-  <div class="threebyone  font-serif max-sm:grid-cols-1">
+  <div class="threebyone font-serif max-sm:grid-cols-1">
     <div class="max-sm:mx-auto">
       <a href={getHomePermalink()}>
         <Logo />
@@ -76,9 +74,13 @@ const {
         /></a
       >
     </div>
-    <div class="inline-flex gap-6 max-sm:mx-auto my-8">
-      <Image src={ig} alt="Instagram" width={40} />
-      <Image src={fb} alt="Facebook" width={40} />
+    <div class="inline-flex gap-6">
+      <a
+        target="_blank"
+        href="https://www.linkedin.com/company/munch-industries-inc"
+      >
+        <Image src={li} alt="LinkedIn" width={40} />
+      </a>
     </div>
     <div></div>
     <div class="text-gray-800 flex justify-end items-center max-sm:mx-auto">
