@@ -118,39 +118,23 @@ const teamMembers = [
     <Image
       src={dots}
       alt="dots"
-      width="1266px"
-      height="306px"
-      class="absolute"
+      class="absolute h-[306px] top-40 left-0"
     />
     <Image
       src={aboutTitle}
       alt="dots"
       width="467px"
       height="71px"
-      class="absolute mt-[136px]"
+      class="absolute mt-[136px] max-sm:w-[80%]"
     />
   </div>
 
   <div class="w-full flex flex-col flex-shrink-0 items-center">
-    <div class="blue-bar mt-[22px]">
-      <svg
-        width="1204"
-        height="4"
-        viewBox="0 0 1204 4"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M2 2H1202"
-          stroke="#ACC6DD"
-          stroke-width="4"
-          stroke-linecap="round"></path>
-      </svg>
-    </div>
+    <div class="blue-bar mt-[22px] w-[80%] bg-[#ACC6DD] h-[4px] rounded-full"></div>
 
-    <div id="mission" class="flex flex-col w-auto h-auto items-center">
+    <div id="mission" class="flex flex-col w-full h-auto items-center">
       <div
-        class="w-[526px] h-[75px] flex items-center justify-center mt-[41px]"
+        class="max-w-full h-[75px] flex items-center justify-center mt-[41px]"
       >
         <svg
           id="mission-word"
@@ -183,40 +167,31 @@ const teamMembers = [
       </svg>
     </div>
 
-    <div
-      class="w-[962px] h-[135px] mt-[47px] font-serif font-light about-subtitle"
-    >
-      At Munch Industries, our mission is to<span
-        class="font-medium font-serif italic"
-      >
+    <div class="w-auto h-[135px] mt-[47px] mx-[10%] font-serif font-light about-subtitle mb-48">
+      At Munch Industries, our mission is to<br><span class="font-medium font-serif italic">
         revolutionize the future of food automation
-      </span>by harnessing the power of cutting-edge technology and innovative
+      </span><br>by harnessing the power of cutting-edge technology and innovative
       solutions.
     </div>
   </div>
 
+
+
+
   <div
     id="history"
-    class="flex flex-row flex-shrink-0 mt-[130px] z-10 relative"
+    class="flex justify-center max-xl:flex-col flex-shrink-0  z-10 relative max-lg:mt-32 gap-4"
   >
     <div
-      class="w-[305px] h-[36px] flex justify-center flex-col flex-shrink-0 our-history font-serif ml-[120px]"
+      class="w-[305px] h-[36px] flex justify-center flex-col flex-shrink-0 our-history font-serif xl:ml-[120px] text-center"
     >
       our history
     </div>
-    <div class="flex flex-col">
-      <svg
-        width="895"
-        height="13"
-        viewBox="0 0 895 13"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <line y1="6.5" x2="895" y2="6.5" stroke="#ACC6DD" stroke-width="13"
-        ></line>
-      </svg>
+    <div class="flex flex-col w-[95%] mx-auto">
+      
+      <div class="h-[13px] bg-[#ACC6DD] w-full"></div>
       <div
-        class="w-[895px] h-[630px] flex justify-center items-center bg-[#1A2634] rounded-br-[292px]"
+        class="w-full mx-auto h-auto p-16 flex justify-center items-center bg-[#1A2634] rounded-br-[120px] lg:rounded-br-[292px]"
       >
         <p class="w-[737px] font-serif our-history">
           <span class="font-bold">Munch Industries</span> started in 2022 as a senior
@@ -241,7 +216,7 @@ const teamMembers = [
   </div>
   <div
     id="bg-triangles"
-    class="top-0 left-0 w-full h-full z-0 absolute mt-[883px]"
+    class="top-[1090px] left-0 w-full h-full z-0 absolute hidden xl:block"
   >
     <svg
       width="100%"
@@ -256,6 +231,8 @@ const teamMembers = [
       <path d="M1441.5 575.5L982 376L1441.5 376V575.5Z" fill="#FFF9EF"></path>
     </svg>
   </div>
+
+
 
   <div id="team" class="w-full">
     <div
@@ -302,7 +279,7 @@ const teamMembers = [
       class="w-full h-auto flex flex-col justify-center flex-shrink-0 mr-[75px] mt-[83px] bg-white rounded-b-[100px] z-10"
     >
       <div
-        class="grid grid-cols-3 flex-wrap justify-evenly gap-y-[63px] mb-[178px]"
+        class="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-y-[63px] mb-[178px]"
       >
         {
           teamMembers.map(({ name, title, image, bio }, index) => (
