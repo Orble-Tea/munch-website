@@ -10,75 +10,72 @@ import smoothify from "~/assets/images/smoothify.png";
 import cad from "~/assets/images/smoothie-cad.png";
 
 const metadata = {
-  title: "Smoothie Machine",
+  title: "Smoothify",
 };
 ---
 
 <Layout metadata={metadata}>
-  <div class="flex justify-end mr-[10%]">
-    <Image src={bluebar} alt="Bar" width={450} />
-  </div>
-  <div class="product-page-bg font-serif">
-    <div class="twobythree">
+  <div class="product-page-bg font-serif max-md:text-center">
+    <div class="twobythree max-md:grid-cols-1">
       <div class="col-span-1 row-span-1 mt-28">
-        <Image src={smoothify} alt="Smoothify" width={380} />
-        <h3 class="text-3xl tracking-normal italic text-white">
+        <Image src={smoothify} alt="Smoothify" width={380} class="max-md:mx-auto" />
+        <h3 class="text-3xl  italic text-white mt-4">
             offers delicious and nutritious smoothies on-the-go
         </h3>
-        <h3 class="text-l tracking-normal text-munch-blue mt-6">
+        <h3 class="text-l  text-munch-blue my-6">
             Instant access to freshly blended smoothies and acai bowls, packed with vitamins, minerals, and antioxidants.
         </h3>
       </div>
       <div class="col-span-1 row-span-2">
         <Image src={machine} alt="Smoothie Machine" width={600} />
       </div>
-      <div class="col-span-1 row-span-2 mt-12 flex justify-center">
+      <div class="col-span-1 row-span-2 my-16 flex justify-center">
         <Image src={cadsmall} alt="Smoothie Machine" width={200} />
       </div>
       <div class="col-span-1 row-span-1">
-        <span class="text-l tracking-normal text-white mt-6">With its</span
+        <span class="text-l  text-white">With its</span
         >
-        <span class="text-3xl ml-2 tracking-normal italic text-white"
+        <br><span class="text-3xl  italic text-white"
           >versatile customization options,</span
-        >
-        <h3 class="text-l tracking-normal text-white">
+        ><br>
+        <h3 class="text-l  text-white">
           Smoothify offers a variety of base ingredients, additional fruits, and toppings that is ideal for busy customers looking for a healthy snack or meal option.
 
         </h3>
-        <Image src={bluebar} alt="Bar" width={400} class="mt-10 mb-10" />
+        <Image src={bluebar} alt="Bar" width={400} class="mt-10 mb-10 sm:hidden" />
       </div>
     </div>
 
-    <div class="twobyone">
+    <div class="twobyone max-md:grid-cols-1 text-white lg:text-munch-blue">
       <div>
         <Image src={cad} alt="Smoothie Machine" width={800} />
       </div>
       <div>
         <h3
-          class="text-3xl ml-2 tracking-normal underline italic text-munch-blue mt-[46px]"
+          class="text-3xl ml-2  underline italic mt-[46px]"
         >
           Specifications
         </h3>
-        <h3 class="text-l tracking-normal text-munch-blue mt-8">
+        <h3 class="text-l  mt-8">
           <span class="font-bold">Dimensions:</span><br />
           70 inches (H) x 35.5 inches (W) x 35.5 inches (D)
         </h3>
 
-        <h3 class="text-l tracking-normal text-munch-blue mt-8">
-          <span class="font-bold"></span>Weight:
-        </h3>
+        <h3 class="text-l  mt-8">
+          <span class="font-bold">Weight:</span>
         <br />
         771 lb. (fully loaded, including water) <br />
         716 lb. (empty weight) <br />
         Additional 150 lb. for ice maker
+      </h3>
 
-        <h3 class="text-l tracking-normal text-munch-blue mt-8">
+        <h3 class="text-l  mt-8">
           <span class="font-bold">Capacity:</span>
           <br />
           1 smoothie per 2 minutes
         </h3>
 
-        <h3 class="text-l tracking-normal text-munch-blue mt-8">
+        <h3 class="text-l mt-8">
           <span class="font-bold">Power:</span>
           <br />
           Requires a dedicated 15A outlet, 120V circuit <br />
@@ -87,18 +84,18 @@ const metadata = {
       </div>
     </div>
 
-    <div class="threebyonelesspadding">
+    <div class="threebyonelesspadding max-lg:grid-cols-1 text-white lg:text-munch-blue">
       <div></div>
       <div class="col-span-2">
-        <h3 class="text-l tracking-normal text-munch-blue mt-8">
-          <span class="font-bold">Interface:</span> Intuitive touchscreen display
+        <h3 class="text-l  mt-8">
+          <span class="font-bold">Interface:</span><br> Intuitive touchscreen display
           for easy operation
         </h3>
-        <h3 class="text-l tracking-normal text-munch-blue mt-12">
-          <span class="font-bold">Customization:</span> Choose your own base, toppings, and add-ins
+        <h3 class="text-l  mt-12">
+          <span class="font-bold">Customization:</span><br> Choose your own base, toppings, and add-ins
         </h3>
-        <h3 class="text-l tracking-normal text-munch-blue mt-12 mb-14">
-          <span class="font-bold">Cleaning:</span> Self-cleaning system for hassle-free
+        <h3 class="text-l  mt-12 mb-14">
+          <span class="font-bold">Cleaning:</span> <br>Self-cleaning system for hassle-free
           maintenance
         </h3>
       </div>
@@ -107,12 +104,12 @@ const metadata = {
 
   <div class="flex justify-center mt-[31.62px] font-serif z-10">
     <div
-      class="w-[1200px] h-[422px] bg-[#ACC6DD] rounded-[80px] flex flex-col items-center"
+      class="w-[90%] h-auto bg-[#ACC6DD] rounded-[80px] flex flex-col items-center pb-10"
     >
       <div class="features-title underline-offset-4 mt-[31px] mb-[47px]">
         Unique Features
       </div>
-      <div class="flex flex-row">
+      <div class="flex flex-row flex-wrap justify-center gap-6">
         <div class="flex flex-col items-center">
           <div
             class="rounded-full bg-white flex justify-center items-center h-[76px] w-[76px]"
@@ -192,15 +189,14 @@ const metadata = {
     </div>
   </div>
 
-  <div class="h-auto w-full flex justify-center">
+  <div class="h-auto w-full flex justify-center mb-14">
     <!-- <form action="/contact"> -->
     <a href="mailto:info@orble-tea.com" class="no-underline hover:no-underline">
       <button
-        class="contact-btn font-serif font-bold mt-[50px] bg-[#214260] border-[3px] border-black rounded-[11px] flex justify-center items-center font-serif"
+        class="contact-btn font-bold mt-[50px] bg-[#214260] border-[3px] border-black rounded-[11px] flex justify-center items-center font-serif"
         >GET STARTED</button
       >
     </a>
     <!-- </form> -->
   </div>
-  <div class="bg-[#ACC6DD] h-[4px] w-[755px] mt-[50px] rounded-full mb-32"></div>
 </Layout>
