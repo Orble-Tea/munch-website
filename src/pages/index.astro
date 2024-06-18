@@ -36,28 +36,28 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <div class="home-bg" style="height: 700px">
+  <div class="home-bg h-auto py-10">
     <div
-      class="flex justify-left items-center ml-[10%]"
+      class="flex justify-center lg:justify-left items-center ml-[10%]"
       style="max-width: 80%; height: auto; padding-bottom: 50px; padding-top: 40px"
     >
       <Image src={title} alt="Munch Industries Logo" width={900} />
     </div>
     <div
-      class="flex justify-left ml-[10%]"
+      class="flex justify-center lg:justify-left ml-[10%]"
       style="max-width: 60%; height: auto; padding-top: 20px;"
     >
       <Image src={dark} alt="bar" width={70} />
       <div
-        class="flex justify-left"
+        class="flex justify-center lg:justify-left"
         style="max-width: 60%; height: auto; padding-left: 20px;"
       >
         <Image src={light} alt="bar" width={220} />
       </div>
     </div>
 
-    <div class="grid font-serif">
-      <div class="left" style="align-self: flex-end">
+    <div class="grid font-serif max-lg:flex max-lg:flex-col">
+      <div class="left self-center lg:self-end">
         <h1
           class="munch-blue md:text-4.5xl leading-tighter mb-1 font-heading dark:text-gray-200 font-weight-light"
           style="line-height:1.5"
@@ -66,16 +66,16 @@ const metadata = {
           <span class="font-bold">food automation at scale.</span>
         </h1>
       </div>
-      <div class="right flex justify-end">
+      <div class="right flex justify-center lg:justify-end">
         <Image src={homegroup} alt="Food Images" width={500} />
       </div>
       <div class="left2">
-        <h5 class="text-xl tracking-normal dark:text-slate-400">
+        <h5 class="text-xl tracking-normal dark:text-slate-400 lg:text-left text-center">
           Tailored for culinary excellence and convenience, <br /> Munch offers revolutionary
           food automation solutions.
         </h5>
       </div>
-      <div class="right2 mt-[3%] flex justify-end">
+      <div class="right2 mt-[3%] flex justify-center lg:justify-end">
         <style>
           .dark-button-class {
             background-color: #214260;
@@ -96,8 +96,9 @@ const metadata = {
   </div>
 
   <!-- Part 2 -->
-  <div class="home-two-bg h-screen font-serif font-light">
-    <div class="fourbyonegrid mx-auto mb-10" style="padding-top: 150px;">
+  <div class="home-two-bg max-lg:bg-[#214261] max-lg:bg-none h-auto font-serif font-light">
+    <div class="w-full bg-black h-[5px] lg:hidden"></div>
+    <div class="fourbyonegrid mx-auto mb-10 max-sm:grid-cols-1 max-lg:grid-cols-2" style="padding-top: 150px;">
       <div
         class="hover:scale-110 transition-all duration-500 flex flex-col justify-center items-center"
       >
@@ -115,7 +116,7 @@ const metadata = {
         <h5 class="mt-10 mb-10 text-3xl tracking-normal text-slate-100">
           Accessibility
         </h5>
-        <Image src={whitebar} alt="Bar" width={80} style="justify-center" />
+        <Image src={whitebar} alt="Bar" width={80} class="justify-center hidden lg:block" />
       </div>
       <div
         class="hover:scale-110 transition-all duration-500 flex flex-col justify-center items-center"
@@ -134,7 +135,7 @@ const metadata = {
         <h5 class="mt-10 mb-10 text-3xl tracking-normal text-slate-100">
           Intelligence
         </h5>
-        <Image src={whitebar} alt="Bar" width={80} style="justify-center" />
+        <Image src={whitebar} alt="Bar" width={80} class="justify-center hidden lg:block" />
       </div>
       <div
         class="hover:scale-110 transition-all duration-500 flex flex-col justify-center items-center"
@@ -153,7 +154,7 @@ const metadata = {
         <h5 class="mt-10 mb-10 text-3xl tracking-normal text-slate-100">
           Consistency
         </h5>
-        <Image src={whitebar} alt="Bar" width={80} style="justify-center" />
+        <Image src={whitebar} alt="Bar" width={80} class="justify-center hidden lg:block" />
       </div>
       <div
         class="hover:scale-110 transition-all duration-500 flex flex-col justify-center items-center"
@@ -172,10 +173,10 @@ const metadata = {
         <h5 class="mt-10 mb-10 text-3xl tracking-normal text-slate-100">
           Modularity
         </h5>
-        <Image src={whitebar} alt="Bar" width={80} style="justify-center" />
+        <Image src={whitebar} alt="Bar" width={80} class="justify-center hidden lg:block" />
       </div>
     </div>
-    <div class="mt-20 flex justify-center">
+    <div class="mt-20 flex justify-center pb-5">
       <form action="/about">
         <Button
           id="products"
@@ -188,193 +189,203 @@ const metadata = {
   </div>
 
   <!-- Part 3 -->
-  <div class="home-three-bg font-serif">
-    <div
-      class="flex justify-left items-center ml-[10%]"
-      style="max-width: 80%; height: auto; padding-bottom: 50px;"
-    >
-      <Image src={ourproducts} alt="Our Products" width={450} />
-    </div>
-    <div
-      class="flex justify-left ml-[10%]"
-      style="max-width: 60%; height: auto; padding-top: 20px;"
-    >
-      <Image src={dark} alt="bar" width={70} />
-    </div>
-    <div class="threebyone">
-      <div>
-        <Image src={boba} alt="Boba Icon" width={80} />
+  <div class="home-three-bg max-lg:bg-none font-serif mt-10">
+    <div class="bg-white lg:bg-transparent border-b-8 border-black lg:border-opacity-0">
+      <div
+        class="flex justify-left items-center ml-[10%] pb-5"
+        style="max-width: 80%; height: auto;"
+      >
+        <Image src={ourproducts} alt="Our Products" width={450} />
       </div>
-      <div>
-        <Image src={dumpling} alt="Dumpling Icon" width={80} />
+      <div
+        class="flex justify-left ml-[10%]"
+        style="max-width: 60%; height: auto; padding-top: 20px;"
+      >
+        <Image src={dark} alt="bar" width={70} />
       </div>
-      <div>
-        <Image src={smoothie} alt="Smoothie Icon" width={80} />
-      </div>
-      <div>
-        <h3 class="mt-5 text-3xl tracking-normal text-munch-blue font-light">
-          bubble tea machine
-        </h3>
-        <h3
-          class="font-semibold mb-10 text-3xl underline tracking-normal text-munch-blue"
-        >
-          <a href="/orble-tea">Orble</a>
-        </h3>
-      </div>
-      <div>
-        <h3 class="mt-5 text-3xl tracking-normal text-munch-blue font-light">
-          dumpling machine
-        </h3>
-        <h3
-          class="font-semibold mb-10 text-3xl tracking-normal text-munch-blue"
-        >
-          incoming
-        </h3>
-      </div>
-      <div>
-        <h3 class="mt-5 text-3xl tracking-normal text-munch-blue font-light">
-          smoothie machine
-        </h3>
-        <h3
-          class="font-semibold mb-10 text-3xl tracking-normal text-munch-blue"
-        >
-          incoming
-        </h3>
-      </div>
-    </div>
-
-    <div class="mt-40 flex justify-center">
-      <h3 class="text-3xl tracking-normal text-munch-blue">
-        Break into the growing bubble tea market with
-      </h3>
-    </div>
-    <div class="flex justify-center mt-8">
-      <Image src={threedots} alt="Three Dots" width={70} height={13} />
-    </div>
-    <div class="fourbytwogrid mt-12">
-      <div class="col-span-1 row-span-2 h-96">
-        <Image src={orblemachine} alt="Orble Machine" height={2000} />
-      </div>
-      <div class="col-span-2 row-span-1">
-        <Image src={orblelogo} alt="Orble Logo" width={600} />
-        <h3
-          class="text-3xl tracking-normal flex justify-center text-munch-blue"
-        >
-          a fully au<b class="mr-1"><em>tea</em></b>matic boba machine
-        </h3>
-      </div>
-      <div class="col-span-1 row-span-1 flex justify-center">
-        <Image src={classic} alt="Classic Milk Tea" width={150} />
-      </div>
-      <div class="col-span-2 row-span-1 flex flex-row justify-center">
-        <div class="w-[287px] z-10 mt-8 absolute ml-20">
-          <form action="/orble-tea">
-            <Button
-              text="LEARN MORE"
-              type="submit"
-              class="bg-beige font-bold contact-btn flex text-3xl justify-center no-underline hover:no-underline"
-            />
-          </form>
+      <div class="threebyone max-lg:grid-cols-1">
+        <div class="flex flex-col">
+          <Image src={boba} alt="Boba Icon" width={80} />
+          <div>
+            <h3 class="mt-5 text-3xl tracking-normal text-munch-blue font-light">
+              bubble tea machine
+            </h3>
+            <h3
+              class="font-semibold mb-10 text-3xl underline tracking-normal text-munch-blue"
+            >
+              <a href="/orble-tea">Orble</a>
+            </h3>
+          </div>
         </div>
-        <div class="flex justify-center relative">
-          <Image src={bobagroup} alt="Boba Design" width={400} />
+        <div class="flex flex-col">
+          <Image src={dumpling} alt="Dumpling Icon" width={80} />
+          <div>
+            <h3 class="mt-5 text-3xl tracking-normal text-munch-blue font-light">
+              dumpling machine
+            </h3>
+            <h3
+              class="font-semibold mb-10 text-3xl tracking-normal text-munch-blue"
+            >
+              incoming
+            </h3>
+          </div>
+        </div>
+        <div class="flex flex-col mb-14">
+          <Image src={smoothie} alt="Smoothie Icon" width={80} />
+          <div>
+            <h3 class="mt-5 text-3xl tracking-normal text-munch-blue font-light">
+              smoothie machine
+            </h3>
+            <h3
+              class="font-semibold mb-10 text-3xl tracking-normal text-munch-blue"
+            >
+              incoming
+            </h3>
+          </div>
         </div>
       </div>
-      <div class="col-span-1 row-span-1 flex justify-center">
-        <Image src={threebobas} alt="Three Bobas" width={300} />
+    </div>
+
+    <div class="bg-[#fff9ef] lg:bg-transparent py-24 lg:pt-40">
+      <div class="flex justify-center">
+        <h3 class="text-3xl tracking-normal text-munch-blue text-center">
+          Break into the growing bubble tea market with
+        </h3>
+      </div>
+      <div class="flex justify-center mt-8">
+        <Image src={threedots} alt="Three Dots" width={70} height={13} />
+      </div>
+      <div class="fourbytwogrid lg:mt-12 max-lg:grid-cols-1">
+        <div class="col-span-1 row-span-2 h-auto">
+          <Image src={orblemachine} alt="Orble Machine" width={400} class="mx-auto"/>
+        </div>
+        <div class="col-span-2 row-span-1">
+          <Image src={orblelogo} alt="Orble Logo" width={600} class="mx-auto"/>
+          <h3
+            class="text-3xl tracking-normal text-center text-munch-blue"
+          >
+            a fully au<span class="mr-1 italic font-bold">tea</span>matic boba machine
+          </h3>
+        </div>
+        <div class="col-span-1 row-span-1 flex justify-center">
+          <Image src={classic} alt="Classic Milk Tea" width={150} />
+        </div>
+        <div class="col-span-2 row-span-1 flex flex-row justify-center">
+          <div class="w-[287px] z-10 mt-8 absolute ml-20">
+            <form action="/orble-tea">
+              <Button
+                text="LEARN MORE"
+                type="submit"
+                class="bg-beige font-bold contact-btn flex text-3xl justify-center no-underline hover:no-underline"
+              />
+            </form>
+          </div>
+          <div class="flex justify-center relative">
+            <Image src={bobagroup} alt="Boba Design" />
+          </div>
+        </div>
+        <div class="col-span-1 row-span-1 mx-auto w-auto max-w-[300px]">
+          <Image src={threebobas} alt="Three Bobas" />
+        </div>
       </div>
     </div>
 
-    <!-- Part 4 -->
-    <div class="fourbyonegrid pt-56">
-      <div class="col-span-1 row-span-1">
-        <Image src={dumplingdesign} alt="Dumpling Design" width={330} />
-      </div>
-      <div class="col-span-3 row-span-1 mt-[11%]">
-        <h3 class="mt-5 flex text-5xl tracking-normal text-munch-blue">
-          dumpling machine
-        </h3>
-        <h3 class="font-bold text-3xl tracking-normal text-munch-blue">
-          incoming
-        </h3>
+    <div class="bg-[#acc6dd] lg:bg-transparent border-y-4 border-black lg:border-none py-10">
+      <!-- Part 4 -->
+      <div class="fourbyonegrid lg:pt-40">
+        <div class="col-span-1 row-span-1 lg:-mt-32">
+          <Image src={dumplingdesign} alt="Dumpling Design" width={330} />
+        </div>
+        <div class="col-span-3 row-span-1 lg:-mt-16 xl:mt-16">
+          <h3 class="flex text-5xl tracking-normal text-munch-blue">
+            dumpling machine
+          </h3>
+          <h3 class="font-bold text-3xl tracking-normal text-munch-blue">
+            incoming
+          </h3>
+        </div>
       </div>
     </div>
 
-    <!-- Part 5 -->
+    <div class="bg-white lg:bg-transparent py-10 border-b-4 border-black lg:border-none">
+      <!-- Part 5 -->
     <div class="fourbyonegrid">
-      <div class="col-span-3 row-span-1 mt-[17%]">
-        <h3 class="text-5xl tracking-normal text-right text-munch-blue">
-          smoothie machine
-        </h3>
-        <h3
-          class="font-bold text-3xl tracking-normal text-right text-munch-blue"
-        >
-          incoming
-        </h3>
-      </div>
-      <div class="col-span-1 row-span-1">
-        <Image src={smoothiedesign} alt="Smoothie Design" width={330} />
+        <div class="col-span-3 row-span-1 lg:mt-10 xl:mt-20">
+          <h3 class="text-5xl tracking-normal text-right text-munch-blue">
+            smoothie machine
+          </h3>
+          <h3
+            class="font-bold text-3xl tracking-normal text-right text-munch-blue"
+          >
+            incoming
+          </h3>
+        </div>
+        <div class="col-span-1 row-span-1">
+          <Image src={smoothiedesign} alt="Smoothie Design" width={330} />
+        </div>
       </div>
     </div>
 
-    <!-- Part 6 -->
-    <div class="ml-[47%] pt-44">
-      <Image src={whymunch} alt="Why Munch?" width={500} />
-    </div>
-    <div class="threebyoneequalmargins mt-16">
-      <div class="relative">
-        <Image src={quotebg} alt="Quote Box" width={450} />
-        <div class="absolute top-8 left-10 text-white w-[70%]">
-          <h1>
-            “As a beta tester for Munch Industries, I've had the opportunity to
-            witness firsthand the potential of their innovative products. Their
-            dedication to pushing boundaries and refining their solutions is
-            evident in every interaction. I'm excited to see the impact they'll
-            make in the industry.”
-          </h1>
+    <div class="bg-[#214261] lg:bg-transparent">
+      <!-- Part 6 -->
+      <div class="lg:ml-[47%] pt-14 lg:pt-44 w-[300px] md:w-[400px] xl:w-[500px] mx-auto">
+        <Image src={whymunch} alt="Why Munch?"/>
+      </div>
+      <div class="threebyoneequalmargins mt-16 max-lg:grid-cols-1">
+        <div class="relative mx-auto">
+          <Image src={quotebg} alt="Quote Box" width={450} />
+          <div class="absolute top-6 left-6 text-white w-[70%]">
+            <h1 class="lg:max-xl:text-xs">
+              “As a beta tester for Munch Industries, I've had the opportunity to
+              witness firsthand the potential of their innovative products. Their
+              dedication to pushing boundaries and refining their solutions is
+              evident in every interaction. I'm excited to see the impact they'll
+              make in the industry.”
+            </h1>
+          </div>
+          <div
+            class="absolute bottom-14 right-20 text-white text-right font-bold w-[50%]"
+          >
+            <h1 class="lg:max-xl:text-sm">Hanna Johnson, Culinary Tech Enthusiast</h1>
+          </div>
         </div>
-        <div
-          class="absolute bottom-14 right-20 text-white text-right font-bold w-[50%]"
-        >
-          <h1>Hanna Johnson, Culinary Tech Enthusiast</h1>
+        <div class="relative mx-auto">
+          <Image src={quotebg} alt="Quote Box" width={450} />
+          <div class="absolute top-6 left-6 text-white w-[70%]">
+            <h1 class="lg:max-xl:text-xs">
+              “Partnering with Munch Industries has been an inspiring journey.
+              Their passion for revolutionizing the food automation industry is
+              contagious. I have no doubt that their future customers will benefit
+              greatly from their cutting-edge solutions.”
+            </h1>
+          </div>
+          <div
+            class="absolute bottom-14 right-20 text-white text-right font-bold w-[50%]"
+          >
+            <h1 class="lg:max-xl:text-sm">Ethan Wilson, Food Automation Consultant</h1>
+          </div>
+        </div>
+        <div class="relative mx-auto">
+          <Image src={quotebg} alt="Quote Box" width={450} />
+          <div class="absolute top-6 left-6 text-white w-[70%]">
+            <h1 class="lg:max-xl:text-xs">
+              “Munch Industries’ vision for the future of food automation is both
+              ambitious and promising. Having collaborated with their team on
+              several projects, I've been consistently impressed by their
+              innovative approach and attention to detail. I'm eager to see their
+              products in action and witness the impact they'll have.”
+            </h1>
+          </div>
+          <div
+            class="absolute bottom-14 right-20 text-white text-right font-bold w-[50%]"
+          >
+            <h1 class="lg:max-xl:text-sm">Daniel Martinez, Industry Expert</h1>
+          </div>
         </div>
       </div>
-      <div class="relative">
-        <Image src={quotebg} alt="Quote Box" width={450} />
-        <div class="absolute top-8 left-10 text-white w-[70%]">
-          <h1>
-            “Partnering with Munch Industries has been an inspiring journey.
-            Their passion for revolutionizing the food automation industry is
-            contagious. I have no doubt that their future customers will benefit
-            greatly from their cutting-edge solutions.”
-          </h1>
-        </div>
-        <div
-          class="absolute bottom-14 right-20 text-white text-right font-bold w-[50%]"
-        >
-          <h1>Ethan Wilson, Food Automation Consultant</h1>
-        </div>
+      <div class="ml-[10%] mt-12 pb-12">
+        <Image src={quotebar} alt="Bar Design" width={700} />
       </div>
-      <div class="relative">
-        <Image src={quotebg} alt="Quote Box" width={450} />
-        <div class="absolute top-8 left-10 text-white w-[70%]">
-          <h1>
-            “Munch Industries’ vision for the future of food automation is both
-            ambitious and promising. Having collaborated with their team on
-            several projects, I've been consistently impressed by their
-            innovative approach and attention to detail. I'm eager to see their
-            products in action and witness the impact they'll have.”
-          </h1>
-        </div>
-        <div
-          class="absolute bottom-14 right-20 text-white text-right font-bold w-[50%]"
-        >
-          <h1>Daniel Martinez, Industry Expert</h1>
-        </div>
-      </div>
-    </div>
-    <div class="ml-[10%] mt-12 pb-12">
-      <Image src={quotebar} alt="Bar Design" width={700} />
     </div>
   </div>
 </Layout>
