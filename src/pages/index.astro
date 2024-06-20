@@ -96,9 +96,9 @@ const metadata = {
   </div>
 
   <!-- Part 2 -->
-  <div class="home-two-bg max-lg:bg-[#214261] max-lg:bg-none h-auto font-serif font-light">
+  <div class="home-two-bg max-lg:bg-[#214261] max-lg:bg-none h-auto lg:h-[700px] font-serif font-light">
     <div class="w-full bg-black h-[5px] lg:hidden"></div>
-    <div class="fourbyonegrid mx-auto mb-10 max-sm:grid-cols-1 max-lg:grid-cols-2" style="padding-top: 150px;">
+    <div class="fourbyonegrid mx-auto mb-10 max-sm:grid-cols-1 max-lg:grid-cols-2 pt-20">
       <div
         class="hover:scale-110 transition-all duration-500 flex flex-col justify-center items-center"
       >
@@ -176,12 +176,12 @@ const metadata = {
         <Image src={whitebar} alt="Bar" width={80} class="justify-center hidden lg:block" />
       </div>
     </div>
-    <div class="mt-20 flex justify-center pb-5">
+    <div class="sm:mt-20 flex justify-center pb-5">
       <form action="/about">
         <Button
           id="products"
           text="READ MORE"
-          class="justify-center bg-[#ACC6DD] contact-btn font-bold"
+          class="justify-center bg-[#ACC6DD] contact-btn font-bold mb-10"
           type="submit"
         />
       </form>
