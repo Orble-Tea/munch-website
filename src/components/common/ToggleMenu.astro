@@ -7,7 +7,7 @@ export interface Props {
 const {
   label = 'Toggle Menu',
   class:
-    className = "flex flex-col h-12 w-12 rounded justify-center items-center cursor-pointer group",
+    className = "flex flex-col h-12 w-12 rounded justify-center items-center cursor-pointer group z-20",
 } = Astro.props;
 ---
 
@@ -32,3 +32,36 @@ const {
     ></span>
   </slot>
 </button>
+
+<div id="links" class='hidden backdrop-blur-lg bg-opacity-45 bg-slate-200'>
+  <a href="/" class="no-underline mt-24">HOME</a>
+  <a href="/about" class="no-underline">ABOUT</a>
+  <a href="/contact" class="no-underline">CONTACT</a>
+  
+  <a href="/orble-tea" class="no-underline">ORBLE TEA</a>
+  <a href="/smoothie" class="no-underline">SMOOTHIE MACHINE</a>
+  <a href="/dumpling" class="no-underline mb-24">DUMPLING MACHINE</a>
+</div>
+
+<script>
+  let expanded = false;
+
+  function toggleMenu() {
+    expanded = !expanded;
+    const menuButton = document.querySelector('[data-aw-toggle-menu]')!;
+    menuButton.classList.toggle('expanded', expanded);
+    const links = document.getElementById('links')!;
+    links.classList.toggle('hidden', !expanded);
+    const classes = 'fixed inset-0 top-0 left-0 flex flex-col items-center justify-between h-auto text-2xl font-serif gap-3'.split(' ');
+    classes.forEach((className) => {
+      links.classList.toggle(className, expanded);
+    });
+  }
+
+  document.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement;
+    if (target.closest('[data-aw-toggle-menu]')) {
+      toggleMenu();
+    }
+  });
+</script>

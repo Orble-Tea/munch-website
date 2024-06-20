@@ -4,7 +4,7 @@ import { SITE } from "~/utils/config";
 import { getHomePermalink } from "~/utils/permalinks";
 import Logo from "~/components/Logo.astro";
 import Image from "~/components/common/Image.astro";
-import li from "~/assets/images/linkedin.png"
+import li from "~/assets/images/linkedin.png";
 import Button from "~/components/ui/Button.astro";
 
 interface Link {
@@ -37,55 +37,16 @@ const {
 ---
 
 <footer class:list={[{ dark: theme === "dark" }, "relative not-prose"]}>
-  <!--
-  <div class="dark:bg-dark absolute inset-0 pointer-events-none" aria-hidden="true"></div>
-  <div class="relative mx-auto dark:text-slate-300">
-    <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8">
-      <div class="col-span-12 lg:col-span-4">
-        <div class="mb-2">
-          <a href={getHomePermalink()}>
-            <Logo />
-          </a>
-        </div>
-
-    <div class="text-sm text-right dark:text-muted">
-      <h1>Copyright 2024 @ Munch Industries</h1>
-    </div>
-
-    <div class="md:flex md:items-center md:justify-between py-6 md:py-8">
-      {
-        socialLinks?.length ? (
-          <ul class="flex mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0 rtl:ml-0 rtl:-mr-2 rtl:md:ml-0 rtl:md:mr-4">
-            {socialLinks.map(({ ariaLabel, href, text, icon }) => (
-              <li>
-                <a
-                  class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-                  aria-label={ariaLabel}
-                  href={href}
-                >
-                  {icon && <Icon name={icon} class="w-5 h-5" />}
-                  <Fragment set:html={text} />
-                </a>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          ''
-        )
-      }
-    </div>
-  </div>
--->
   <div class="w-full h-[4px] bg-black"></div>
 
-  <div class="threebyone mb-20 font-serif">
-    <div>
+  <div class="threebyone font-serif max-sm:flex max-sm:flex-col">
+    <div class="max-sm:mx-auto">
       <a href={getHomePermalink()}>
         <Logo />
       </a>
     </div>
     <div
-      class="col-span-2 flex justify-end h-[10%] text-xl font-bold text-black"
+      class="col-span-2 flex items-center sm:justify-end h-[10%] text-xl font-bold text-black max-sm:flex-col mx-auto mb-8 sm:flex-wrap"
     >
       <a
         href="/"
@@ -105,27 +66,29 @@ const {
       >
         About Us</a
       >
-      <!-- <form action="/contact"> -->
       <a href="mailto:info@orble-tea.com"
         ><Button
           text="CONTACT"
-          class="contact-btn w-[161px] flex justify-center items-center text-xl font-bold bg-[#214260]"
+          class="contact-btn w-[161px] flex justify-center items-center text-2xl font-bold bg-[#214260]"
           type="submit"
         /></a
       >
-      <!-- </form> -->
     </div>
-    <div class="inline-flex gap-6">
-      <a target="_blank" href="https://www.linkedin.com/company/munch-industries-inc">
+    <div class="inline-flex max-sm:justify-center my-5">
+      <a
+        target="_blank"
+        href="https://www.linkedin.com/company/munch-industries-inc"
+      >
         <Image src={li} alt="LinkedIn" width={40} />
       </a>
     </div>
-    <div></div>
-    <div class="text-gray-800 flex justify-end items-center">
+    <span></span>
+    <div
+      class="text-gray-800 flex justify-end items-center max-sm:mx-auto text-center sm:text-right"
+    >
       <div class="flex flex-col">
         Copyright 2024 @ Munch Industries<br /><a
-          href="mailto:info@orble-tea.com"
-          class="text-right">info@orble-tea.com</a
+          href="mailto:info@orble-tea.com">info@orble-tea.com</a
         >
       </div>
     </div>
