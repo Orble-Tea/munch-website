@@ -326,16 +326,67 @@ const metadata = {
       </div>
     </div>
 
+    <style>
+      .quote {
+        font-size: 0.8rem;
+        line-height: 17px;
+      }
+
+      @media (min-width: 374px) {
+        .quote {
+          font-size: 0.9rem;
+          line-height: 23px;
+        }
+      }
+
+      @media (min-width: 400px) {
+        .quote {
+          font-size: 1.1rem;
+          line-height: 23px;
+        }
+      }
+
+      @media (min-width: 450px) {
+        .quote {
+          font-size: 1.5rem;
+          line-height: 30px;
+        }
+      }
+
+      @media (min-width: 1023px) {
+        .quote {
+          font-size: 0.7rem;
+          line-height: 18px;
+        }
+      }
+
+      @media (min-width: 1150px) {
+        .quote {
+          font-size: 0.9rem;
+          line-height: 23px;
+        }
+      }
+
+      @media (min-width: 1439px) {
+        .quote {
+          font-size: 1rem;
+          line-height: 30px;
+        }
+      }
+    </style>
+
+      
+
     <div class="bg-[#214261] lg:bg-transparent">
       <!-- Part 6 -->
       <div class="lg:ml-[47%] pt-14 lg:pt-44 w-[300px] md:w-[400px] xl:w-[500px] mx-auto">
         <Image src={whymunch} alt="Why Munch?"/>
       </div>
-      <div class="threebyoneequalmargins mt-16 max-lg:grid-cols-1">
+      <div class="threebyoneequalmargins mt-16 max-lg:grid-cols-1 font-serif">
         <div class="relative mx-auto">
           <Image src={quotebg} alt="Quote Box" width={450} />
           <div class="absolute top-6 left-6 text-white w-[70%]">
-            <h1 class="text-sm sm:text-xl lg:text-xs xl:text-lg">
+            <h1 class="quote">
               “As a beta tester for Munch Industries, I've had the opportunity to
               witness firsthand the potential of their innovative products. Their
               dedication to pushing boundaries and refining their solutions is
@@ -344,7 +395,7 @@ const metadata = {
             </h1>
           </div>
           <div
-            class="absolute bottom-14 right-14 sm:right-20 lg:right-14 xl:right-20 text-white text-right font-bold w-[70%]"
+            class="absolute bottom-14 right-16 sm:right-20 lg:right-14 xl:right-20 text-white text-right font-bold w-[70%]"
           >
             <h1 class="text-sm sm:text-xl lg:text-sm xl:text-base">Hanna Johnson, <br>Culinary Tech Enthusiast</h1>
           </div>
@@ -352,7 +403,7 @@ const metadata = {
         <div class="relative mx-auto">
           <Image src={quotebg} alt="Quote Box" width={450} />
           <div class="absolute top-6 left-6 text-white w-[70%]">
-            <h1 class="text-sm sm:text-xl lg:text-xs xl:text-lg">
+            <h1 class="quote">
               “Partnering with Munch Industries has been an inspiring journey.
               Their passion for revolutionizing the food automation industry is
               contagious. I have no doubt that their future customers will benefit
@@ -360,7 +411,7 @@ const metadata = {
             </h1>
           </div>
           <div
-            class="absolute bottom-14 right-14 sm:right-20 lg:right-14 xl:right-20 text-white text-right font-bold w-[70%]"
+            class="absolute bottom-14 right-16 sm:right-20 lg:right-14 xl:right-20 text-white text-right font-bold w-[70%]"
           >
             <h1 class="text-sm sm:text-xl lg:text-sm xl:text-base">Ethan Wilson, <br>Food Automation Consultant</h1>
           </div>
@@ -368,7 +419,7 @@ const metadata = {
         <div class="relative mx-auto">
           <Image src={quotebg} alt="Quote Box" width={450} />
           <div class="absolute top-6 left-6 text-white w-[70%]">
-            <h1 class="text-sm sm:text-xl lg:text-xs xl:text-lg">
+            <h1 class="quote">
               “Munch Industries’ vision for the future of food automation is both
               ambitious and promising. Having collaborated with their team on
               several projects, I've been consistently impressed by their
@@ -377,7 +428,7 @@ const metadata = {
             </h1>
           </div>
           <div
-            class="absolute bottom-14 right-14 sm:right-20 lg:right-14 xl:right-20 text-white text-right font-bold w-[70%]"
+            class="absolute bottom-14 right-16 sm:right-20 lg:right-14 xl:right-20 text-white text-right font-bold w-[70%]"
           >
             <h1 class="text-sm sm:text-xl lg:text-sm xl:text-base">Daniel Martinez, <br>Industry Expert</h1>
           </div>
