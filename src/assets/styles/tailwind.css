@@ -124,21 +124,6 @@ a:hover {
   background-position: 0px 40px
 }
 
-.product-page-bg{
-  background-image: url("../images/bg-design/product-page-bg.png");
-  background-repeat: no-repeat;
-  background-size: 100% 97%;
-  background-position: 0px 40px
-}
-@media (max-width: 768px) {
-  .product-page-bg {
-    background-image: url("../images/bg-design/product-page-bg.svg");
-    background-repeat: no-repeat; 
-    background-position: 0px 40px;
-    background-size: cover;
-  }
-}
-
 .features-title {
   color: #FFF;
 text-align: center;

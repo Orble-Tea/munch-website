@@ -8,11 +8,27 @@ const {
 } = Astro.props;
 
 ---
+<style>
+  .product-page-bg{
+  background-image: url("../assets/images/bg-design/product-page-bg.png");
+  background-repeat: no-repeat;
+  background-size: 100% 97%;
+  background-position: 0px 40px
+}
+@media (max-width: 1023px) {
+  .product-page-bg {
+    background-image: url("../assets/images/bg-design/product-page-bg.svg");
+    background-repeat: no-repeat; 
+    background-position: 0px 40px;
+    background-size: cover;
+  }
+}
+</style>
 
-<div class="product-page-bg font-serif w-screen pb-2 max-md:text-center">
-  <div class="twobythree max-md:grid-cols-1">
+<div class="product-page-bg font-serif w-screen pb-2 max-lg:text-center">
+  <div class="twobythree max-lg:grid-cols-1">
     <div class="col-span-1 row-span-1 mt-28">
-      <Image src={section1.titleImg.src} alt={section1.titleImg.alt} width={240} class="max-md:mx-auto" />
+      <Image src={section1.titleImg.src} alt={section1.titleImg.alt} width={240} class="max-lg:mx-auto" />
       <h3 class="text-3xl  italic text-white mt-4">
           {section1.text1}
       </h3>
@@ -21,29 +37,27 @@ const {
       </h3>
     </div>
     <div class="col-span-1 row-span-2">
-      <Image src={section1.machineImg1.src} alt={section1.machineImg1.alt} width={600} />
+      <Image src={section1.machineImg1.src} alt={section1.machineImg1.alt} width={600} class="mx-auto" />
     </div>
-    <div class="col-span-1 row-span-2 my-16 flex justify-center">
+    <div class="col-span-1 row-span-2 md:my-16 lg:my-0 flex justify-center">
       <Image src={section1.machineImg2.src} alt={section1.machineImg2.alt} width={250} />
     </div>
-    <div class="col-span-1 row-span-1">
-      <span class="text-l  text-white">{section1.text3.part1}</span
+    <div class="col-span-1 row-span-1 mt-6 sm:mt-48 md:mt-20 font-bold">
+      <span class="text-l text-munch-blue sm:text-white">{section1.text3.part1}</span
       >
-      <br><span class="text-3xl  italic text-white"
+      <br><span class="text-3xl  italic text-munch-blue sm:text-white"
         >{section1.text3.part2}</span
       ><br>
-      <h3 class="text-l  text-white">
+      <h3 class="text-l  text-white max-sm:mt-48">
         {section1.text3.part3}
-
-
       </h3>
-      <Image src={bluebar} alt="Bar" width={400} class="mt-10 mb-10 sm:hidden" />
+      <Image src={bluebar} alt="Bar" width={400} class="mt-10 mb-10 sm:hidden mx-auto" />
     </div>
   </div>
 
-  <div class="twobyone max-md:grid-cols-1 text-white md:text-munch-blue">
-    <div>
-      <Image src={section2.cad.src} alt={section2.cad.alt} width={800} />
+  <div class="twobyone max-lg:grid-cols-1 text-white lg:text-munch-blue">
+    <div class="mx-auto">
+      <Image src={section2.cad.src} alt={section2.cad.alt} style="max-width: 500px" />
     </div>
     <div>
       <h3
@@ -78,7 +92,7 @@ const {
     </div>
   </div>
 
-  <div class="threebyonelesspadding max-md:grid-cols-1 text-white md:text-munch-blue">
+  <div class="threebyonelesspadding max-lg:grid-cols-1 text-white lg:text-munch-blue">
     <div></div>
     <div class="col-span-2">
       <h3 class="text-l  mt-12">
@@ -102,7 +116,7 @@ const {
     <div class="features-title underline-offset-4 mt-[31px] mb-[47px]">
       Unique Features
     </div>
-    <div class="flex flex-row flex-wrap justify-center gap-6">
+    <div class="flex flex-wrap justify-center gap-y-6">
       <div class="flex flex-col items-center">
         <div
           class="rounded-full bg-white flex justify-center items-center h-[76px] w-[76px]"
@@ -120,7 +134,7 @@ const {
           </svg>
         </div>
         <div
-          class="features-content mt-[40px] w-[331px] h-[112px] bg-white rounded-[100px] flex justify-center items-center"
+          class="features-content mt-[40px] h-[112px] bg-white rounded-[100px] flex justify-center items-center p-4"
         >
           <p class="w-[241px]">
             <span class="font-bold"
@@ -148,7 +162,7 @@ const {
           </svg>
         </div>
         <div
-          class="features-content mt-[40px] w-[331px] h-[112px] bg-white rounded-[100px] flex justify-center items-center"
+          class="features-content mt-[40px] h-[112px] bg-white rounded-[100px] flex justify-center items-center p-4"
         >
           <p class="w-[241px]">
             <span class="font-bold">{features.feature2.text1}</span> {features.feature2.text2}
@@ -173,7 +187,7 @@ const {
           </svg>
         </div>
         <div
-          class="features-content mt-[40px] w-[331px] h-[112px] bg-white rounded-[100px] flex justify-center items-center"
+          class="features-content mt-[40px] h-[112px] bg-white rounded-[100px] flex justify-center items-center p-4"
         >
           <p class="w-[241px]">
             <span class="font-bold">{features.feature3.text1}</span> {features.feature1.text2}
