@@ -8,14 +8,75 @@ import bluebar from "~/assets/images/product-line.png";
 import cadsmall from "~/assets/images/smoothie-small.png";
 import smoothify from "~/assets/images/smoothify.png";
 import cad from "~/assets/images/smoothie-cad.png";
+import Product from "~/components/Product.astro";
 
 const metadata = {
   title: "Smoothify",
 };
+
+const data = {
+  section1: {
+    titleImg: {
+      src: smoothify,
+      alt: "Smoothify",
+    },
+    text1: "offers delicious and nutritious smoothies on-the-go",
+    text2: "Instant access to freshly blended smoothies and acai bowls, packed with vitamins, minerals, and antioxidants.",
+    machineImg1: {
+      src: machine,
+      alt: "Smoothie Machine",
+    },
+    machineImg2: {
+      src: cadsmall,
+      alt: "Smoothie Machine",
+    },
+    text3: {
+      part1: "With its",
+      part2: "versatile customization options,",
+      part3: "Smoothify offers a variety of base ingredients, additional fruits, and toppings that is ideal for busy customers looking for a healthy snack or meal option.",
+    },
+  },
+  section2: {
+    cad: {
+      src: cad,
+      alt: "Smoothie Machine",
+    },
+    dimensions: "70 inches (H) x 35.5 inches (W) x 35.5 inches (D)",
+    weight: {
+      weight1: "771 lb. (fully loaded, including water)",
+      weight2: "716 lb. (empty weight)",
+    },
+    capacity: "1 smoothie per 2 minutes",
+    power: {
+      power1: "Requires a dedicated 15A outlet, 120V circuit",
+      power2: "Ice maker requires a separate 15A",
+    }
+  },
+  section3: {
+    interface: "Intuitive touchscreen display for easy operation",
+    customization: "Choose your own base, toppings, and add-ins",
+    cleaning: "Self-cleaning system for hassle-free maintenance",
+  },
+  features: {
+    feature1: {
+      text1: "Automated blending process",
+      text2: "ensures smooth and consistent texture with every serving."
+    },
+    feature2: {
+      text1: "High customization",
+      text2: "including base ingredients, additional fruits, protein powders, and toppings."
+    },
+    feature3: {
+      text1: "Quick and efficient service,",
+      text2: "increases convenience for on-the-go service."
+    }
+  }
+}
 ---
 
 <Layout metadata={metadata}>
-  <div class="product-page-bg font-serif max-md:text-center">
+  <Product {...data} />
+  <!-- <div class="product-page-bg font-serif max-md:text-center">
     <div class="twobythree max-md:grid-cols-1">
       <div class="col-span-1 row-span-1 mt-28">
         <Image src={smoothify} alt="Smoothify" width={380} class="max-md:mx-auto" />
@@ -190,13 +251,11 @@ const metadata = {
   </div>
 
   <div class="h-auto w-full flex justify-center mb-14">
-    <!-- <form action="/contact"> -->
     <a href="mailto:info@orble-tea.com" class="no-underline hover:no-underline">
       <button
         class="contact-btn font-bold mt-[50px] bg-[#214260] border-[3px] border-black rounded-[11px] flex justify-center items-center font-serif"
         >GET STARTED</button
       >
     </a>
-    <!-- </form> -->
-  </div>
+  </div> -->
 </Layout>
