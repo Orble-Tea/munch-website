@@ -133,13 +133,6 @@ a:hover {
 }
 
 
-.product-page-bg{
-  background-image: url("../images/bg-design/product-page-bg.png");
-  background-repeat: no-repeat;
-  background-size: 100% 97%;
-  background-position: 0px 40px
-}
-
 .features-title {
   color: #FFF;
 text-align: center;
