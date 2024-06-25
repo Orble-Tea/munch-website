@@ -1,0 +1,18 @@
+---
+let fetchMessage = await fetch(`${Astro.url.origin}/api/send-email`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ message: 'Hello World' })
+})
+  .then(response => response.json())
+  .then(data => {
+    console.log("message is:", data);
+    return data;
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+---
+MESSAGE: {fetchMessage.message}
