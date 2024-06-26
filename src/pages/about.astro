@@ -92,6 +92,26 @@ const teamMembers = [
 ];
 ---
 
+<style>
+
+  div.our-history {
+    color: #1A2634;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 4.8px;
+  }
+
+  p.our-history {
+    color: #FFF;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 35px;
+    letter-spacing: 1.2px;
+  }
+</style>
+
 <Layout metadata={metadata}>
   <div id="header"
     class="flex flex-col items-center flex-shrink-0 bg-[#214260] w-full h-[310px]" >
@@ -163,11 +183,11 @@ const teamMembers = [
     class="flex justify-center max-lg:flex-col flex-shrink-0 z-10 mt-16 relative gap-4"
   >
     <div
-      class="w-[305px] h-[36px] flex justify-center flex-col flex-shrink-0 our-history font-serif xl:ml-[120px] text-center"
+      class="w-[305px] h-[36px] flex justify-center flex-shrink-0 our-history font-serif"
     >
       our history
     </div>
-    <div class="flex flex-col w-[95%] mx-auto">
+    <div class="flex flex-col w-[95%] mx-auto lg:mr-6">
       
       <div class="h-[13px] bg-[#ACC6DD] w-full"></div>
       <div
@@ -278,7 +298,6 @@ const teamMembers = [
     <div
       class="relative flex-shrink-0 bg-[#214260] mt-[-230px] pt-[111px] h-[453px] -z-10 flex justify-center"
     >
-      <!-- <Dots class="mt-[111px]" /> -->
       <Image
         src={dots}
         alt="dots"
