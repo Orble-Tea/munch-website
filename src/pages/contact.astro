@@ -72,14 +72,6 @@ if (Astro.request.method === "POST") {
 }
 ---
 <style>
-  /* .contact-bg{
-    background-image: url("../images/bg-design/contact-header-bg.png");
-    background-position: center 29px;
-    background-size: 1266px;
-    background-repeat: no-repeat;
-    background-color: #214260;
-    ;
-  } */
 
   .contact-subtitle {
   text-align: center;
@@ -173,7 +165,7 @@ if (Astro.request.method === "POST") {
     <div id="form" class="flex justify-center mt-[71px]">
       <div class="bg-white rounded-md w-[80%] lg:w-[48%] contact-form p-10">
         <form method="POST">
-          <div id="textinputs" class="flex flex-wrap justify-around h-full gap-x-5 gap-y-8">
+          <div id="textinputs" class="flex flex-col gap-y-8">
             <div class="flex flex-col w-full">
               <label for="FirstName" class="contact-label">
                 First Name
