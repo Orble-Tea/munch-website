@@ -1,8 +1,6 @@
 import path from "path";
 import { fileURLToPath } from "url";
-
 import { defineConfig, squooshImageService } from "astro/config";
-
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
@@ -10,16 +8,13 @@ import partytown from "@astrojs/partytown";
 import icon from "astro-icon";
 import compress from "astro-compress";
 import tasks from "./src/utils/tasks";
-
 import {
   readingTimeRemarkPlugin,
   responsiveTablesRehypePlugin,
 } from "./src/utils/frontmatter.mjs";
-
 import { ANALYTICS, SITE } from "./src/utils/config.ts";
-
+import netlify from "@astrojs/netlify";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
 const whenExternalScripts = (items = []) =>
   ANALYTICS.vendors.googleAnalytics.id &&
   ANALYTICS.vendors.googleAnalytics.partytown
@@ -28,13 +23,12 @@ const whenExternalScripts = (items = []) =>
       : [items()]
     : [];
 
+// https://astro.build/config
 export default defineConfig({
   site: SITE.site,
   base: SITE.base,
   trailingSlash: SITE.trailingSlash ? "always" : "never",
-
-  output: "static",
-
+  output: "server",
   integrations: [
     tailwind({
       applyBaseStyles: false,
@@ -57,13 +51,13 @@ export default defineConfig({
         ],
       },
     }),
-
     ...whenExternalScripts(() =>
       partytown({
-        config: { forward: ["dataLayer.push"] },
+        config: {
+          forward: ["dataLayer.push"],
+        },
       })
     ),
-
     compress({
       CSS: true,
       HTML: {
@@ -76,19 +70,15 @@ export default defineConfig({
       SVG: false,
       Logger: 1,
     }),
-
     tasks(),
   ],
-
   image: {
     service: squooshImageService(),
   },
-
   markdown: {
     remarkPlugins: [readingTimeRemarkPlugin],
     rehypePlugins: [responsiveTablesRehypePlugin],
   },
-
   vite: {
     resolve: {
       alias: {
@@ -96,4 +86,5 @@ export default defineConfig({
       },
     },
   },
+  adapter: netlify(),
 });
