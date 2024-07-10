@@ -5,7 +5,7 @@ export async function GET() {
 export async function POST({ request }) {
   const emailData = await request.json();
 
-  const SENDGRID_API_KEY = "api-key-goes-here";
+  const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
   // send a POST request to the SendGrid API
   const response = await fetch("https://api.sendgrid.com/v3/mail/send", {
     method: "POST",

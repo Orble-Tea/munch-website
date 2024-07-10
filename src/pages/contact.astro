@@ -18,8 +18,8 @@ if (Astro.request.method === "POST") {
     const lastName = data.get("LastName");
     const phoneNumber = data.get("PhoneNumber");
     const email = data.get("Email");
-    const subject = data.get("subject");
-    const message = data.get("message");
+    const subject = data.get("Subject");
+    const message = data.get("Message");
 
     const content = `First Name: ${firstName}\nLast Name: ${lastName}\nPhone Number: ${phoneNumber}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}`;
 
