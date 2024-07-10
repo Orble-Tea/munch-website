@@ -13,7 +13,7 @@ import {
   responsiveTablesRehypePlugin,
 } from "./src/utils/frontmatter.mjs";
 import { ANALYTICS, SITE } from "./src/utils/config.ts";
-import netlify from "@astrojs/netlify";
+import netlify from "@astrojs/netlify/functions";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const whenExternalScripts = (items = []) =>
   ANALYTICS.vendors.googleAnalytics.id &&
