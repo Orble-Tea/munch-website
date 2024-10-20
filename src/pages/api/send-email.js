@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 export async function GET() {
   return new Response(JSON.stringify({ message: "Hello World" }));
 }
