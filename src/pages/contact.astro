@@ -18,17 +18,17 @@ if (Astro.request.method === "POST") {
     const lastName = data.get("LastName");
     const phoneNumber = data.get("PhoneNumber");
     const email = data.get("Email");
-    const subject = data.get("subject");
-    const message = data.get("message");
+    const subject = data.get("Subject");
+    const message = data.get("Message");
 
-    const content = `First Name: ${firstName}\nLast Name: ${lastName}\nPhone Number: ${phoneNumber}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}`;
+    const content = `First Name: ${firstName}\nLast Name: ${lastName}\nPhone Number: ${phoneNumber}\nEmail: ${email}\n\nSubject: ${subject}\n\nMessage: ${message}`;
 
     const emailData = {
       personalizations: [
         {
           to: [
             {
-              email: "jaimanmunshi@gmail.com",
+              email: "info@orble-tea.com",
             },
           ],
         },
@@ -47,13 +47,9 @@ if (Astro.request.method === "POST") {
       "reply-to": email,
     };
 
-    const SENDGRID_API_KEY = ""; // deleting the real one out to allow git push, paste back here later
-    // TODO: API KEY CANNOT BE HARDCODED ON THE CLIENT SIDE, THIS SHOULD BE ON THE SERVER SIDE EVENTUALLY
-    // send a POST request to the SendGrid API
-    const response = await fetch("https://api.sendgrid.com/v3/mail/send", {
+    const response = await fetch(`${Astro.url.origin}/api/send-email`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${SENDGRID_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(emailData),
@@ -101,9 +97,7 @@ if (Astro.request.method === "POST") {
           <div id="textinputs">
             <div class="flex mb-[45px]">
               <div>
-                <label for="FirstName" class="contact-label">
-                  First Name
-                </label>
+                <label for="FirstName" class="contact-label"> First Name</label>
                 <input
                   type="text"
                   name="FirstName"
@@ -111,7 +105,7 @@ if (Astro.request.method === "POST") {
                 />
               </div>
               <div>
-                <label for="LastName" class="contact-label"> Last Name </label>
+                <label for="LastName" class="contact-label"> Last Name</label>
                 <input
                   type="text"
                   name="LastName"
@@ -121,7 +115,7 @@ if (Astro.request.method === "POST") {
             </div>
             <div class="flex mb-[45px]">
               <div>
-                <label for="Email" class="contact-label"> Email </label>
+                <label for="Email" class="contact-label"> Email</label>
                 <input
                   type="text"
                   name="Email"
@@ -142,7 +136,7 @@ if (Astro.request.method === "POST") {
           </div>
 
           <div id="subject-select" class="mt-4 mb-[45px]">
-            <label for="subject" class="contact-label"> Select Subject </label>
+            <label for="subject" class="contact-label"> Select Subject</label>
 
             <div id="radio-buttons" class="flex mt-[14.63px]">
               {
@@ -173,7 +167,7 @@ if (Astro.request.method === "POST") {
           </div>
 
           <div class="flex flex-col my-[45px]">
-            <label for="message" class="contact-label"> Message </label>
+            <label for="message" class="contact-label"> Message</label>
             <input
               type="text"
               name="Message"
