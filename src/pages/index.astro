@@ -38,18 +38,18 @@ const metadata = {
 <Layout metadata={metadata}>
   <div class="home-bg h-auto py-10">
     <div
-      class="flex justify-center lg:justify-left items-center ml-[10%]"
+      class="flex justify-center lg:justify-start items-center ml-[10%]"
       style="max-width: 80%; height: auto; padding-bottom: 50px; padding-top: 40px"
     >
       <Image src={title} alt="Munch Industries Logo" width={900} />
     </div>
     <div
-      class="flex justify-center lg:justify-left ml-[10%]"
+      class="flex justify-center lg:justify-start ml-[10%]"
       style="max-width: 60%; height: auto; padding-top: 20px;"
     >
       <Image src={dark} alt="bar" width={70} />
       <div
-        class="flex justify-center lg:justify-left"
+        class="flex justify-center lg:justify-start"
         style="max-width: 60%; height: auto; padding-left: 20px;"
       >
         <Image src={light} alt="bar" width={220} />
@@ -87,7 +87,7 @@ const metadata = {
         <form action="/#products">
           <Button
             text="LEARN MORE"
-            class="contact-btn bg-[#214260] font-serif font-bold"
+            class="munch-btn bg-[#214260] font-serif font-bold"
             type="submit"
           />
         </form>
@@ -181,7 +181,7 @@ const metadata = {
         <Button
           id="products"
           text="READ MORE"
-          class="justify-center bg-[#ACC6DD] contact-btn font-bold mb-10"
+          class="justify-center bg-[#ACC6DD] munch-btn font-bold mb-10"
           type="submit"
         />
       </form>
@@ -192,13 +192,13 @@ const metadata = {
   <div class="home-three-bg max-lg:bg-none font-serif mt-10">
     <div class="bg-white lg:bg-transparent border-b-8 border-black lg:border-opacity-0">
       <div
-        class="flex justify-left items-center ml-[10%] pb-5"
+        class="flex justify-start items-center ml-[10%] pb-5"
         style="max-width: 80%; height: auto;"
       >
         <Image src={ourproducts} alt="Our Products" width={450} />
       </div>
       <div
-        class="flex justify-left ml-[10%]"
+        class="flex justify-start ml-[10%]"
         style="max-width: 60%; height: auto; padding-top: 20px;"
       >
         <Image src={dark} alt="bar" width={70} />
@@ -276,7 +276,7 @@ const metadata = {
               <Button
                 text="LEARN MORE"
                 type="submit"
-                class="bg-beige font-bold contact-btn flex text-3xl justify-center no-underline hover:no-underline"
+                class="bg-beige font-bold munch-btn flex text-3xl justify-center no-underline hover:no-underline"
               />
             </a>
           </div>

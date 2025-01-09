@@ -8,10 +8,70 @@ import bluebar from "~/assets/images/product-line.png";
 import cadsmall from "~/assets/images/dumpling-small.png";
 import bunbite from "~/assets/images/bunbite.png";
 import cad from "~/assets/images/dumpling-cad.png";
+import Product from "~/components/Product.astro";
 
 const metadata = {
-  title: "Smoothie Machine",
+  title: "Bunbite",
 };
+
+const data = {
+  section1: {
+    titleImg: {
+      src: bunbite,
+      alt: "Bunbite",
+    },
+    text1: "freshly made dumplings on demand",
+    text2: "Providing customers with tasty dumplings prepared fresh for a convenient snack or meal option.",
+    machineImg1: {
+      src: machine,
+      alt: "Dumpling Machine",
+    },
+    machineImg2: {
+      src: cadsmall,
+      alt: "Smoothie Machine",
+    },
+    text3: {
+      part1: "With its",
+      part2: "increase in service effiency,",
+      part3: "BunBite offers a variety of dumpling customization, all while ensuring consistent quality and taste with every batch.",
+    },
+  },
+  section2: {
+    cad: {
+      src: cad,
+      alt: "Dumpling Machine",
+    },
+    dimensions: "70 inches (H) x 35.5 inches (W) x 35.5 inches (D)",
+    weight: {
+      weight1: "771 lb. (fully loaded, including water)",
+      weight2: "716 lb. (empty weight)",
+    },
+    capacity: "8 to 12 dumplings per minute (approximately 480 to 720 dumplings per hour)",
+    power: {
+      power1: "Requires a dedicated 15A outlet, 120V circuit",
+      power2: "Ice maker requires a separate 15A",
+    }
+  },
+  section3: {
+    interface: "Intuitive touchscreen display for easy operation",
+    customization: "Choose your own dough, filling ingredients, and sauces",
+    cleaning: "Self-cleaning system for hassle-free maintenance",
+  },
+  features: {
+    feature1: {
+      text1: "Automated dumpling making process",
+      text2: "ensures consistent quality and taste with every batch."
+    },
+    feature2: {
+      text1: "High customization",
+      text2: "including choice of dough, fillings, flavors, and sauces."
+    },
+    feature3: {
+      text1: "Efficient service",
+      text2: "caters to busy customers who crave a quick and satisfying snack or meal in their day."
+    }
+  }
+}
 ---
 
 <Layout metadata={metadata}>

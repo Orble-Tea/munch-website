@@ -1,6 +1,7 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
 import Image from "~/components/common/Image.astro";
+import dots from "~/assets/images/bg-design/contact-header-bg.png";
 
 import contactTitle from "~/assets/images/contact-title.png";
 
@@ -66,33 +67,84 @@ if (Astro.request.method === "POST") {
   }
 }
 ---
+<style>
 
-<script src="https://smtpjs.com/v3/smtp.js"></script>
+  .contact-subtitle {
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px; /* 125% */
+  letter-spacing: 1.92px;
+  }
+
+  .contact-label {
+    color: #1A2634;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    font-family: Lato;
+  }
+
+  @media (min-width: 1024px) {
+    .bg-contact-form{
+      background-image: url("../assets/images/bg-design/contact-form-bg.png");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+  
+
+  .contact-form {
+    border-radius: 10px;
+    background: white;
+    box-shadow: 6px 6px 5px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  .contact-input {
+    color: black;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 142.857% */
+    font-family: var(--aw-font-serif), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .contact-label {
+    font-family: var(--aw-font-serif), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-size: 15px;
+    font-weight: 600;
+  }
+</style>
 <Layout metadata={metadata}>
-  <div id="header" class="flex flex-col flex-shrink-0 items-center">
-    <div class="contact-bg h-[273px] w-full flex justify-center">
-      <Image
-        src={contactTitle}
-        alt="Get In Touch"
-        width="692px"
-        height="71px"
-        class="mt-[136px]"
-      />
-    </div>
+  <div
+    id="header"
+    class="flex flex-col items-center flex-shrink-0 bg-[#214260] w-full h-[310px]"
+  >
+    <Image
+      src={dots}
+      alt="dots"
+      style={`max-width: 100%; height: 100%;`}
+    />
+    <Image
+      src={contactTitle}
+      alt="Get In Touch"
+      width="692px"
+      height="71px"
+      class="absolute mt-[136px]"
+    />
   </div>
 
-  <div
-    id="form-container"
-    class="bg-contact-form h-[981px] w-[1440px] font-serif mx-auto -mb-[3px]"
-  >
+  <div id="form-container" class="bg-contact-form bg-gradient-to-b from-[#214260] to-white border-t-[#acc6dd] border-t-4 lg:border-none font-serif pb-32" >
     <div class="flex justify-center">
-      <h1 class="w-[815px] contact-subtitle font-serif mt-[71px]">
+      <h1 class="w-[815px] contact-subtitle font-serif mt-[71px] mx-8 text-white lg:text-[#1A2634]">
         {log}
       </h1>
     </div>
 
-    <div id="form" class="flex justify-center mt-[71px]" style="">
-      <div class="bg-white rounded-md w-[710px] p-[65px] contact-form">
+    <div id="form" class="flex justify-center mt-[71px]">
+      <div class="bg-white rounded-md w-[80%] lg:w-[48%] contact-form p-10">
         <form method="POST">
           <div id="textinputs">
             <div class="flex mb-[45px]">
@@ -138,7 +190,7 @@ if (Astro.request.method === "POST") {
           <div id="subject-select" class="mt-4 mb-[45px]">
             <label for="subject" class="contact-label"> Select Subject</label>
 
-            <div id="radio-buttons" class="flex mt-[14.63px]">
+            <div id="radio-buttons" class="flex max-sm:flex-col justify-between flex-wrap mt-4">
               {
                 [
                   "General Inquiry",
@@ -146,7 +198,7 @@ if (Astro.request.method === "POST") {
                   "Customer Support",
                   "Other",
                 ].map((subject) => (
-                  <>
+                  <div>
                     <input
                       type="radio"
                       id={subject.toLowerCase().replace(/\s/g, "-")}
@@ -160,7 +212,7 @@ if (Astro.request.method === "POST") {
                     >
                       {subject}
                     </label>
-                  </>
+                  </div>
                 ))
               }
             </div>
@@ -173,12 +225,13 @@ if (Astro.request.method === "POST") {
               name="Message"
               id="message"
               placeholder="Write your message..."
-              class="border-b-2 border-gray-300 w-[595px] contact-input pb-[10px] placeholder-[#BDBDBD]"
-            />
+              class="border-b-2 border-gray-300 w-full contact-input pb-[10px] mt-3 placeholder-[#BDBDBD]"
+              maxlength="500"
+            ></textarea>
           </div>
 
-          <div class="flex justify-end mb-[55px]">
-            <button class="contact-btn font-serif bg-[#214260]"
+          <div class="flex justify-end mb-2">
+            <button class="munch-btn font-serif bg-[#214260]"
               >SEND MESSAGE</button
             >
           </div>
