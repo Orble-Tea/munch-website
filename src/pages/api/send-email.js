@@ -1,10 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-export async function GET() {
-  return new Response(JSON.stringify({ message: "Hello World" }));
-}
-
 export async function POST({ request }) {
   const emailData = await request.json();
 
@@ -18,7 +14,6 @@ export async function POST({ request }) {
     },
     body: JSON.stringify(emailData),
   });
-  console.log(response.status, response.statusText);
   if (!response.ok) {
     return new Response(JSON.stringify({ message: "Failed to send email" }), {
       status: response.status,
