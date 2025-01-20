@@ -48,6 +48,20 @@ if (Astro.request.method === "POST") {
       "reply-to": email,
     };
 
+    // VALIDATE / SANITIZE THE FORM DATA
+    if (!firstName || !lastName || !email || !subject || !message) {
+      throw new Error("Please fill out all required fields.");
+    }
+    // check valid email
+    if (!String(email).includes("@") || !String(email).includes(".")) {
+      throw new Error("Please enter a valid email address.");
+    }
+    // check for executable code
+    if (String(content).includes("<script>")) {
+      throw new Error("Please do not include executable code in your message.");
+    }
+
+
     const response = await fetch(`${Astro.url.origin}/api/send-email`, {
       method: "POST",
       headers: {
