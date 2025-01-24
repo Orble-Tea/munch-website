@@ -2,85 +2,93 @@
 import Layout from "~/layouts/PageLayout.astro";
 import Image from "~/components/common/Image.astro";
 import dots from "~/assets/images/bg-design/contact-header-bg.png";
-
 import contactTitle from "~/assets/images/contact-title.png";
+import DOMPurify from 'dompurify';
+import { JSDOM } from 'jsdom';
 
 const metadata = {
   title: "Contact",
 };
 
-let log =
-  "Fill out the contact form below for inquiries, partnership opportunities, and/or customer support!";
+// Create a DOMPurify instance for server-side sanitization
+const window = new JSDOM('').window;
+const purify = DOMPurify(window);
+
+const errors = { firstName: "", lastName: "", email: "", subject: "", message: "" };
+let log = "Fill out the contact form below for inquiries, partnership opportunities, and/or customer support!";
 
 if (Astro.request.method === "POST") {
   try {
     const data = await Astro.request.formData();
-    const firstName = data.get("FirstName");
-    const lastName = data.get("LastName");
-    const phoneNumber = data.get("PhoneNumber");
-    const email = data.get("Email");
-    const subject = data.get("Subject");
-    const message = data.get("Message");
+    // Sanitize all inputs, ensuring we're working with strings
+    const firstName = purify.sanitize(String(data.get("FirstName") || ''));
+    const lastName = purify.sanitize(String(data.get("LastName") || ''));
+    const phoneNumber = purify.sanitize(String(data.get("PhoneNumber") || ''));
+    const email = purify.sanitize(String(data.get("Email") || ''));
+    const subject = purify.sanitize(String(data.get("Subject") || ''));
+    const message = purify.sanitize(String(data.get("Message") || ''));
 
-    const content = `First Name: ${firstName}\nLast Name: ${lastName}\nPhone Number: ${phoneNumber}\nEmail: ${email}\n\nSubject: ${subject}\n\nMessage: ${message}`;
+    // Validate form data
+    if (firstName.length < 1) {
+      errors.firstName = "Please enter your first name.";
+    }
+    if (lastName.length < 1) {
+      errors.lastName = "Please enter your last name.";
+    }
+    if (!email.includes("@") || !email.includes(".")) {
+      errors.email = "Please enter a valid email address.";
+    }
+    if (!subject) {
+      errors.subject = "Please select a subject.";
+    }
+    if (message.length < 1) {
+      errors.message = "Please enter your message.";
+    }
 
-    const emailData = {
-      personalizations: [
-        {
-          to: [
-            {
-              email: "info@orble-tea.com",
-            },
-          ],
+    const hasErrors = Object.values(errors).some(msg => msg);
+    
+    if (!hasErrors) {
+      const content = `First Name: ${firstName}\nLast Name: ${lastName}\nPhone Number: ${phoneNumber}\nEmail: ${email}\n\nSubject: ${subject}\n\nMessage: ${message}`;
+      
+      const emailData = {
+        personalizations: [{
+          to: [{
+            email: "info@orble-tea.com"
+          }]
+        }],
+        from: {
+          email: "info@orble-tea.com",
+          name: firstName + " " + lastName
         },
-      ],
-      from: {
-        email: "info@orble-tea.com",
-        name: firstName + " " + lastName,
-      },
-      content: [
-        {
+        content: [{
           type: "text",
-          value: content,
+          value: content
+        }],
+        subject: "Customer Inquiry Form Submission: " + subject,
+        "reply-to": email
+      };
+
+      const response = await fetch(`${Astro.url.origin}/api/send-email`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      ],
-      subject: "Customer Inquiry Form Submission: " + subject,
-      "reply-to": email,
-    };
+        body: JSON.stringify(emailData),
+      });
 
-    // VALIDATE / SANITIZE THE FORM DATA
-    if (!firstName || !lastName || !email || !subject || !message) {
-      throw new Error("Please fill out all required fields.");
-    }
-    // check valid email
-    if (!String(email).includes("@") || !String(email).includes(".")) {
-      throw new Error("Please enter a valid email address.");
-    }
-    // check for executable code
-    if (String(content).includes("<script>")) {
-      throw new Error("Please do not include executable code in your message.");
-    }
+      if (!response.ok) {
+        throw new Error("An error occurred while sending the email.");
+      }
 
-
-    const response = await fetch(`${Astro.url.origin}/api/send-email`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(emailData),
-    });
-    console.log(response.status, response.statusText);
-    if (!response.ok) {
-      console.log(await response.json());
-      throw new Error("An error occurred while sending the email.");
+      log = "Form submitted successfully!";
     }
-    log = "Form submitted successfully!";
   } catch (error) {
     console.error(error);
-    log = "An error occurred while submitting the form.\nPlease try again.";
+    log = "Error: " + (error instanceof Error ? error.message : "An unknown error occurred");
   }
 }
 ---
+
 <style>
 
   .contact-subtitle {
@@ -167,33 +175,39 @@ if (Astro.request.method === "POST") {
                 <input
                   type="text"
                   name="FirstName"
+                  required
                   class="border-b-2 border-gray-300 w-[278px] mr-[39px] contact-input"
                 />
+                {errors.firstName && <p class="text-red-500 text-sm mt-1">{errors.firstName}</p>}
               </div>
               <div>
                 <label for="LastName" class="contact-label"> Last Name</label>
                 <input
                   type="text"
                   name="LastName"
+                  required
                   class="border-b-2 border-gray-300 w-[278px] mr-[39px] contact-input"
                 />
+                {errors.lastName && <p class="text-red-500 text-sm mt-1">{errors.lastName}</p>}
               </div>
             </div>
             <div class="flex mb-[45px]">
               <div>
                 <label for="Email" class="contact-label"> Email</label>
                 <input
-                  type="text"
+                  type="email"
                   name="Email"
+                  required
                   class="border-b-2 border-gray-300 w-[278px] mr-[39px] contact-input"
                 />
+                {errors.email && <p class="text-red-500 text-sm mt-1">{errors.email}</p>}
               </div>
               <div>
                 <label for="PhoneNumber" class="contact-label">
                   Phone Number
                 </label>
                 <input
-                  type="text"
+                  type="tel"
                   name="PhoneNumber"
                   class="border-b-2 border-gray-300 w-[278px] mr-[39px] contact-input"
                 />
@@ -219,6 +233,7 @@ if (Astro.request.method === "POST") {
                       name="Subject"
                       value={subject.toLowerCase().replace(/\s/g, "-")}
                       class="mr-[10px]"
+                      required
                     />
                     <label
                       for={subject.toLowerCase().replace(/\s/g, "-")}
@@ -230,6 +245,7 @@ if (Astro.request.method === "POST") {
                 ))
               }
             </div>
+            {errors.subject && <p class="text-red-500 text-sm mt-1">{errors.subject}</p>}
           </div>
 
           <div class="flex flex-col my-[45px]">
@@ -238,19 +254,139 @@ if (Astro.request.method === "POST") {
               type="text"
               name="Message"
               id="message"
+              required
               placeholder="Write your message..."
               class="border-b-2 border-gray-300 w-full contact-input pb-[10px] mt-3 placeholder-[#BDBDBD]"
               maxlength="500"
-            ></textarea>
+            />
+            {errors.message && <p class="text-red-500 text-sm mt-1">{errors.message}</p>}
           </div>
 
           <div class="flex justify-end mb-2">
-            <button class="munch-btn font-serif bg-[#214260]"
-              >SEND MESSAGE</button
-            >
+            <button type="submit" class="munch-btn font-serif bg-[#214260]">
+              SEND MESSAGE
+            </button>
           </div>
         </form>
       </div>
     </div>
+
+    <script>
+      /**
+       * Client-side form validation script
+       * Provides real-time feedback to users as they interact with the form
+       * while maintaining server-side validation for security
+       */
+      import DOMPurify from 'dompurify';
+
+      // Initialize form and input elements
+      const form = document.querySelector('form');
+      const inputs = {
+        firstName: form.querySelector('input[name="FirstName"]'),
+        lastName: form.querySelector('input[name="LastName"]'),
+        email: form.querySelector('input[name="Email"]'),
+        subject: form.querySelectorAll('input[name="Subject"]'),
+        message: form.querySelector('input[name="Message"]')
+      };
+
+      // Get corresponding error message elements for each input
+      const errorElements = {
+        firstName: form.querySelector('input[name="FirstName"] + p'),
+        lastName: form.querySelector('input[name="LastName"] + p'),
+        email: form.querySelector('input[name="Email"] + p'),
+        subject: document.querySelector('#subject-select p'),
+        message: form.querySelector('input[name="Message"] + p')
+      };
+
+      /**
+       * Validation rules for each form field
+       * Each function returns an empty string if valid, or an error message if invalid
+       * All inputs are sanitized before validation
+       */
+      const validators = {
+        firstName: (value) => {
+          const sanitized = DOMPurify.sanitize(value);
+          if (!sanitized || sanitized.length < 1) return "Please enter your first name.";
+          return "";
+        },
+        lastName: (value) => {
+          const sanitized = DOMPurify.sanitize(value);
+          if (!sanitized || sanitized.length < 1) return "Please enter your last name.";
+          return "";
+        },
+        email: (value) => {
+          const sanitized = DOMPurify.sanitize(value);
+          if (!sanitized || !sanitized.includes('@') || !sanitized.includes('.')) {
+            return "Please enter a valid email address.";
+          }
+          return "";
+        },
+        subject: (elements) => {
+          const selected = Array.from(elements).some(radio => radio.checked);
+          return selected ? "" : "Please select a subject.";
+        },
+        message: (value) => {
+          const sanitized = DOMPurify.sanitize(value);
+          if (!sanitized || sanitized.length < 1) return "Please enter your message.";
+          return "";
+        }
+      };
+
+      // Add form submit handler to sanitize all data before submission
+      form.addEventListener('submit', (e) => {
+        const formData = new FormData(form);
+        for (let [key, value] of formData.entries()) {
+          if (typeof value === 'string') {
+            formData.set(key, DOMPurify.sanitize(value));
+          }
+        }
+      });
+
+      /**
+       * Updates the error message display for a given field
+       * @param {string} field - The field name (firstName, lastName, etc.)
+       * @param {string} message - The error message (empty if valid)
+       */
+      function updateErrorMessage(field, message) {
+        const errorElement = errorElements[field];
+        if (errorElement) {
+          errorElement.textContent = message;
+          // Only show the error element if there's an error message
+          errorElement.style.display = message ? 'block' : 'none';
+        }
+      }
+
+      // Add real-time validation listeners to text inputs
+      inputs.firstName.addEventListener('input', (e) => {
+        updateErrorMessage('firstName', validators.firstName(e.target.value));
+      });
+
+      inputs.lastName.addEventListener('input', (e) => {
+        updateErrorMessage('lastName', validators.lastName(e.target.value));
+      });
+
+      inputs.email.addEventListener('input', (e) => {
+        updateErrorMessage('email', validators.email(e.target.value));
+      });
+
+      // Add change listeners to radio buttons
+      inputs.subject.forEach(radio => {
+        radio.addEventListener('change', () => {
+          updateErrorMessage('subject', validators.subject(inputs.subject));
+        });
+      });
+
+      inputs.message.addEventListener('input', (e) => {
+        updateErrorMessage('message', validators.message(e.target.value));
+      });
+
+      // Initialize error messages as hidden
+      Object.keys(errorElements).forEach(field => {
+        const errorElement = errorElements[field];
+        if (errorElement) {
+          errorElement.style.display = 'none';
+        }
+      });
+    </script>
   </div>
 </Layout>
