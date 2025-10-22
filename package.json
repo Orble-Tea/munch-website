@@ -23,9 +23,11 @@
     "astro-icon": "^1.1.0",
     "dompurify": "^3.2.3",
     "dotenv": "^16.4.5",
+    "form-data": "^4.0.4",
     "jsdom": "^26.0.0",
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
+    "mailgun.js": "^12.1.1",
     "nodemailer": "^6.9.13",
     "typescript-esbuild": "^0.3.10",
     "unpic": "^3.17.0"

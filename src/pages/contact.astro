@@ -49,23 +49,12 @@ if (Astro.request.method === "POST") {
     
     if (!hasErrors) {
       const content = `First Name: ${firstName}\nLast Name: ${lastName}\nPhone Number: ${phoneNumber}\nEmail: ${email}\n\nSubject: ${subject}\n\nMessage: ${message}`;
-      
+
       const emailData = {
-        personalizations: [{
-          to: [{
-            email: "info@orble-tea.com"
-          }]
-        }],
-        from: {
-          email: "info@orble-tea.com",
-          name: firstName + " " + lastName
-        },
-        content: [{
-          type: "text",
-          value: content
-        }],
+        to: "info@orble-tea.com",
         subject: "Customer Inquiry Form Submission: " + subject,
-        "reply-to": email
+        text: content,
+        "h:Reply-To": email
       };
 
       const response = await fetch(`${Astro.url.origin}/api/send-email`, {
