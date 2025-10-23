@@ -127,6 +127,14 @@ if (Astro.request.method === "POST") {
     font-size: 15px;
     font-weight: 600;
   }
+
+  /* Hide honeypot field from users */
+  .honeypot-field {
+    position: absolute;
+    left: -5000px;
+    opacity: 0;
+    pointer-events: none;
+  }
 </style>
 <Layout metadata={metadata}>
   <div
@@ -157,6 +165,18 @@ if (Astro.request.method === "POST") {
     <div id="form" class="flex justify-center mt-[71px]">
       <div class="bg-white rounded-md w-[80%] lg:w-[48%] contact-form p-10">
         <form method="POST">
+          <!-- Honeypot field - hidden from users but visible to bots -->
+          <div class="honeypot-field">
+            <label for="website">Website</label>
+            <input 
+              type="text" 
+              name="website" 
+              id="website"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
+
           <div id="textinputs">
             <div class="flex mb-[45px]">
               <div>
