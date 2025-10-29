@@ -9,8 +9,6 @@ function initForm() {
   }
 
   preventSpam(form, { honeypotField: 'website' })
-  
-  console.log("Form after preventSpam:", form)
 
   form.addEventListener('submit', (e) => {
     if (form.containsSpam()) {

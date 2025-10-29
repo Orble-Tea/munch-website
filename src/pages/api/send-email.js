@@ -37,11 +37,11 @@ export async function POST({ request }) {
     const { to, subject, text, html, "h:Reply-To": replyTo, website } = validationResult.data;
 
     // Honeypot check
-    if (website && website.trim() !== "") {
+    if (website) {
       console.log("Honeypot triggered at API level - possible bot submission");
       // Return success to not alert the bot
       return new Response(
-        JSON.stringify({ success: true, message: "Email sent" }),
+        JSON.stringify({ success: true, message: "Form received" }),
         { status: 200 }
       );
     }
@@ -68,7 +68,7 @@ export async function POST({ request }) {
     const data = await mg.messages.create("mg.munch-industries.com", messageData);
 
     return new Response(
-      JSON.stringify({ success: true, message: "Form received" })
+      JSON.stringify({ success: true, message: "Email sent" })
     );
   } catch (error) {
     console.error("Mailgun error:", error);
