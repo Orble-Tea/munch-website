@@ -67,9 +67,9 @@ export async function POST({ request }) {
 
     const data = await mg.messages.create("mg.munch-industries.com", messageData);
 
-    return new Response(JSON.stringify({ success: true, message: "Email sent", data }), {
-      status: 200,
-    });
+    return new Response(
+      JSON.stringify({ success: true, message: "Form received" })
+    );
   } catch (error) {
     console.error("Mailgun error:", error);
     return new Response(
