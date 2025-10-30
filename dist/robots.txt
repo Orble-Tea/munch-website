@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://munch-industries.com/sitemap-index.xml
