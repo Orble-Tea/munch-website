@@ -1,6 +1,6 @@
 export function preventSpam(
   form,
-  { honeypotField = 'honeypot', honeypotDuration = 10000 } = {}
+  { honeypotField = 'honeypot', honeypotDuration = 2000 } = {}
 ) {
   const startTime = Date.now();
   let hasInteraction = false;
