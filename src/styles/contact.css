@@ -1,0 +1,56 @@
+  .contact-subtitle {
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px; /* 125% */
+  letter-spacing: 1.92px;
+  }
+
+  .contact-label {
+    color: #1A2634;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    font-family: Lato;
+  }
+
+  @media (min-width: 1024px) {
+    .bg-contact-form{
+      background-image: url("../assets/images/bg-design/contact-form-bg.png");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+  
+
+  .contact-form {
+    border-radius: 10px;
+    background: white;
+    box-shadow: 6px 6px 5px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  .contact-input {
+    color: black;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 142.857% */
+    font-family: var(--aw-font-serif), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .contact-label {
+    font-family: var(--aw-font-serif), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  /* Hide honeypot field from users */
+  .website-field {
+    position: absolute;
+    left: -5000px;
+    opacity: 0;
+    display: None;
+    pointer-events: none;
+  }

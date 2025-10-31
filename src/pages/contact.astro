@@ -5,6 +5,8 @@ import dots from "~/assets/images/bg-design/contact-header-bg.png";
 import contactTitle from "~/assets/images/contact-title.png";
 import DOMPurify from 'dompurify';
 import { JSDOM } from 'jsdom';
+import "~/styles/contact.css";
+import { preventSpam } from '~/utils/preventSpam'; 
 
 const metadata = {
   title: "Contact",
@@ -77,57 +79,6 @@ if (Astro.request.method === "POST") {
   }
 }
 ---
-
-<style>
-
-  .contact-subtitle {
-  text-align: center;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 30px; /* 125% */
-  letter-spacing: 1.92px;
-  }
-
-  .contact-label {
-    color: #1A2634;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 20px;
-    font-family: Lato;
-  }
-
-  @media (min-width: 1024px) {
-    .bg-contact-form{
-      background-image: url("../assets/images/bg-design/contact-form-bg.png");
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
-    }
-  }
-  
-
-  .contact-form {
-    border-radius: 10px;
-    background: white;
-    box-shadow: 6px 6px 5px 3px rgba(0, 0, 0, 0.3);
-  }
-
-  .contact-input {
-    color: black;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 20px; /* 142.857% */
-    font-family: var(--aw-font-serif), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  }
-
-  .contact-label {
-    font-family: var(--aw-font-serif), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-    font-size: 15px;
-    font-weight: 600;
-  }
-</style>
 <Layout metadata={metadata}>
   <div
     id="header"
@@ -157,6 +108,18 @@ if (Astro.request.method === "POST") {
     <div id="form" class="flex justify-center mt-[71px]">
       <div class="bg-white rounded-md w-[80%] lg:w-[48%] contact-form p-10">
         <form method="POST">
+          <!-- Honeypot field - hidden from users but visible to bots -->
+          <div class="website-field">
+            <label for="website">Website</label>
+            <input 
+              type="text" 
+              name="website" 
+              id="website"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
+
           <div id="textinputs">
             <div class="flex mb-[45px]">
               <div>
@@ -260,122 +223,6 @@ if (Astro.request.method === "POST") {
       </div>
     </div>
 
-    <script>
-      /**
-       * Client-side form validation script
-       * Provides real-time feedback to users as they interact with the form
-       * while maintaining server-side validation for security
-       */
-      import DOMPurify from 'dompurify';
-
-      // Initialize form and input elements
-      const form = document.querySelector('form');
-      const inputs = {
-        firstName: form.querySelector('input[name="FirstName"]'),
-        lastName: form.querySelector('input[name="LastName"]'),
-        email: form.querySelector('input[name="Email"]'),
-        subject: form.querySelectorAll('input[name="Subject"]'),
-        message: form.querySelector('input[name="Message"]')
-      };
-
-      // Get corresponding error message elements for each input
-      const errorElements = {
-        firstName: form.querySelector('input[name="FirstName"] + p'),
-        lastName: form.querySelector('input[name="LastName"] + p'),
-        email: form.querySelector('input[name="Email"] + p'),
-        subject: document.querySelector('#subject-select p'),
-        message: form.querySelector('input[name="Message"] + p')
-      };
-
-      /**
-       * Validation rules for each form field
-       * Each function returns an empty string if valid, or an error message if invalid
-       * All inputs are sanitized before validation
-       */
-      const validators = {
-        firstName: (value) => {
-          const sanitized = DOMPurify.sanitize(value);
-          if (!sanitized || sanitized.length < 1) return "Please enter your first name.";
-          return "";
-        },
-        lastName: (value) => {
-          const sanitized = DOMPurify.sanitize(value);
-          if (!sanitized || sanitized.length < 1) return "Please enter your last name.";
-          return "";
-        },
-        email: (value) => {
-          const sanitized = DOMPurify.sanitize(value);
-          if (!sanitized || !sanitized.includes('@') || !sanitized.includes('.')) {
-            return "Please enter a valid email address.";
-          }
-          return "";
-        },
-        subject: (elements) => {
-          const selected = Array.from(elements).some(radio => radio.checked);
-          return selected ? "" : "Please select a subject.";
-        },
-        message: (value) => {
-          const sanitized = DOMPurify.sanitize(value);
-          if (!sanitized || sanitized.length < 1) return "Please enter your message.";
-          return "";
-        }
-      };
-
-      // Add form submit handler to sanitize all data before submission
-      form.addEventListener('submit', (e) => {
-        const formData = new FormData(form);
-        for (let [key, value] of formData.entries()) {
-          if (typeof value === 'string') {
-            formData.set(key, DOMPurify.sanitize(value));
-          }
-        }
-      });
-
-      /**
-       * Updates the error message display for a given field
-       * @param {string} field - The field name (firstName, lastName, etc.)
-       * @param {string} message - The error message (empty if valid)
-       */
-      function updateErrorMessage(field, message) {
-        const errorElement = errorElements[field];
-        if (errorElement) {
-          errorElement.textContent = message;
-          // Only show the error element if there's an error message
-          errorElement.style.display = message ? 'block' : 'none';
-        }
-      }
-
-      // Add real-time validation listeners to text inputs
-      inputs.firstName.addEventListener('input', (e) => {
-        updateErrorMessage('firstName', validators.firstName(e.target.value));
-      });
-
-      inputs.lastName.addEventListener('input', (e) => {
-        updateErrorMessage('lastName', validators.lastName(e.target.value));
-      });
-
-      inputs.email.addEventListener('input', (e) => {
-        updateErrorMessage('email', validators.email(e.target.value));
-      });
-
-      // Add change listeners to radio buttons
-      inputs.subject.forEach(radio => {
-        radio.addEventListener('change', () => {
-          updateErrorMessage('subject', validators.subject(inputs.subject));
-        });
-      });
-
-      inputs.message.addEventListener('input', (e) => {
-        updateErrorMessage('message', validators.message(e.target.value));
-      });
-
-      // Initialize error messages as hidden
-      Object.keys(errorElements).forEach(field => {
-        const errorElement = errorElements[field];
-        if (errorElement) {
-          errorElement.style.display = 'none';
-        }
-      });
-    </script>
+<script src="~/utils/contactForm.js"></script>
   </div>
 </Layout>
