@@ -1,7 +1,9 @@
-export function preventSpam(
-  form,
-  { honeypotField = 'honeypot', honeypotDuration = 2000 } = {}
-) {
+import { SPAM } from '~/utils/config';
+
+export function preventSpam(form, overrides = {}) {
+  const config = { ...SPAM, ...overrides };
+  const { honeypotField, honeypotDuration } = config;
+
   const startTime = Date.now();
   let hasInteraction = false;
 

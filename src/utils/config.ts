@@ -8,6 +8,11 @@ const getSite = () => ({
   googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
 });
 
+const getSpam = () => ({
+  honeypotField: 'honeypot',
+  honeypotDuration: 2000,
+});
+
 const getMetadata = () => ({
   title: {
     default: DEFAULT_SITE_NAME,
@@ -148,6 +153,7 @@ export const METADATA = getMetadata();
 export const APP_BLOG = getAppBlog();
 export const UI = getUI();
 export const ANALYTICS = getAnalytics();
+export const SPAM = getSpam();  
 
 // const config = yaml.load(fs.readFileSync('src/config.yaml', 'utf8')) as {
 //   site?: SiteConfig;
