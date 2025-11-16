@@ -65,7 +65,7 @@ export async function POST({ request }) {
       ...(replyTo && { "h:Reply-To": replyTo }),
     };
 
-    const data = await mg.messages.create("mg.munch-industries.com", messageData);
+    await mg.messages.create("mg.munch-industries.com", messageData);
 
     return new Response(
       JSON.stringify({ success: true, message: "Email sent" })
