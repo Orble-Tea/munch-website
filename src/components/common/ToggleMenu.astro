@@ -7,7 +7,7 @@ export interface Props {
 const {
   label = 'Toggle Menu',
   class:
-    className = "flex flex-col h-12 w-12 rounded justify-center items-center cursor-pointer group z-20",
+    className = "flex flex-col h-12 w-12 rounded justify-center items-center cursor-pointer group z-50",
 } = Astro.props;
 ---
 
@@ -33,14 +33,21 @@ const {
   </slot>
 </button>
 
-<div id="links" class='hidden backdrop-blur-lg bg-opacity-45 bg-slate-200'>
-  <a href="/" class="no-underline mt-24">HOME</a>
-  <a href="/about" class="no-underline">ABOUT</a>
-  <a href="/contact" class="no-underline">CONTACT</a>
-  
-  <a href="/orble-tea" class="no-underline">ORBLE TEA</a>
-  <a href="/smoothie" class="no-underline">SMOOTHIE MACHINE</a>
-  <a href="/dumpling" class="no-underline mb-24">DUMPLING MACHINE</a>
+<div 
+  id="links" 
+  class="hidden fixed inset-0 top-0 left-0 z-40 backdrop-blur-lg bg-slate-200 bg-opacity-95 dark:bg-slate-900 dark:bg-opacity-95"
+>
+  <nav class="flex flex-col items-center justify-start h-full text-lg sm:text-xl lg:text-2xl font-serif gap-4 sm:gap-5 lg:gap-6 px-4 pt-24 sm:pt-32">
+    <a href="/" class="no-underline hover:text-[#214260] transition-colors">HOME</a>
+    <a href="/about" class="no-underline hover:text-[#214260] transition-colors">ABOUT</a>
+    <a href="/contact" class="no-underline hover:text-[#214260] transition-colors">CONTACT</a>
+    
+    <div class="w-16 h-0.5 bg-gray-300 my-2"></div>
+    
+    <a href="/orble-tea" class="no-underline hover:text-[#214260] transition-colors">ORBLE TEA</a>
+    <a href="/smoothie" class="no-underline hover:text-[#214260] transition-colors">SMOOTHIE MACHINE</a>
+    <a href="/dumpling" class="no-underline hover:text-[#214260] transition-colors">DUMPLING MACHINE</a>
+  </nav>
 </div>
 
 <script>
@@ -49,19 +56,53 @@ const {
   function toggleMenu() {
     expanded = !expanded;
     const menuButton = document.querySelector('[data-aw-toggle-menu]')!;
-    menuButton.classList.toggle('expanded', expanded);
     const links = document.getElementById('links')!;
+    
+    menuButton.classList.toggle('expanded', expanded);
     links.classList.toggle('hidden', !expanded);
-    const classes = 'fixed inset-0 top-0 left-0 flex flex-col items-center justify-between h-auto text-2xl font-serif gap-3'.split(' ');
-    classes.forEach((className) => {
-      links.classList.toggle(className, expanded);
-    });
+    
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = expanded ? 'hidden' : '';
   }
 
+  function closeMenu() {
+    if (expanded) {
+      toggleMenu();
+    }
+  }
+
+  // Toggle menu on button click
   document.addEventListener('click', (event) => {
     const target = event.target as HTMLElement;
     if (target.closest('[data-aw-toggle-menu]')) {
+      event.preventDefault();
+      event.stopPropagation();
       toggleMenu();
     }
   });
+
+  // Close menu when clicking on links
+  document.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement;
+    const links = document.getElementById('links');
+    if (links && target.tagName === 'A' && links.contains(target)) {
+      closeMenu();
+    }
+  });
 </script>
+
+<style>
+  #links {
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  #links.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #links:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
+  }
+</style>
