@@ -1,6 +1,11 @@
-import { z, defineCollection } from 'astro:content';
+import { z, defineCollection } from "astro:content";
 
-const metadataDefinition = () =>
+/**
+ * Builds the metadata schema for Astro content collections.
+ *
+ * @returns {z.ZodOptional<z.ZodObject<any>>} The metadata Zod schema.
+ */
+const metadataDefinition = (): z.ZodOptional<z.ZodObject<z.ZodRawShape>> =>
   z
     .object({
       title: z.string().optional(),
@@ -27,7 +32,7 @@ const metadataDefinition = () =>
                 url: z.string(),
                 width: z.number().optional(),
                 height: z.number().optional(),
-              })
+              }),
             )
             .optional(),
           locale: z.string().optional(),
@@ -45,6 +50,9 @@ const metadataDefinition = () =>
     })
     .optional();
 
+/**
+ * Defines the "post" collection with its schema.
+ */
 const postCollection = defineCollection({
   schema: z.object({
     publishDate: z.date().optional(),
@@ -63,6 +71,9 @@ const postCollection = defineCollection({
   }),
 });
 
+/**
+ * Exports all content collections for Astro.
+ */
 export const collections = {
   post: postCollection,
 };

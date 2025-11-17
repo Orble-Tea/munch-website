@@ -1,61 +1,87 @@
-import slugify from 'limax';
+import slugify from "limax";
 
-import { SITE, APP_BLOG } from '~/utils/config';
+import { SITE, APP_BLOG } from "~/utils/config";
+import { trim } from "~/utils/utils";
 
-import { trim } from '~/utils/utils';
+/**
+ * Removes leading and trailing slashes from a string.
+ * @param s - The string to trim.
+ * @returns Trimmed string without leading/trailing slashes.
+ */
+export const trimSlash = (s: string): string => trim(trim(s, "/"));
 
-export const trimSlash = (s: string) => trim(trim(s, '/'));
-const createPath = (...params: string[]) => {
+/**
+ * Joins multiple path segments into a normalized URL path.
+ * @param params - Path segments to join.
+ * @returns Normalized path starting with `/`.
+ */
+const createPath = (...params: string[]): string => {
   const paths = params
     .map((el) => trimSlash(el))
-    .filter((el) => !!el)
-    .join('/');
-  return '/' + paths + (SITE.trailingSlash && paths ? '/' : '');
+    .filter(Boolean)
+    .join("/");
+  return "/" + paths + (SITE.trailingSlash && paths ? "/" : "");
 };
 
-const BASE_PATHNAME = SITE.base || '/';
+const BASE_PATHNAME = SITE.base || "/";
 
-export const cleanSlug = (text = '') =>
+/**
+ * Normalizes and slugifies a string for use in a URL.
+ * @param text - The text to slugify.
+ * @returns Slugified string.
+ */
+export const cleanSlug = (text = ""): string =>
   trimSlash(text)
-    .split('/')
+    .split("/")
     .map((slug) => slugify(slug))
-    .join('/');
+    .join("/");
 
 export const BLOG_BASE = cleanSlug(APP_BLOG?.list?.pathname);
 export const CATEGORY_BASE = cleanSlug(APP_BLOG?.category?.pathname);
-export const TAG_BASE = cleanSlug(APP_BLOG?.tag?.pathname) || 'tag';
+export const TAG_BASE = cleanSlug(APP_BLOG?.tag?.pathname) || "tag";
 
-export const POST_PERMALINK_PATTERN = trimSlash(APP_BLOG?.post?.permalink || `${BLOG_BASE}/%slug%`);
+export const POST_PERMALINK_PATTERN = trimSlash(
+  APP_BLOG?.post?.permalink || `${BLOG_BASE}/%slug%`,
+);
 
-/** */
-export const getCanonical = (path = ''): string | URL => {
-  const url = String(new URL(path, SITE.site));
-  if (SITE.trailingSlash == false && path && url.endsWith('/')) {
+/**
+ * Returns a canonical URL for a given path.
+ * @param path - Path to convert into a canonical URL.
+ * @returns Canonical URL string.
+ */
+export const getCanonical = (path = ""): string => {
+  const url = new URL(path, SITE.site).toString();
+  if (SITE.trailingSlash === false && path && url.endsWith("/")) {
     return url.slice(0, -1);
-  } else if (SITE.trailingSlash == true && path && !url.endsWith('/')) {
-    return url + '/';
+  } else if (SITE.trailingSlash === true && path && !url.endsWith("/")) {
+    return url + "/";
   }
   return url;
 };
 
-/** */
-export const getPermalink = (slug = '', type = 'page'): string => {
+/**
+ * Returns a permalink for a given slug and type (page, post, category, tag).
+ * @param slug - Slug or path segment.
+ * @param type - Type of permalink ("page" | "post" | "category" | "tag").
+ * @returns Normalized permalink string.
+ */
+export const getPermalink = (
+  slug = "",
+  type: "page" | "post" | "category" | "tag" = "page",
+): string => {
   let permalink: string;
 
   switch (type) {
-    case 'category':
+    case "category":
       permalink = createPath(CATEGORY_BASE, trimSlash(slug));
       break;
-
-    case 'tag':
+    case "tag":
       permalink = createPath(TAG_BASE, trimSlash(slug));
       break;
-
-    case 'post':
+    case "post":
       permalink = createPath(trimSlash(slug));
       break;
-
-    case 'page':
+    case "page":
     default:
       permalink = createPath(slug);
       break;
@@ -64,19 +90,34 @@ export const getPermalink = (slug = '', type = 'page'): string => {
   return definitivePermalink(permalink);
 };
 
-/** */
-export const getHomePermalink = (): string => getPermalink('/');
+/**
+ * Returns the home page permalink.
+ * @returns Home permalink string.
+ */
+export const getHomePermalink = (): string => getPermalink("/");
 
-/** */
+/**
+ * Returns the blog base permalink.
+ * @returns Blog base permalink string.
+ */
 export const getBlogPermalink = (): string => getPermalink(BLOG_BASE);
 
-/** */
+/**
+ * Returns a full URL path for an asset.
+ * @param path - Path to the asset.
+ * @returns Asset URL string.
+ */
 export const getAsset = (path: string): string =>
-  '/' +
+  "/" +
   [BASE_PATHNAME, path]
     .map((el) => trimSlash(el))
-    .filter((el) => !!el)
-    .join('/');
+    .filter(Boolean)
+    .join("/");
 
-/** */
-const definitivePermalink = (permalink: string): string => createPath(BASE_PATHNAME, permalink);
+/**
+ * Normalizes a permalink by prepending the base path.
+ * @param permalink - Permalink to normalize.
+ * @returns Definitive permalink string.
+ */
+const definitivePermalink = (permalink: string): string =>
+  createPath(BASE_PATHNAME, permalink);

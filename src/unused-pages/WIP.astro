@@ -1,29 +1,40 @@
 ---
-import Layout from '~/layouts/Layout.astro';
+import Layout from "~/layouts/Layout.astro";
 
 const title = `Munch Industries`;
 
-import Image from '~/components/common/Image.astro';
-import logo from '~/assets/images/munch-logo.png';
+import Image from "~/components/common/Image.astro";
+import logo from "~/assets/images/munch-logo.png";
 ---
+
 <head>
-    <title>Munch Industries</title>
+  <title>Munch Industries</title>
 </head>
 <Layout metadata={{ title }}>
-  <section class="flex items-center h-full p-16">
-    <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
-        <div class="flex justify-center items-center" style = "padding-bottom: 50px">
-            <Image src = {logo} alt="Munch Industries Logo" width={200}/>
-        </div>
-        <div class="max-w-md text-center">
-            <h2 class="mb-8 font-bold text-5xl">
-            <span class="text-primary">Welcome to Munch Industries.</span>
-            </h2>
-            <p class="text-3xl font-semibold md:text-3xl">Our website is still in a work in progress. Check back in the future to see what we're up to!</p>
-            <p class="mt-4 mb-8 text-lg text-muted dark:text-slate-400">
-            In the meantime, feel free to check out our <a href = "https://www.orble-tea.com/">old site</a>.
-            </p>
-        </div>
+  <section class="flex h-full items-center p-16">
+    <div
+      class="container mx-auto my-8 flex flex-col items-center justify-center px-5"
+    >
+      <div
+        class="flex items-center justify-center"
+        style="padding-bottom: 50px"
+      >
+        <Image src={logo} alt="Munch Industries Logo" width={200} />
+      </div>
+      <div class="max-w-md text-center">
+        <h2 class="mb-8 text-5xl font-bold">
+          <span class="text-primary">Welcome to Munch Industries.</span>
+        </h2>
+        <p class="text-3xl font-semibold md:text-3xl">
+          Our website is still in a work in progress. Check back in the future
+          to see what we're up to!
+        </p>
+        <p class="mb-8 mt-4 text-lg text-muted dark:text-slate-400">
+          In the meantime, feel free to check out our <a
+            href="https://www.orble-tea.com/">old site</a
+          >.
+        </p>
+      </div>
     </div>
   </section>
 </Layout>

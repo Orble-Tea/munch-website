@@ -41,7 +41,7 @@ const teamMembers = [
     image: "~/assets/images/team-headshots/henry.png",
     bio: "",
   },
-    {
+  {
     name: "Adam Freedman",
     title: "Mechanical Engineering",
     image: "~/assets/images/team-headshots/adam.png",
@@ -96,6 +96,12 @@ const teamMembers = [
     bio: "",
   },
   {
+    name: "Chelsea Yan",
+    title: "Business Development",
+    image: "~/assets/images/team-headshots/chelsea.png",
+    bio: "",
+  },
+  {
     name: "Alexander Liu",
     title: "Marketing + Media",
     image: "~/assets/images/team-headshots/alex.png",
@@ -111,18 +117,17 @@ const teamMembers = [
 ---
 
 <style>
-
   div.our-history {
-    color: #1A2634;
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: 4.8px;
+    color: #1a2634;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 4.8px;
   }
 
   p.our-history {
-    color: #FFF;
+    color: #fff;
     font-style: normal;
     font-weight: 300;
     line-height: 35px;
@@ -131,13 +136,11 @@ const teamMembers = [
 </style>
 
 <Layout metadata={metadata}>
-  <div id="header"
-    class="flex flex-col items-center flex-shrink-0 bg-[#214260] w-full h-[310px]" >
-    <Image
-      src={dots}
-      alt="dots"
-      style={`max-width: 100%; height: 100%;`}
-    />
+  <div
+    id="header"
+    class="flex h-[310px] w-full flex-shrink-0 flex-col items-center bg-[#214260]"
+  >
+    <Image src={dots} alt="dots" style={`max-width: 100%; height: 100%;`} />
     <Image
       src={aboutTitle}
       alt="About Us"
@@ -147,12 +150,13 @@ const teamMembers = [
     />
   </div>
 
-  <div class="w-full flex flex-col flex-shrink-0 items-center">
-    <div class="blue-bar mt-[22px] w-[80%] bg-[#ACC6DD] h-[4px] rounded-full"></div>
+  <div class="flex w-full flex-shrink-0 flex-col items-center">
+    <div class="blue-bar mt-[22px] h-[4px] w-[80%] rounded-full bg-[#ACC6DD]">
+    </div>
 
-    <div id="mission" class="flex flex-col w-full h-auto items-center">
+    <div id="mission" class="flex h-auto w-full flex-col items-center">
       <div
-        class="max-w-full h-[75px] flex items-center justify-center mt-[41px]"
+        class="mt-[41px] flex h-[75px] max-w-full items-center justify-center"
       >
         <svg
           id="mission-word"
@@ -185,38 +189,38 @@ const teamMembers = [
       </svg>
     </div>
 
-    <div class="w-auto h-auto mt-[47px] mx-[10%] font-serif font-light about-subtitle">
-      At Munch Industries, our mission is to<br><span class="font-medium font-serif italic">
+    <div
+      class="about-subtitle mx-[10%] mt-[47px] h-auto w-auto font-serif font-light"
+    >
+      At Munch Industries, our mission is to<br /><span
+        class="font-serif font-medium italic"
+      >
         revolutionize the future of food automation
-      </span><br>by harnessing the power of cutting-edge technology and innovative
-      solutions.
+      </span><br />by harnessing the power of cutting-edge technology and
+      innovative solutions.
     </div>
   </div>
 
-
-
-
   <div
     id="history"
-    class="flex justify-center max-lg:flex-col flex-shrink-0 z-10 mt-16 relative gap-4"
+    class="relative z-10 mt-16 flex flex-shrink-0 justify-center gap-4 max-lg:flex-col"
   >
     <div
-      class="w-[305px] h-[36px] flex justify-center flex-shrink-0 our-history font-serif"
+      class="our-history flex h-[36px] w-[305px] flex-shrink-0 justify-center font-serif"
     >
       our history
     </div>
-    <div class="flex flex-col w-[95%] mx-auto lg:mr-6">
-      
-      <div class="h-[13px] bg-[#ACC6DD] w-full"></div>
+    <div class="mx-auto flex w-[95%] flex-col lg:mr-6">
+      <div class="h-[13px] w-full bg-[#ACC6DD]"></div>
       <div
-        class="w-full mx-auto h-auto p-16 flex justify-center items-center bg-[#1A2634] rounded-br-[120px] lg:rounded-br-[292px]"
+        class="mx-auto flex h-auto w-full items-center justify-center rounded-br-[120px] bg-[#1A2634] p-16 lg:rounded-br-[292px]"
       >
-        <p class="font-serif our-history sm:text-xl">
+        <p class="our-history font-serif sm:text-xl">
           <span class="font-bold">Munch Industries</span> started in 2022 as a senior
           design project initiated by a group of passionate engineering students
           from the University of Pennsylvania. Looking to revolutionize the way people
           get their boba, the team set out to create a fully au<span
-            class="italic mr-[3px]">tea</span
+            class="mr-[3px] italic">tea</span
           >matic boba machine, <a
             href="/orble"
             class="tracking-[2.4px] underline underline-offset-4">Orble</a
@@ -233,11 +237,10 @@ const teamMembers = [
     </div>
   </div>
 
-
   <div id="team" class="w-full">
     <div
       id="team-header"
-      class="w-full justify-center items-center flex flex-row mt-[82px]"
+      class="mt-[82px] flex w-full flex-row items-center justify-center"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -254,7 +257,7 @@ const teamMembers = [
       </svg>
 
       <p
-        class="our-team font-serif w-[270px] h-[36px] flex flex-col justify-center flex-shrink-0"
+        class="our-team flex h-[36px] w-[270px] flex-shrink-0 flex-col justify-center font-serif"
       >
         our team
       </p>
@@ -276,10 +279,10 @@ const teamMembers = [
 
     <div
       id="team-grid"
-      class="w-full h-auto flex flex-col justify-center flex-shrink-0 mr-[75px] mt-[83px] bg-white rounded-b-[100px] z-10"
+      class="z-10 mr-[75px] mt-[83px] flex h-auto w-full flex-shrink-0 flex-col justify-center rounded-b-[100px] bg-white"
     >
       <div
-        class="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-y-[63px] mb-[178px]"
+        class="mb-[178px] flex flex-col gap-y-[63px] md:grid md:grid-cols-2 lg:grid-cols-3"
       >
         {
           teamMembers.map(({ name, title, image, bio }, index) => (
@@ -296,14 +299,14 @@ const teamMembers = [
     </div>
 
     <div
-      class="relative flex-shrink-0 bg-[#214260] mt-[-230px] pt-[111px] h-[453px] -z-10 flex justify-center"
+      class="relative -z-10 mt-[-230px] flex h-[453px] flex-shrink-0 justify-center bg-[#214260] pt-[111px]"
     >
       <Image
         src={dots}
         alt="dots"
         width="1266px"
         height="306px"
-        class="transform scale-y-[-1] scale-x-[-1]"
+        class="scale-x-[-1] scale-y-[-1] transform"
       />
     </div>
   </div>

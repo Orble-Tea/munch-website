@@ -5,6 +5,7 @@ import { z } from "zod";
 
 dotenv.config();
 
+// Zod schema for email validation
 const emailSchema = z.object({
   to: z.string().trim().email("Recipient email must be valid"),
   subject: z.string().min(1, "Subject is required"),
@@ -14,13 +15,21 @@ const emailSchema = z.object({
   website: z.string().optional(),
 });
 
-export async function POST({ request }) {
-  try {
-    const emailData = await request.json();
+// Type from Zod schema
+type EmailData = z.infer<typeof emailSchema>;
 
-    // Validate the request body using Zod
+/**
+ * Handle POST requests to send email through Mailgun.
+ * @param {{ request: Request }} params - API context object containing the incoming request.
+ * @param {Request} params.request - The incoming Request object.
+ * @returns {Promise<Response>} A JSON response indicating success or failure.
+ */
+export async function POST(params: { request: Request }): Promise<Response> {
+  const { request } = params;
+
+  try {
+    const emailData: unknown = await request.json();
     const validationResult = emailSchema.safeParse(emailData);
-    console.log(emailData);
 
     if (!validationResult.success) {
       const errors = validationResult.error.flatten().fieldErrors;
@@ -30,19 +39,25 @@ export async function POST({ request }) {
           message: "Validation failed",
           errors,
         }),
-        { status: 400 }
+        { status: 400 },
       );
     }
 
-    const { to, subject, text, html, "h:Reply-To": replyTo, website } = validationResult.data;
+    const {
+      to,
+      subject,
+      text,
+      html,
+      "h:Reply-To": replyTo,
+      website,
+    } = validationResult.data as EmailData;
 
-    // Honeypot check
+    // Honeypot trap—if filled, silently accept
     if (website) {
-      console.log("Honeypot triggered at API level - possible bot submission");
-      // Return success to not alert the bot
+      console.log("Honeypot triggered");
       return new Response(
         JSON.stringify({ success: true, message: "Form received" }),
-        { status: 200 }
+        { status: 200 },
       );
     }
 
@@ -65,16 +80,17 @@ export async function POST({ request }) {
       ...(replyTo && { "h:Reply-To": replyTo }),
     };
 
-    const data = await mg.messages.create("mg.munch-industries.com", messageData);
+    await mg.messages.create("mg.munch-industries.com", messageData);
 
     return new Response(
-      JSON.stringify({ success: true, message: "Email sent" })
+      JSON.stringify({ success: true, message: "Email sent" }),
+      { status: 200 },
     );
   } catch (error) {
     console.error("Mailgun error:", error);
     return new Response(
       JSON.stringify({ success: false, message: "Failed to send email" }),
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

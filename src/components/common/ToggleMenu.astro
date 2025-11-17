@@ -5,42 +5,65 @@ export interface Props {
 }
 
 const {
-  label = 'Toggle Menu',
+  label = "Toggle Menu",
   class:
-    className = "flex flex-col h-12 w-12 rounded justify-center items-center cursor-pointer group z-20",
+    className = "flex flex-col h-12 w-12 rounded justify-center items-center cursor-pointer group z-50",
 } = Astro.props;
 ---
 
-<button
-  class={className}
-  aria-label={label}
-  data-aw-toggle-menu
->
+<button class={className} aria-label={label} data-aw-toggle-menu>
   <span class="sr-only">{label}</span>
   <slot>
     <span
       aria-hidden="true"
-      class="h-0.5 w-6 my-1 rounded-full bg-black dark:bg-white transition ease transform duration-200 opacity-80 group-[.expanded]:rotate-45 group-[.expanded]:translate-y-2.5"
+      class="ease my-1 h-0.5 w-6 transform rounded-full bg-black opacity-80 transition duration-200 group-[.expanded]:translate-y-2.5 group-[.expanded]:rotate-45 dark:bg-white"
     ></span>
     <span
       aria-hidden="true"
-      class="h-0.5 w-6 my-1 rounded-full bg-black dark:bg-white transition ease transform duration-200 opacity-80 group-[.expanded]:opacity-0"
+      class="ease my-1 h-0.5 w-6 transform rounded-full bg-black opacity-80 transition duration-200 group-[.expanded]:opacity-0 dark:bg-white"
     ></span>
     <span
       aria-hidden="true"
-      class="h-0.5 w-6 my-1 rounded-full bg-black dark:bg-white transition ease transform duration-200 opacity-80 group-[.expanded]:-rotate-45 group-[.expanded]:-translate-y-2.5"
+      class="ease my-1 h-0.5 w-6 transform rounded-full bg-black opacity-80 transition duration-200 group-[.expanded]:-translate-y-2.5 group-[.expanded]:-rotate-45 dark:bg-white"
     ></span>
   </slot>
 </button>
 
-<div id="links" class='hidden backdrop-blur-lg bg-opacity-45 bg-slate-200'>
-  <a href="/" class="no-underline mt-24">HOME</a>
-  <a href="/about" class="no-underline">ABOUT</a>
-  <a href="/contact" class="no-underline">CONTACT</a>
-  
-  <a href="/orble-tea" class="no-underline">ORBLE TEA</a>
-  <a href="/smoothie" class="no-underline">SMOOTHIE MACHINE</a>
-  <a href="/dumpling" class="no-underline mb-24">DUMPLING MACHINE</a>
+<div
+  id="links"
+  class="fixed inset-0 left-0 top-0 z-40 hidden bg-slate-200 bg-opacity-95 backdrop-blur-lg dark:bg-slate-900 dark:bg-opacity-95"
+>
+  <nav
+    class="flex h-full flex-col items-center justify-start gap-4 px-4 pt-24 font-serif text-lg sm:gap-5 sm:pt-32 sm:text-xl lg:gap-6 lg:text-2xl"
+  >
+    <a href="/" class="no-underline transition-colors hover:text-[#214260]"
+      >HOME</a
+    >
+    <a href="/about" class="no-underline transition-colors hover:text-[#214260]"
+      >ABOUT</a
+    >
+    <a
+      href="/contact"
+      class="no-underline transition-colors hover:text-[#214260]">CONTACT</a
+    >
+
+    <div class="my-2 h-0.5 w-16 bg-gray-300"></div>
+
+    <a
+      href="/orble-tea"
+      class="no-underline transition-colors hover:text-[#214260]">ORBLE TEA</a
+    >
+    <a
+      href="/smoothie"
+      class="no-underline transition-colors hover:text-[#214260]"
+      >SMOOTHIE MACHINE</a
+    >
+    <a
+      href="/dumpling"
+      class="no-underline transition-colors hover:text-[#214260]"
+      >DUMPLING MACHINE</a
+    >
+  </nav>
 </div>
 
 <script>
@@ -48,20 +71,54 @@ const {
 
   function toggleMenu() {
     expanded = !expanded;
-    const menuButton = document.querySelector('[data-aw-toggle-menu]')!;
-    menuButton.classList.toggle('expanded', expanded);
-    const links = document.getElementById('links')!;
-    links.classList.toggle('hidden', !expanded);
-    const classes = 'fixed inset-0 top-0 left-0 flex flex-col items-center justify-between h-auto text-2xl font-serif gap-3'.split(' ');
-    classes.forEach((className) => {
-      links.classList.toggle(className, expanded);
-    });
+    const menuButton = document.querySelector("[data-aw-toggle-menu]")!;
+    const links = document.getElementById("links")!;
+
+    menuButton.classList.toggle("expanded", expanded);
+    links.classList.toggle("hidden", !expanded);
+
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = expanded ? "hidden" : "";
   }
 
-  document.addEventListener('click', (event) => {
+  function closeMenu() {
+    if (expanded) {
+      toggleMenu();
+    }
+  }
+
+  // Toggle menu on button click
+  document.addEventListener("click", (event) => {
     const target = event.target as HTMLElement;
-    if (target.closest('[data-aw-toggle-menu]')) {
+    if (target.closest("[data-aw-toggle-menu]")) {
+      event.preventDefault();
+      event.stopPropagation();
       toggleMenu();
     }
   });
+
+  // Close menu when clicking on links
+  document.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement;
+    const links = document.getElementById("links");
+    if (links && target.tagName === "A" && links.contains(target)) {
+      closeMenu();
+    }
+  });
 </script>
+
+<style>
+  #links {
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  #links.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #links:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
+  }
+</style>

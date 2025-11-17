@@ -3,32 +3,38 @@ import Layout from "~/layouts/PageLayout.astro";
 import Image from "~/components/common/Image.astro";
 import dots from "~/assets/images/bg-design/contact-header-bg.png";
 import contactTitle from "~/assets/images/contact-title.png";
-import DOMPurify from 'dompurify';
-import { JSDOM } from 'jsdom';
+import DOMPurify from "dompurify";
+import { JSDOM } from "jsdom";
 import "~/styles/contact.css";
-import { preventSpam } from '~/utils/preventSpam'; 
 
 const metadata = {
   title: "Contact",
 };
 
 // Create a DOMPurify instance for server-side sanitization
-const window = new JSDOM('').window;
+const window = new JSDOM("").window;
 const purify = DOMPurify(window);
 
-const errors = { firstName: "", lastName: "", email: "", subject: "", message: "" };
-let log = "Fill out the contact form below for inquiries, partnership opportunities, and/or customer support!";
+const errors = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  subject: "",
+  message: "",
+};
+let log =
+  "Fill out the contact form below for inquiries, partnership opportunities, and/or customer support!";
 
 if (Astro.request.method === "POST") {
   try {
     const data = await Astro.request.formData();
     // Sanitize all inputs, ensuring we're working with strings
-    const firstName = purify.sanitize(String(data.get("FirstName") || ''));
-    const lastName = purify.sanitize(String(data.get("LastName") || ''));
-    const phoneNumber = purify.sanitize(String(data.get("PhoneNumber") || ''));
-    const email = purify.sanitize(String(data.get("Email") || ''));
-    const subject = purify.sanitize(String(data.get("Subject") || ''));
-    const message = purify.sanitize(String(data.get("Message") || ''));
+    const firstName = purify.sanitize(String(data.get("FirstName") || ""));
+    const lastName = purify.sanitize(String(data.get("LastName") || ""));
+    const phoneNumber = purify.sanitize(String(data.get("PhoneNumber") || ""));
+    const email = purify.sanitize(String(data.get("Email") || ""));
+    const subject = purify.sanitize(String(data.get("Subject") || ""));
+    const message = purify.sanitize(String(data.get("Message") || ""));
 
     // Validate form data
     if (firstName.length < 1) {
@@ -47,8 +53,8 @@ if (Astro.request.method === "POST") {
       errors.message = "Please enter your message.";
     }
 
-    const hasErrors = Object.values(errors).some(msg => msg);
-    
+    const hasErrors = Object.values(errors).some((msg) => msg);
+
     if (!hasErrors) {
       const content = `First Name: ${firstName}\nLast Name: ${lastName}\nPhone Number: ${phoneNumber}\nEmail: ${email}\n\nSubject: ${subject}\n\nMessage: ${message}`;
 
@@ -56,7 +62,7 @@ if (Astro.request.method === "POST") {
         to: "info@orble-tea.com",
         subject: "Customer Inquiry Form Submission: " + subject,
         text: content,
-        "h:Reply-To": email
+        "h:Reply-To": email,
       };
 
       const response = await fetch(`${Astro.url.origin}/api/send-email`, {
@@ -75,45 +81,53 @@ if (Astro.request.method === "POST") {
     }
   } catch (error) {
     console.error(error);
-    log = "Error: " + (error instanceof Error ? error.message : "An unknown error occurred");
+    log =
+      "Error: " +
+      (error instanceof Error ? error.message : "An unknown error occurred");
   }
 }
 ---
+
 <Layout metadata={metadata}>
   <div
     id="header"
-    class="flex flex-col items-center flex-shrink-0 bg-[#214260] w-full h-[310px]"
+    class="flex h-[200px] w-full flex-shrink-0 flex-col items-center bg-[#214260] sm:h-[250px] lg:h-[310px]"
   >
     <Image
       src={dots}
       alt="dots"
-      style={`max-width: 100%; height: 100%;`}
+      style={`max-width: 100%; height: 100%; object-fit: cover;`}
     />
     <Image
       src={contactTitle}
       alt="Get In Touch"
-      width="692px"
-      height="71px"
-      class="absolute mt-[136px]"
+      class="absolute mt-[60px] h-auto w-[80%] max-w-[692px] sm:mt-[100px] lg:mt-[136px]"
     />
   </div>
 
-  <div id="form-container" class="bg-contact-form bg-gradient-to-b from-[#214260] to-white border-t-[#acc6dd] border-t-4 lg:border-none font-serif pb-32" >
-    <div class="flex justify-center">
-      <h1 class="w-[815px] contact-subtitle font-serif mt-[71px] mx-8 text-white lg:text-[#1A2634]">
+  <div
+    id="form-container"
+    class="bg-contact-form border-t-4 border-t-[#acc6dd] bg-gradient-to-b from-[#214260] to-white pb-16 font-serif sm:pb-24 lg:border-none lg:pb-32"
+  >
+    <div class="flex justify-center px-4">
+      <h1
+        class="contact-subtitle mt-8 w-full max-w-[815px] text-center font-serif text-white sm:mt-12 sm:text-left lg:mt-[71px] lg:text-[#1A2634]"
+      >
         {log}
       </h1>
     </div>
 
-    <div id="form" class="flex justify-center mt-[71px]">
-      <div class="bg-white rounded-md w-[80%] lg:w-[48%] contact-form p-10">
+    <div id="form" class="mt-8 flex justify-center px-4 sm:mt-12 lg:mt-[71px]">
+      <div
+        class="contact-form w-full max-w-[700px] rounded-md bg-white p-6 sm:w-[85%] sm:p-8 lg:w-[48%] lg:p-10"
+      >
         <form method="POST">
           <!-- Honeypot field - hidden from users but visible to bots -->
           <div class="website-field">
             <label for="website">Website</label>
-            <input 
-              type="text" 
-              name="website" 
+            <input
+              type="text"
+              name="website"
               id="website"
               tabindex="-1"
               autocomplete="off"
@@ -121,56 +135,75 @@ if (Astro.request.method === "POST") {
           </div>
 
           <div id="textinputs">
-            <div class="flex mb-[45px]">
-              <div>
+            <div
+              class="mb-6 flex flex-col gap-6 sm:mb-[45px] sm:flex-row sm:gap-0"
+            >
+              <div class="w-full sm:mr-4 sm:w-1/2 lg:mr-[39px]">
                 <label for="FirstName" class="contact-label"> First Name</label>
                 <input
                   type="text"
                   name="FirstName"
                   required
-                  class="border-b-2 border-gray-300 w-[278px] mr-[39px] contact-input"
+                  class="contact-input w-full border-b-2 border-gray-300"
                 />
-                {errors.firstName && <p class="text-red-500 text-sm mt-1">{errors.firstName}</p>}
+                {
+                  errors.firstName && (
+                    <p class="mt-1 text-sm text-red-500">{errors.firstName}</p>
+                  )
+                }
               </div>
-              <div>
+              <div class="w-full sm:w-1/2">
                 <label for="LastName" class="contact-label"> Last Name</label>
                 <input
                   type="text"
                   name="LastName"
                   required
-                  class="border-b-2 border-gray-300 w-[278px] mr-[39px] contact-input"
+                  class="contact-input w-full border-b-2 border-gray-300"
                 />
-                {errors.lastName && <p class="text-red-500 text-sm mt-1">{errors.lastName}</p>}
+                {
+                  errors.lastName && (
+                    <p class="mt-1 text-sm text-red-500">{errors.lastName}</p>
+                  )
+                }
               </div>
             </div>
-            <div class="flex mb-[45px]">
-              <div>
+            <div
+              class="mb-6 flex flex-col gap-6 sm:mb-[45px] sm:flex-row sm:gap-0"
+            >
+              <div class="w-full sm:mr-4 sm:w-1/2 lg:mr-[39px]">
                 <label for="Email" class="contact-label"> Email</label>
                 <input
                   type="email"
                   name="Email"
                   required
-                  class="border-b-2 border-gray-300 w-[278px] mr-[39px] contact-input"
+                  class="contact-input w-full border-b-2 border-gray-300"
                 />
-                {errors.email && <p class="text-red-500 text-sm mt-1">{errors.email}</p>}
+                {
+                  errors.email && (
+                    <p class="mt-1 text-sm text-red-500">{errors.email}</p>
+                  )
+                }
               </div>
-              <div>
+              <div class="w-full sm:w-1/2">
                 <label for="PhoneNumber" class="contact-label">
                   Phone Number
                 </label>
                 <input
                   type="tel"
                   name="PhoneNumber"
-                  class="border-b-2 border-gray-300 w-[278px] mr-[39px] contact-input"
+                  class="contact-input w-full border-b-2 border-gray-300"
                 />
               </div>
             </div>
           </div>
 
-          <div id="subject-select" class="mt-4 mb-[45px]">
+          <div id="subject-select" class="mb-6 mt-4 sm:mb-[45px]">
             <label for="subject" class="contact-label"> Select Subject</label>
 
-            <div id="radio-buttons" class="flex max-sm:flex-col justify-between flex-wrap mt-4">
+            <div
+              id="radio-buttons"
+              class="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-between sm:gap-2"
+            >
               {
                 [
                   "General Inquiry",
@@ -178,7 +211,7 @@ if (Astro.request.method === "POST") {
                   "Customer Support",
                   "Other",
                 ].map((subject) => (
-                  <div>
+                  <div class="flex items-center">
                     <input
                       type="radio"
                       id={subject.toLowerCase().replace(/\s/g, "-")}
@@ -189,7 +222,7 @@ if (Astro.request.method === "POST") {
                     />
                     <label
                       for={subject.toLowerCase().replace(/\s/g, "-")}
-                      class="text-sm mr-[17px]"
+                      class="text-sm sm:mr-[17px]"
                     >
                       {subject}
                     </label>
@@ -197,10 +230,14 @@ if (Astro.request.method === "POST") {
                 ))
               }
             </div>
-            {errors.subject && <p class="text-red-500 text-sm mt-1">{errors.subject}</p>}
+            {
+              errors.subject && (
+                <p class="mt-1 text-sm text-red-500">{errors.subject}</p>
+              )
+            }
           </div>
 
-          <div class="flex flex-col my-[45px]">
+          <div class="my-6 flex flex-col sm:my-[45px]">
             <label for="message" class="contact-label"> Message</label>
             <input
               type="text"
@@ -208,21 +245,27 @@ if (Astro.request.method === "POST") {
               id="message"
               required
               placeholder="Write your message..."
-              class="border-b-2 border-gray-300 w-full contact-input pb-[10px] mt-3 placeholder-[#BDBDBD]"
+              class="contact-input mt-3 w-full border-b-2 border-gray-300 pb-[10px] placeholder-[#BDBDBD]"
               maxlength="500"
             />
-            {errors.message && <p class="text-red-500 text-sm mt-1">{errors.message}</p>}
+            {
+              errors.message && (
+                <p class="mt-1 text-sm text-red-500">{errors.message}</p>
+              )
+            }
           </div>
 
-          <div class="flex justify-end mb-2">
-            <button type="submit" class="munch-btn font-serif bg-[#214260]">
+          <div class="mb-2 flex justify-end">
+            <button
+              type="submit"
+              class="munch-btn w-full bg-[#214260] font-serif sm:w-auto"
+            >
               SEND MESSAGE
             </button>
           </div>
         </form>
       </div>
     </div>
-
-<script src="~/utils/contactForm.js"></script>
+    <script src="~/utils/contactForm.ts"></script>
   </div>
 </Layout>
