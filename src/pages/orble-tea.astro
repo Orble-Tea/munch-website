@@ -18,104 +18,124 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  
+  <div class="flex justify-start ml-[10%] my-10">
+    <Image src={orblelogo} alt="Orble Logo" width={700} />
+  </div>
 
-    <div class="flex justify-start ml-[10%] my-10">
-      <Image src={orblelogo} alt="Orble Logo" width={700} />      
-    </div>
-  
-    <div class="orble-tea-bg-one font-serif w-screen pb-2">
-      <div class="flex flex-col gap-10 mx-[10%] gap-y-2 lg:grid lg:grid-cols-2">
-        <div class="col-span-1 row-span-1 mt-28">
-          <Image src={orblewhite} alt="Orble" width={200} class="max-lg:mx-auto" />
-          <h3 class="text-2xl tracking-normal italic text-white max-lg:text-center">
-            is a revolutionary boba tea machine
-          </h3>
-          <h3 class="text-md tracking-normal text-munch-blue my-6 max-lg:text-center">
-            designed to deliver freshly brewed bubble tea with unparalleled
-            convenience and customization.
-          </h3>
-        </div>
-        <div class="col-span-1 row-span-2">
-          <Image src={cad} alt="Orble Machine" />
-        </div>
-        <div class="col-span-1 row-span-2 my-12">
-          <video width="600" autoplay loop muted playsinline id="orble-video" class="mx-auto">
-            <source src="render-video.mp4" type="video/mp4" />
-            Your browser does not support this video.
-          </video>
-        </div>
-        <div class="col-span-1 row-span-1 max-lg:text-center">
-          <span class="text-l tracking-normal text-munch-blue mt-6">With its</span
-          >
-          <span class="text-3xl ml-2 tracking-normal italic text-munch-blue"
-            >sleek and compact design,</span
-          >
-          <h3 class="text-l tracking-normal text-munch-blue">
-            Orble seamlessly integrates into any food service environment,
-            offering customers a delightful boba tea experience at the touch of a
-            button.
-          </h3>
-          <Image src={tealbar} alt="Bar" width={400} class="mt-10 mx-auto" />
-        </div>
+  <div class="orble-tea-bg-one font-serif w-screen pb-2">
+    <div class="flex flex-col gap-10 mx-[10%] gap-y-2 lg:grid lg:grid-cols-2">
+      <div class="col-span-1 row-span-1 mt-28">
+        <Image
+          src={orblewhite}
+          alt="Orble"
+          width={200}
+          class="max-lg:mx-auto"
+        />
+        <h3
+          class="text-2xl tracking-normal italic text-white max-lg:text-center"
+        >
+          is a revolutionary boba tea machine
+        </h3>
+        <h3
+          class="text-md tracking-normal text-munch-blue my-6 max-lg:text-center"
+        >
+          designed to deliver freshly brewed bubble tea with unparalleled
+          convenience and customization.
+        </h3>
       </div>
-
-
-
-
-
-      <div class="flex flex-col items-center text-center mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-10 lg:mx-[10%]">
-        <div>
-          <Image src={twomachines} alt="Orble Machines" class="w-[60vw] lg:w-[600px]"/>
-        </div>
-        <div>
-          <h3
-            class="text-3xl ml-2 tracking-normal underline italic text-munch-blue mt-[46px]"
-          >
-            Specifications
-          </h3>
-          <h3 class="text-l tracking-normal text-munch-blue mt-8">
-            <span class="font-bold">Dimensions:</span><br />
-            70 inches (H) x 35.5 inches (W) x 35.5 inches (D)
-          </h3>
-
-          <h3 class="text-l tracking-normal text-munch-blue mt-8">
-            <span class="font-bold">Weight:</span>
-          </h3>
-          771 lb. (fully loaded, including water) <br />
-          716 lb. (empty weight) <br />
-          Additional 150 lb. for ice maker
-
-          <h3 class="text-l tracking-normal text-munch-blue mt-8">
-            <span class="font-bold">Capacity:</span>
-            <br />
-            Up to 12 different flavors of tea and toppings
-          </h3>
-
-          <h3 class="text-l tracking-normal text-munch-blue mt-8">
-            <span class="font-bold">Power:</span>
-            <br />
-            Requires a dedicated 15A outlet, 120V circuit <br />
-            Ice maker requires a separate 15A
-          </h3>
-        </div>
+      <div class="col-span-1 row-span-2">
+        <Image src={cad} alt="Orble Machine" />
       </div>
-
-      <div class="flex flex-col mt-16 gap-14 max-lg:text-center lg:ml-[35%] text-l tracking-normal text-wrap text-munch-blue">
-          <h3 class="">
-            <span class="font-bold">Interface:</span><br class="block lg:hidden"> Intuitive touchscreen display
-            for easy operation
-          </h3>
-          <h3 class="">
-            <span class="font-bold">Customization:</span><br class="block lg:hidden"> Adjustable sugar levels,
-            ice levels, and topping combinations
-          </h3>
-          <h3 class="mb-12">
-            <span class="font-bold">Cleaning:</span><br class="block lg:hidden"> Self-cleaning system for hassle-free
-            maintenance
-          </h3>
+      <div class="col-span-1 row-span-2 my-12">
+        <video
+          width="600"
+          autoplay
+          loop
+          muted
+          playsinline
+          id="orble-video"
+          class="mx-auto"
+        >
+          <source src="render-video.mp4" type="video/mp4" />
+          Your browser does not support this video.
+        </video>
+      </div>
+      <div class="col-span-1 row-span-1 max-lg:text-center">
+        <span class="text-l tracking-normal text-munch-blue mt-6">With its</span
+        >
+        <span class="text-3xl ml-2 tracking-normal italic text-munch-blue"
+          >sleek and compact design,</span
+        >
+        <h3 class="text-l tracking-normal text-munch-blue">
+          Orble seamlessly integrates into any food service environment,
+          offering customers a delightful boba tea experience at the touch of a
+          button.
+        </h3>
+        <Image src={tealbar} alt="Bar" width={400} class="mt-10 mx-auto" />
       </div>
     </div>
+
+    <div
+      class="flex flex-col items-center text-center mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-10 lg:mx-[10%]"
+    >
+      <div>
+        <Image
+          src={twomachines}
+          alt="Orble Machines"
+          class="w-[60vw] lg:w-[600px]"
+        />
+      </div>
+      <div>
+        <h3
+          class="text-3xl ml-2 tracking-normal underline italic text-munch-blue mt-[46px]"
+        >
+          Specifications
+        </h3>
+        <h3 class="text-l tracking-normal text-munch-blue mt-8">
+          <span class="font-bold">Dimensions:</span><br />
+          70 inches (H) x 35.5 inches (W) x 35.5 inches (D)
+        </h3>
+
+        <h3 class="text-l tracking-normal text-munch-blue mt-8">
+          <span class="font-bold">Weight:</span>
+        </h3>
+        771 lb. (fully loaded, including water) <br />
+        716 lb. (empty weight) <br />
+        Additional 150 lb. for ice maker
+
+        <h3 class="text-l tracking-normal text-munch-blue mt-8">
+          <span class="font-bold">Capacity:</span>
+          <br />
+          Up to 12 different flavors of tea and toppings
+        </h3>
+
+        <h3 class="text-l tracking-normal text-munch-blue mt-8">
+          <span class="font-bold">Power:</span>
+          <br />
+          Requires a dedicated 15A outlet, 120V circuit <br />
+          Ice maker requires a separate 15A
+        </h3>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col mt-16 gap-14 max-lg:text-center lg:ml-[35%] text-l tracking-normal text-wrap text-munch-blue"
+    >
+      <h3 class="">
+        <span class="font-bold">Interface:</span><br class="block lg:hidden" /> Intuitive
+        touchscreen display for easy operation
+      </h3>
+      <h3 class="">
+        <span class="font-bold">Customization:</span><br
+          class="block lg:hidden"
+        /> Adjustable sugar levels, ice levels, and topping combinations
+      </h3>
+      <h3 class="mb-12">
+        <span class="font-bold">Cleaning:</span><br class="block lg:hidden" /> Self-cleaning
+        system for hassle-free maintenance
+      </h3>
+    </div>
+  </div>
 
   <div class="flex justify-center mt-10">
     <Image src={pricing} alt="Orble Pricing" width={1000} />
@@ -216,7 +236,10 @@ const metadata = {
         >GET STARTED WITH ORBLE</button
       >
     </a>
-    <div class="bg-[#B1D9CD] h-[4px] w-[80%] lg:w-[755px] mt-[50px] rounded-full lg:block hidden"></div>
+    <div
+      class="bg-[#B1D9CD] h-[4px] w-[80%] lg:w-[755px] mt-[50px] rounded-full lg:block hidden"
+    >
+    </div>
     <div class="flex justify-center -mb-12 lg:mt-[-271px]">
       <Image
         src={getStartedBg}

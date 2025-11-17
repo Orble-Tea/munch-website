@@ -1,24 +1,29 @@
-import { getImage } from 'astro:assets';
-import { transformUrl, parseUrl } from 'unpic';
+import { getImage } from "astro:assets";
+import { transformUrl, parseUrl } from "unpic";
+import type { ImageMetadata } from "astro";
+import type { HTMLAttributes } from "astro/types";
 
-import type { ImageMetadata } from 'astro';
-import type { HTMLAttributes } from 'astro/types';
+type Layout =
+  | "fixed"
+  | "constrained"
+  | "fullWidth"
+  | "cover"
+  | "responsive"
+  | "contained";
 
-type Layout = 'fixed' | 'constrained' | 'fullWidth' | 'cover' | 'responsive' | 'contained';
+export interface AttributesProps extends HTMLAttributes<"img"> {}
 
-export interface AttributesProps extends HTMLAttributes<'img'> {}
-
-export interface ImageProps extends Omit<HTMLAttributes<'img'>, 'src'> {
+export interface ImageProps extends Omit<HTMLAttributes<"img">, "src"> {
   src?: string | ImageMetadata | null;
   width?: string | number | null;
   height?: string | number | null;
   alt?: string | null;
-  loading?: 'eager' | 'lazy' | null;
-  decoding?: 'sync' | 'async' | 'auto' | null;
+  loading?: "eager" | "lazy" | null;
+  decoding?: "sync" | "async" | "auto" | null;
   style?: string;
   srcset?: string | null;
   sizes?: string | null;
-  fetchpriority?: 'high' | 'low' | 'auto' | null;
+  fetchpriority?: "high" | "low" | "auto" | null;
 
   layout?: Layout;
   widths?: number[] | null;
@@ -29,7 +34,7 @@ export type ImagesOptimizer = (
   image: ImageMetadata | string,
   breakpoints: number[],
   width?: number,
-  height?: number
+  height?: number,
 ) => Promise<Array<{ src: string; width: number }>>;
 
 /* ******* */
@@ -55,17 +60,30 @@ const config = {
     6016, // 6K
   ],
 
-  formats: ['image/webp'],
+  formats: ["image/webp"],
 };
 
-const computeHeight = (width: number, aspectRatio: number) => {
+/**
+ * Compute height given width and aspect ratio.
+ * @param {number} width - Target width in pixels
+ * @param {number} aspectRatio - Aspect ratio (width/height)
+ * @returns {number} Computed height in pixels
+ */
+const computeHeight = (width: number, aspectRatio: number): number => {
   return Math.floor(width / aspectRatio);
 };
 
-const parseAspectRatio = (aspectRatio: number | string | null | undefined): number | undefined => {
-  if (typeof aspectRatio === 'number') return aspectRatio;
+/**
+ * Parse an aspect ratio value which can be a number, a numeric string, or a "W:H" style string.
+ * @param {number|string|null|undefined} aspectRatio - Aspect ratio as number or string
+ * @returns {number|undefined} The parsed aspect ratio (width/height) or undefined when not parseable
+ */
+const parseAspectRatio = (
+  aspectRatio: number | string | null | undefined,
+): number | undefined => {
+  if (typeof aspectRatio === "number") return aspectRatio;
 
-  if (typeof aspectRatio === 'string') {
+  if (typeof aspectRatio === "string") {
     const match = aspectRatio.match(/(\d+)\s*[/:]\s*(\d+)/);
 
     if (match) {
@@ -81,9 +99,15 @@ const parseAspectRatio = (aspectRatio: number | string | null | undefined): numb
 };
 
 /**
- * Gets the `sizes` attribute for an image, based on the layout and width
+ * Gets the `sizes` attribute for an image, based on layout & width.
+ * @param {number} [width] - Target width in px.
+ * @param {Layout} [layout] - Image layout type.
+ * @returns {string|undefined} The value for the `sizes` attribute.
  */
-export const getSizes = (width?: number, layout?: Layout): string | undefined => {
+export const getSizes = (
+  width?: number,
+  layout?: Layout,
+): string | undefined => {
   if (!width || !layout) {
     return undefined;
   }
@@ -106,17 +130,27 @@ export const getSizes = (width?: number, layout?: Layout): string | undefined =>
   }
 };
 
-const pixelate = (value?: number) => (value || value === 0 ? `${value}px` : undefined);
+/**
+ * Convert a numeric value into a pixel CSS string, or undefined.
+ * @param {number|undefined} value - Numeric pixel value
+ * @returns {string|undefined} The pixel value as a string (e.g. "24px") or undefined
+ */
+const pixelate = (value?: number): string | undefined =>
+  value || value === 0 ? `${value}px` : undefined;
 
-const getStyle = ({
-  width,
-  height,
-  aspectRatio,
-  layout,
-  objectFit = 'cover',
-  objectPosition = 'center',
-  background,
-}: {
+/**
+ * Build an inline style string for an image element based on layout and sizing options.
+ * @param {object} opts - Style options
+ * @param {number|undefined} opts.width - Optional target width in pixels
+ * @param {number|undefined} opts.height - Optional target height in pixels
+ * @param {number|undefined} opts.aspectRatio - Optional aspect ratio (width/height)
+ * @param {string|undefined} opts.objectFit - CSS object-fit value (default: "cover")
+ * @param {string|undefined} opts.objectPosition - CSS object-position value (default: "center")
+ * @param {string|undefined} opts.layout - Layout mode (e.g. 'fixed', 'constrained')
+ * @param {string|undefined} opts.background - Background color or image URL
+ * @returns {string} Inline CSS style string
+ */
+const getStyle = (opts: {
   width?: number;
   height?: number;
   aspectRatio?: number;
@@ -124,59 +158,89 @@ const getStyle = ({
   objectPosition?: string;
   layout?: string;
   background?: string;
-}) => {
+}): string => {
+  const {
+    width,
+    height,
+    aspectRatio,
+    layout,
+    objectFit = "cover",
+    objectPosition = "center",
+    background,
+  } = opts;
   const styleEntries: Array<[prop: string, value: string | undefined]> = [
-    ['object-fit', objectFit],
-    ['object-position', objectPosition],
+    ["object-fit", objectFit],
+    ["object-position", objectPosition],
   ];
 
   // If background is a URL, set it to cover the image and not repeat
-  if (background?.startsWith('https:') || background?.startsWith('http:') || background?.startsWith('data:')) {
-    styleEntries.push(['background-image', `url(${background})`]);
-    styleEntries.push(['background-size', 'cover']);
-    styleEntries.push(['background-repeat', 'no-repeat']);
+  if (
+    background?.startsWith("https:") ||
+    background?.startsWith("http:") ||
+    background?.startsWith("data:")
+  ) {
+    styleEntries.push(["background-image", `url(${background})`]);
+    styleEntries.push(["background-size", "cover"]);
+    styleEntries.push(["background-repeat", "no-repeat"]);
   } else {
-    styleEntries.push(['background', background]);
+    styleEntries.push(["background", background]);
   }
-  if (layout === 'fixed') {
-    styleEntries.push(['width', pixelate(width)]);
-    styleEntries.push(['height', pixelate(height)]);
-    styleEntries.push(['object-position', 'top left']);
+  if (layout === "fixed") {
+    styleEntries.push(["width", pixelate(width)]);
+    styleEntries.push(["height", pixelate(height)]);
+    styleEntries.push(["object-position", "top left"]);
   }
-  if (layout === 'constrained') {
-    styleEntries.push(['max-width', pixelate(width)]);
-    styleEntries.push(['max-height', pixelate(height)]);
-    styleEntries.push(['aspect-ratio', aspectRatio ? `${aspectRatio}` : undefined]);
-    styleEntries.push(['width', '100%']);
+  if (layout === "constrained") {
+    styleEntries.push(["max-width", pixelate(width)]);
+    styleEntries.push(["max-height", pixelate(height)]);
+    styleEntries.push([
+      "aspect-ratio",
+      aspectRatio ? `${aspectRatio}` : undefined,
+    ]);
+    styleEntries.push(["width", "100%"]);
   }
-  if (layout === 'fullWidth') {
-    styleEntries.push(['width', '100%']);
-    styleEntries.push(['aspect-ratio', aspectRatio ? `${aspectRatio}` : undefined]);
-    styleEntries.push(['height', pixelate(height)]);
+  if (layout === "fullWidth") {
+    styleEntries.push(["width", "100%"]);
+    styleEntries.push([
+      "aspect-ratio",
+      aspectRatio ? `${aspectRatio}` : undefined,
+    ]);
+    styleEntries.push(["height", pixelate(height)]);
   }
-  if (layout === 'responsive') {
-    styleEntries.push(['width', '100%']);
-    styleEntries.push(['height', 'auto']);
-    styleEntries.push(['aspect-ratio', aspectRatio ? `${aspectRatio}` : undefined]);
+  if (layout === "responsive") {
+    styleEntries.push(["width", "100%"]);
+    styleEntries.push(["height", "auto"]);
+    styleEntries.push([
+      "aspect-ratio",
+      aspectRatio ? `${aspectRatio}` : undefined,
+    ]);
   }
-  if (layout === 'contained') {
-    styleEntries.push(['max-width', '100%']);
-    styleEntries.push(['max-height', '100%']);
-    styleEntries.push(['object-fit', 'contain']);
-    styleEntries.push(['aspect-ratio', aspectRatio ? `${aspectRatio}` : undefined]);
+  if (layout === "contained") {
+    styleEntries.push(["max-width", "100%"]);
+    styleEntries.push(["max-height", "100%"]);
+    styleEntries.push(["object-fit", "contain"]);
+    styleEntries.push([
+      "aspect-ratio",
+      aspectRatio ? `${aspectRatio}` : undefined,
+    ]);
   }
-  if (layout === 'cover') {
-    styleEntries.push(['max-width', '100%']);
-    styleEntries.push(['max-height', '100%']);
+  if (layout === "cover") {
+    styleEntries.push(["max-width", "100%"]);
+    styleEntries.push(["max-height", "100%"]);
   }
 
   const styles = Object.fromEntries(styleEntries.filter(([, value]) => value));
 
   return Object.entries(styles)
     .map(([key, value]) => `${key}: ${value};`)
-    .join(' ');
+    .join(" ");
 };
 
+/**
+ * Determine an array of breakpoints (widths) to generate responsive images for.
+ * @param {{width?:number,breakpoints?:number[],layout:Layout}} options
+ * @returns {number[]} Array of widths to generate
+ */
 const getBreakpoints = ({
   width,
   breakpoints,
@@ -186,17 +250,22 @@ const getBreakpoints = ({
   breakpoints?: number[];
   layout: Layout;
 }): number[] => {
-  if (layout === 'fullWidth' || layout === 'cover' || layout === 'responsive' || layout === 'contained') {
+  if (
+    layout === "fullWidth" ||
+    layout === "cover" ||
+    layout === "responsive" ||
+    layout === "contained"
+  ) {
     return breakpoints || config.deviceSizes;
   }
   if (!width) {
     return [];
   }
   const doubleWidth = width * 2;
-  if (layout === 'fixed') {
+  if (layout === "fixed") {
     return [width, doubleWidth];
   }
-  if (layout === 'constrained') {
+  if (layout === "constrained") {
     return [
       // Always include the image at 1x and 2x the specified width
       width,
@@ -210,25 +279,49 @@ const getBreakpoints = ({
 };
 
 /* ** */
-export const astroAsseetsOptimizer: ImagesOptimizer = async (image, breakpoints) => {
-  if (!image || typeof image === 'string') {
+/**
+ * Images optimizer using Astro's built-in image pipeline.
+ * @param {ImageMetadata|string} image - Source image metadata or URL
+ * @param {number[]} breakpoints - Target widths to generate
+ * @returns {Promise<Array<{src:string,width:number}>>} Generated sources with widths
+ */
+export const astroAsseetsOptimizer: ImagesOptimizer = async (
+  image,
+  breakpoints,
+): Promise<Array<{ src: string; width: number }>> => {
+  if (!image || typeof image === "string") {
     return [];
   }
 
   return Promise.all(
-    breakpoints.map(async (w: number) => {
-      const url = (await getImage({ src: image, width: w })).src;
-      return {
-        src: url,
-        width: w,
-      };
-    })
+    breakpoints.map(
+      async (w: number): Promise<{ src: string; width: number }> => {
+        const url = (await getImage({ src: image, width: w })).src;
+        return {
+          src: url,
+          width: w,
+        };
+      },
+    ),
   );
 };
 
 /* ** */
-export const unpicOptimizer: ImagesOptimizer = async (image, breakpoints, width, height) => {
-  if (!image || typeof image !== 'string') {
+/**
+ * Images optimizer using Unpic transformUrl/parseUrl for remote images.
+ * @param {ImageMetadata|string} image - Source image URL
+ * @param {number[]} breakpoints - Target widths
+ * @param {number|undefined} width - Original width (optional)
+ * @param {number|undefined} height - Original height (optional)
+ * @returns {Promise<Array<{src:string,width:number}>>} Generated sources
+ */
+export const unpicOptimizer: ImagesOptimizer = async (
+  image,
+  breakpoints,
+  width,
+  height,
+): Promise<Array<{ src: string; width: number }>> => {
+  if (!image || typeof image !== "string") {
     return [];
   }
 
@@ -238,31 +331,59 @@ export const unpicOptimizer: ImagesOptimizer = async (image, breakpoints, width,
   }
 
   return Promise.all(
-    breakpoints.map(async (w: number) => {
-      const url =
-        transformUrl({
-          url: image,
+    breakpoints.map(
+      async (w: number): Promise<{ src: string; width: number }> => {
+        const url =
+          transformUrl({
+            url: image,
+            width: w,
+            height: width && height ? computeHeight(w, width / height) : height,
+            cdn: urlParsed.cdn,
+          }) || image;
+        return {
+          src: String(url),
           width: w,
-          height: width && height ? computeHeight(w, width / height) : height,
-          cdn: urlParsed.cdn,
-        }) || image;
-      return {
-        src: String(url),
-        width: w,
-      };
-    })
+        };
+      },
+    ),
   );
 };
 
+/**
+ * Default no-op image optimizer that returns an empty array.
+ * Used as fallback when no custom transform function is provided.
+ * @returns {Promise<Array<{src: string, width: number}>>} Empty array of image sources
+ */
+const defaultTransform: ImagesOptimizer = () => Promise.resolve([]);
+
 /* ** */
+/**
+ * Build optimized image attributes and src for an input image or metadata.
+ * @param {ImageMetadata|string} image - Source image or URL
+ * @param {ImageProps} options - Image rendering options
+ * @param {ImagesOptimizer} transform - Optional custom optimizer
+ * @returns {Promise<{src:string,attributes:AttributesProps}>} Optimized src and attributes
+ */
 export async function getImagesOptimized(
   image: ImageMetadata | string,
-  { width, height, sizes, aspectRatio, widths, layout = 'constrained', style = '', ...rest }: ImageProps,
-  transform: ImagesOptimizer = () => Promise.resolve([])
+  {
+    width,
+    height,
+    sizes,
+    aspectRatio,
+    widths,
+    layout = "constrained",
+    style = "",
+    ...rest
+  }: ImageProps,
+  transform: ImagesOptimizer = defaultTransform,
 ): Promise<{ src: string; attributes: AttributesProps }> {
-  if (typeof image !== 'string') {
+  if (typeof image !== "string") {
     width ||= Number(image.width) || undefined;
-    height ||= typeof width === 'number' ? computeHeight(width, image.width / image.height) : undefined;
+    height ||=
+      typeof width === "number"
+        ? computeHeight(width, image.width / image.height)
+        : undefined;
   }
 
   width = (width && Number(width)) || undefined;
@@ -282,28 +403,49 @@ export async function getImagesOptimized(
       }
     } else if (height) {
       width = Number(height * aspectRatio);
-    } else if (layout !== 'fullWidth') {
+    } else if (layout !== "fullWidth") {
       // Fullwidth images have 100% width, so aspectRatio is applicable
-      console.error('When aspectRatio is set, either width or height must also be set');
-      console.error('Image', image);
+      console.error(
+        "When aspectRatio is set, either width or height must also be set",
+      );
+      console.error("Image", image);
     }
   } else if (width && height) {
     aspectRatio = width / height;
-  } else if (layout !== 'fullWidth') {
+  } else if (layout !== "fullWidth") {
     // Fullwidth images don't need dimensions
-    console.error('Either aspectRatio or both width and height must be set');
-    console.error('Image', image);
+    console.error("Either aspectRatio or both width and height must be set");
+    console.error("Image", image);
   }
 
-  let breakpoints = getBreakpoints({ width: width, breakpoints: widths, layout: layout });
+  let breakpoints = getBreakpoints({
+    width: width,
+    breakpoints: widths,
+    layout: layout,
+  });
   breakpoints = [...new Set(breakpoints)].sort((a, b) => a - b);
 
-  const srcset = (await transform(image, breakpoints, Number(width) || undefined, Number(height) || undefined))
-    .map(({ src, width }) => `${src} ${width}w`)
-    .join(', ');
+  const srcset = (
+    await transform(
+      image,
+      breakpoints,
+      Number(width) || undefined,
+      Number(height) || undefined,
+    )
+  )
+    .map(
+      ({ src, width }: { src: string; width: number }): string =>
+        `${src} ${width}w`,
+    )
+    .join(", ");
+  // Exclude any `src` prop from `rest` because `AttributesProps.src` expects string | null
+  const restAttrs = { ...(rest as Record<string, unknown>) };
+  if (Object.prototype.hasOwnProperty.call(restAttrs, "src")) {
+    delete (restAttrs as Record<string, unknown>)["src"];
+  }
 
   return {
-    src: typeof image === 'string' ? image : image.src,
+    src: typeof image === "string" ? image : image.src,
     attributes: {
       width: width,
       height: height,
@@ -314,8 +456,8 @@ export async function getImagesOptimized(
         height: height,
         aspectRatio: aspectRatio,
         layout: layout,
-      })}${style ?? ''}`,
-      ...rest,
+      })}${style ?? ""}`,
+      ...(restAttrs as AttributesProps),
     },
   };
 }

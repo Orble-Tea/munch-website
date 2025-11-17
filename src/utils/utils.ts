@@ -1,51 +1,64 @@
-import { I18N } from '~/utils/config';
+import { I18N } from "~/utils/config";
 
 const formatter: Intl.DateTimeFormat =
   I18N?.dateFormatter ||
-  new Intl.DateTimeFormat('en', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    timeZone: 'UTC',
+  new Intl.DateTimeFormat("en", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
   });
 
-export const getFormattedDate = (date: Date): string => (date ? formatter.format(date) : '');
+/**
+ * Format a date using the configured I18N formatter.
+ * @param date - The Date object to format.
+ * @returns Formatted date string.
+ */
+export const getFormattedDate = (date: Date): string =>
+  date ? formatter.format(date) : "";
 
-export const trim = (str = '', ch?: string) => {
-  let start = 0,
-    end = str.length || 0;
+/**
+ * Trim a specific character from the start and end of a string.
+ * @param str - Input string.
+ * @param ch - Character to trim.
+ * @returns The trimmed string.
+ */
+export const trim = (str = "", ch?: string): string => {
+  let start = 0;
+  let end = str.length || 0;
   while (start < end && str[start] === ch) ++start;
   while (end > start && str[end - 1] === ch) --end;
   return start > 0 || end < str.length ? str.substring(start, end) : str;
 };
 
-// Function to format a number in thousands (K) or millions (M) format depending on its value
-export const toUiAmount = (amount: number) => {
-  if (!amount) return 0;
+/**
+ * Convert a number into UI-friendly format such as 1.2K, 3M, or 7B.
+ * @param amount - The numeric value to format.
+ * @returns A formatted string representing K / M / B magnitudes.
+ */
+export const toUiAmount = (amount: number): string => {
+  if (!amount) return "0";
 
   let value: string;
 
-  if (amount >= 1000000000) {
-    const formattedNumber = (amount / 1000000000).toFixed(1);
-    if (Number(formattedNumber) === parseInt(formattedNumber)) {
-      value = parseInt(formattedNumber) + 'B';
-    } else {
-      value = formattedNumber + 'B';
-    }
-  } else if (amount >= 1000000) {
-    const formattedNumber = (amount / 1000000).toFixed(1);
-    if (Number(formattedNumber) === parseInt(formattedNumber)) {
-      value = parseInt(formattedNumber) + 'M';
-    } else {
-      value = formattedNumber + 'M';
-    }
-  } else if (amount >= 1000) {
-    const formattedNumber = (amount / 1000).toFixed(1);
-    if (Number(formattedNumber) === parseInt(formattedNumber)) {
-      value = parseInt(formattedNumber) + 'K';
-    } else {
-      value = formattedNumber + 'K';
-    }
+  if (amount >= 1_000_000_000) {
+    const formattedNumber = (amount / 1_000_000_000).toFixed(1);
+    value =
+      Number(formattedNumber) === parseInt(formattedNumber)
+        ? parseInt(formattedNumber) + "B"
+        : formattedNumber + "B";
+  } else if (amount >= 1_000_000) {
+    const formattedNumber = (amount / 1_000_000).toFixed(1);
+    value =
+      Number(formattedNumber) === parseInt(formattedNumber)
+        ? parseInt(formattedNumber) + "M"
+        : formattedNumber + "M";
+  } else if (amount >= 1_000) {
+    const formattedNumber = (amount / 1_000).toFixed(1);
+    value =
+      Number(formattedNumber) === parseInt(formattedNumber)
+        ? parseInt(formattedNumber) + "K"
+        : formattedNumber + "K";
   } else {
     value = Number(amount).toFixed(0);
   }
