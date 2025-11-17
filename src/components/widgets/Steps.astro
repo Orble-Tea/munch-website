@@ -35,7 +35,7 @@ const {
   >
     <div
       class:list={[
-        "md:py-4 md:self-center",
+        "md:self-center md:py-4",
         { "md:basis-1/2": image },
         { "w-full": !image },
       ]}
@@ -59,7 +59,7 @@ const {
             <Fragment set:html={image} />
           ) : (
             <Image
-              class="inset-0 object-cover object-top w-full rounded-md shadow-lg md:absolute md:h-full bg-gray-400 dark:bg-slate-700"
+              class="inset-0 w-full rounded-md bg-gray-400 object-cover object-top shadow-lg dark:bg-slate-700 md:absolute md:h-full"
               widths={[400, 768]}
               sizes="(max-width: 768px) 100vw, 432px"
               width={432}

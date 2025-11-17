@@ -16,51 +16,51 @@ const {
   <slot>
     <span
       aria-hidden="true"
-      class="h-0.5 w-6 my-1 rounded-full bg-black dark:bg-white transition ease transform duration-200 opacity-80 group-[.expanded]:rotate-45 group-[.expanded]:translate-y-2.5"
+      class="ease my-1 h-0.5 w-6 transform rounded-full bg-black opacity-80 transition duration-200 group-[.expanded]:translate-y-2.5 group-[.expanded]:rotate-45 dark:bg-white"
     ></span>
     <span
       aria-hidden="true"
-      class="h-0.5 w-6 my-1 rounded-full bg-black dark:bg-white transition ease transform duration-200 opacity-80 group-[.expanded]:opacity-0"
+      class="ease my-1 h-0.5 w-6 transform rounded-full bg-black opacity-80 transition duration-200 group-[.expanded]:opacity-0 dark:bg-white"
     ></span>
     <span
       aria-hidden="true"
-      class="h-0.5 w-6 my-1 rounded-full bg-black dark:bg-white transition ease transform duration-200 opacity-80 group-[.expanded]:-rotate-45 group-[.expanded]:-translate-y-2.5"
+      class="ease my-1 h-0.5 w-6 transform rounded-full bg-black opacity-80 transition duration-200 group-[.expanded]:-translate-y-2.5 group-[.expanded]:-rotate-45 dark:bg-white"
     ></span>
   </slot>
 </button>
 
 <div
   id="links"
-  class="hidden fixed inset-0 top-0 left-0 z-40 backdrop-blur-lg bg-slate-200 bg-opacity-95 dark:bg-slate-900 dark:bg-opacity-95"
+  class="fixed inset-0 left-0 top-0 z-40 hidden bg-slate-200 bg-opacity-95 backdrop-blur-lg dark:bg-slate-900 dark:bg-opacity-95"
 >
   <nav
-    class="flex flex-col items-center justify-start h-full text-lg sm:text-xl lg:text-2xl font-serif gap-4 sm:gap-5 lg:gap-6 px-4 pt-24 sm:pt-32"
+    class="flex h-full flex-col items-center justify-start gap-4 px-4 pt-24 font-serif text-lg sm:gap-5 sm:pt-32 sm:text-xl lg:gap-6 lg:text-2xl"
   >
-    <a href="/" class="no-underline hover:text-[#214260] transition-colors"
+    <a href="/" class="no-underline transition-colors hover:text-[#214260]"
       >HOME</a
     >
-    <a href="/about" class="no-underline hover:text-[#214260] transition-colors"
+    <a href="/about" class="no-underline transition-colors hover:text-[#214260]"
       >ABOUT</a
     >
     <a
       href="/contact"
-      class="no-underline hover:text-[#214260] transition-colors">CONTACT</a
+      class="no-underline transition-colors hover:text-[#214260]">CONTACT</a
     >
 
-    <div class="w-16 h-0.5 bg-gray-300 my-2"></div>
+    <div class="my-2 h-0.5 w-16 bg-gray-300"></div>
 
     <a
       href="/orble-tea"
-      class="no-underline hover:text-[#214260] transition-colors">ORBLE TEA</a
+      class="no-underline transition-colors hover:text-[#214260]">ORBLE TEA</a
     >
     <a
       href="/smoothie"
-      class="no-underline hover:text-[#214260] transition-colors"
+      class="no-underline transition-colors hover:text-[#214260]"
       >SMOOTHIE MACHINE</a
     >
     <a
       href="/dumpling"
-      class="no-underline hover:text-[#214260] transition-colors"
+      class="no-underline transition-colors hover:text-[#214260]"
       >DUMPLING MACHINE</a
     >
   </nav>

@@ -23,7 +23,7 @@ const { section1, section2, section3, features } = Astro.props;
   }
 </style>
 
-<div class="product-page-bg font-serif w-screen pb-2 max-lg:text-center">
+<div class="product-page-bg w-screen pb-2 font-serif max-lg:text-center">
   <div class="twobythree max-lg:grid-cols-1">
     <div class="col-span-1 row-span-1 mt-28">
       <Image
@@ -32,10 +32,10 @@ const { section1, section2, section3, features } = Astro.props;
         width={240}
         class="max-lg:mx-auto"
       />
-      <h3 class="text-3xl italic text-white mt-4">
+      <h3 class="mt-4 text-3xl italic text-white">
         {section1.text1}
       </h3>
-      <h3 class="text-l text-munch-blue my-6">
+      <h3 class="text-l my-6 text-munch-blue">
         {section1.text2}
       </h3>
     </div>
@@ -47,14 +47,14 @@ const { section1, section2, section3, features } = Astro.props;
         class="mx-auto"
       />
     </div>
-    <div class="col-span-1 row-span-2 md:my-16 lg:my-0 flex justify-center">
+    <div class="col-span-1 row-span-2 flex justify-center md:my-16 lg:my-0">
       <Image
         src={section1.machineImg2.src}
         alt={section1.machineImg2.alt}
         width={250}
       />
     </div>
-    <div class="col-span-1 row-span-1 mt-6 sm:mt-56 md:mt-20 font-bold">
+    <div class="col-span-1 row-span-1 mt-6 font-bold sm:mt-56 md:mt-20">
       <span class="text-l text-munch-blue sm:text-white"
         >{section1.text3.part1}</span
       >
@@ -68,12 +68,12 @@ const { section1, section2, section3, features } = Astro.props;
         src={bluebar}
         alt="Bar"
         width={400}
-        class="mt-10 mb-10 sm:hidden mx-auto"
+        class="mx-auto mb-10 mt-10 sm:hidden"
       />
     </div>
   </div>
 
-  <div class="twobyone max-lg:grid-cols-1 text-white lg:text-munch-blue">
+  <div class="twobyone text-white max-lg:grid-cols-1 lg:text-munch-blue">
     <div class="mx-auto">
       <Image
         src={section2.cad.src}
@@ -82,7 +82,7 @@ const { section1, section2, section3, features } = Astro.props;
       />
     </div>
     <div>
-      <h3 class="text-3xl ml-2 underline italic mt-[46px]">Specifications</h3>
+      <h3 class="ml-2 mt-[46px] text-3xl italic underline">Specifications</h3>
       <h3 class="text-l mt-8">
         <span class="font-bold">Dimensions:</span><br />
         {section2.dimensions}
@@ -113,7 +113,7 @@ const { section1, section2, section3, features } = Astro.props;
   </div>
 
   <div
-    class="threebyonelesspadding max-lg:grid-cols-1 text-white lg:text-munch-blue"
+    class="threebyonelesspadding text-white max-lg:grid-cols-1 lg:text-munch-blue"
   >
     <div></div>
     <div class="col-span-2">
@@ -125,7 +125,7 @@ const { section1, section2, section3, features } = Astro.props;
         <span class="font-bold">Customization:</span>
         <br />{section3.customization}
       </h3>
-      <h3 class="text-l mt-12 mb-8">
+      <h3 class="text-l mb-8 mt-12">
         <span class="font-bold">Cleaning:</span><br />
         {section3.cleaning}
         maintenance
@@ -134,17 +134,17 @@ const { section1, section2, section3, features } = Astro.props;
   </div>
 </div>
 
-<div class="flex justify-center mt-[31.62px] font-serif z-10">
+<div class="z-10 mt-[31.62px] flex justify-center font-serif">
   <div
-    class="w-[90%] h-auto bg-[#ACC6DD] rounded-[80px] flex flex-col items-center pb-10"
+    class="flex h-auto w-[90%] flex-col items-center rounded-[80px] bg-[#ACC6DD] pb-10"
   >
-    <div class="features-title underline-offset-4 mt-[31px] mb-[47px]">
+    <div class="features-title mb-[47px] mt-[31px] underline-offset-4">
       Unique Features
     </div>
     <div class="flex flex-wrap justify-center gap-y-6">
       <div class="flex flex-col items-center">
         <div
-          class="rounded-full bg-white flex justify-center items-center h-[76px] w-[76px]"
+          class="flex h-[76px] w-[76px] items-center justify-center rounded-full bg-white"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -159,7 +159,7 @@ const { section1, section2, section3, features } = Astro.props;
           </svg>
         </div>
         <div
-          class="features-content mt-[40px] h-[112px] bg-white rounded-[100px] flex justify-center items-center p-4"
+          class="features-content mt-[40px] flex h-[112px] items-center justify-center rounded-[100px] bg-white p-4"
         >
           <p class="w-[241px]">
             <span class="font-bold">{features.feature1.text1}</span>
@@ -167,9 +167,9 @@ const { section1, section2, section3, features } = Astro.props;
           </p>
         </div>
       </div>
-      <div class="flex flex-col items-center ml-[37px] mr-[33px]">
+      <div class="ml-[37px] mr-[33px] flex flex-col items-center">
         <div
-          class="rounded-full bg-white flex justify-center items-center h-[76px] w-[76px]"
+          class="flex h-[76px] w-[76px] items-center justify-center rounded-full bg-white"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -184,7 +184,7 @@ const { section1, section2, section3, features } = Astro.props;
           </svg>
         </div>
         <div
-          class="features-content mt-[40px] h-[112px] bg-white rounded-[100px] flex justify-center items-center p-4"
+          class="features-content mt-[40px] flex h-[112px] items-center justify-center rounded-[100px] bg-white p-4"
         >
           <p class="w-[241px]">
             <span class="font-bold">{features.feature2.text1}</span>
@@ -194,7 +194,7 @@ const { section1, section2, section3, features } = Astro.props;
       </div>
       <div class="flex flex-col items-center">
         <div
-          class="rounded-full bg-white flex justify-center items-center h-[76px] w-[76px]"
+          class="flex h-[76px] w-[76px] items-center justify-center rounded-full bg-white"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -209,7 +209,7 @@ const { section1, section2, section3, features } = Astro.props;
           </svg>
         </div>
         <div
-          class="features-content mt-[40px] h-[112px] bg-white rounded-[100px] flex justify-center items-center p-4"
+          class="features-content mt-[40px] flex h-[112px] items-center justify-center rounded-[100px] bg-white p-4"
         >
           <p class="w-[241px]">
             <span class="font-bold">{features.feature3.text1}</span>
@@ -221,10 +221,10 @@ const { section1, section2, section3, features } = Astro.props;
   </div>
 </div>
 
-<div class="h-auto w-full flex justify-center mb-14">
+<div class="mb-14 flex h-auto w-full justify-center">
   <a href="/contact" class="no-underline hover:no-underline">
     <button
-      class="munch-btn font-bold mt-[50px] bg-[#214260] border-[3px] border-black rounded-[11px] flex justify-center items-center font-serif"
+      class="munch-btn mt-[50px] flex items-center justify-center rounded-[11px] border-[3px] border-black bg-[#214260] font-serif font-bold"
       >GET STARTED</button
     >
   </a>

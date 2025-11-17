@@ -36,8 +36,8 @@ const {
 } = Astro.props;
 ---
 
-<footer class:list={[{ dark: theme === "dark" }, "relative not-prose"]}>
-  <div class="w-full h-[4px] bg-black"></div>
+<footer class:list={[{ dark: theme === "dark" }, "not-prose relative"]}>
+  <div class="h-[4px] w-full bg-black"></div>
 
   <div class="threebyone font-serif max-sm:flex max-sm:flex-col">
     <div class="max-sm:mx-auto">
@@ -46,35 +46,35 @@ const {
       </a>
     </div>
     <div
-      class="col-span-2 flex items-center sm:justify-end h-[10%] text-xl font-bold text-black max-sm:flex-col mx-auto mb-8 sm:flex-wrap"
+      class="col-span-2 mx-auto mb-8 flex h-[10%] items-center text-xl font-bold text-black max-sm:flex-col sm:flex-wrap sm:justify-end"
     >
       <a
         href="/"
-        class="no-underline hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg p-8 inline-flex items-center"
+        class="inline-flex items-center rounded-lg p-8 no-underline hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
       >
         Home</a
       >
       <a
         href="/#products"
-        class="no-underline hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg p-8 inline-flex items-center"
+        class="inline-flex items-center rounded-lg p-8 no-underline hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
       >
         Products</a
       >
       <a
         href="/about"
-        class="no-underline hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg p-8 inline-flex items-center"
+        class="inline-flex items-center rounded-lg p-8 no-underline hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
       >
         About Us</a
       >
       <a href="/contact"
         ><Button
           text="CONTACT"
-          class="munch-btn w-[161px] flex justify-center items-center text-2xl font-bold bg-[#214260]"
+          class="munch-btn flex w-[161px] items-center justify-center bg-[#214260] text-2xl font-bold"
           type="submit"
         /></a
       >
     </div>
-    <div class="inline-flex max-sm:justify-center my-5">
+    <div class="my-5 inline-flex max-sm:justify-center">
       <a
         target="_blank"
         href="https://www.linkedin.com/company/munch-industries-inc"
@@ -84,7 +84,7 @@ const {
     </div>
     <span></span>
     <div
-      class="text-gray-800 flex justify-end items-center max-sm:mx-auto text-center sm:text-right"
+      class="flex items-center justify-end text-center text-gray-800 max-sm:mx-auto sm:text-right"
     >
       <div class="flex flex-col">
         Copyright 2024 @ Munch Industries<br /><a

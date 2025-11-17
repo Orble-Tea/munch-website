@@ -25,11 +25,11 @@ const {
   items && (
     <div
       class={twMerge(
-        `grid mx-auto gap-8 md:gap-y-12 ${
+        `mx-auto grid gap-8 md:gap-y-12 ${
           columns === 4
-            ? "lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2"
+            ? "sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
             : columns === 3
-              ? "lg:grid-cols-3 sm:grid-cols-2"
+              ? "sm:grid-cols-2 lg:grid-cols-3"
               : columns === 2
                 ? "sm:grid-cols-2 "
                 : ""
@@ -48,7 +48,7 @@ const {
           <div>
             <div
               class={twMerge(
-                "flex flex-row max-w-md",
+                "flex max-w-md flex-row",
                 panelClass,
                 itemClasses?.panel,
               )}
@@ -58,7 +58,7 @@ const {
                   <Icon
                     name={icon || defaultIcon}
                     class={twMerge(
-                      "w-7 h-7 mr-2 rtl:mr-0 rtl:ml-2",
+                      "mr-2 h-7 w-7 rtl:ml-2 rtl:mr-0",
                       defaultIconClass,
                       itemClasses?.icon,
                     )}

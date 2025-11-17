@@ -38,13 +38,13 @@ const metadata = {
 <Layout metadata={metadata}>
   <div class="home-bg h-auto py-10">
     <div
-      class="flex justify-center lg:justify-start items-center ml-[10%]"
+      class="ml-[10%] flex items-center justify-center lg:justify-start"
       style="max-width: 80%; height: auto; padding-bottom: 50px; padding-top: 40px"
     >
       <Image src={title} alt="Munch Industries Logo" width={900} />
     </div>
     <div
-      class="flex justify-center lg:justify-start ml-[10%]"
+      class="ml-[10%] flex justify-center lg:justify-start"
       style="max-width: 60%; height: auto; padding-top: 20px;"
     >
       <Image src={dark} alt="bar" width={70} />
@@ -59,7 +59,7 @@ const metadata = {
     <div class="grid font-serif max-lg:flex max-lg:flex-col">
       <div class="left self-center lg:self-end">
         <h1
-          class="munch-blue md:text-4.5xl leading-tighter mb-1 font-heading dark:text-gray-200 font-weight-light"
+          class="munch-blue leading-tighter font-weight-light mb-1 font-heading dark:text-gray-200 md:text-4.5xl"
           style="line-height:1.5"
         >
           Intelligent, modular <br />
@@ -71,7 +71,7 @@ const metadata = {
       </div>
       <div class="left2">
         <h5
-          class="text-xl tracking-normal dark:text-slate-400 lg:text-left text-center"
+          class="text-center text-xl tracking-normal dark:text-slate-400 lg:text-left"
         >
           Tailored for culinary excellence and convenience, <br /> Munch offers revolutionary
           food automation solutions.
@@ -99,17 +99,17 @@ const metadata = {
 
   <!-- Part 2 -->
   <div
-    class="home-two-bg max-lg:bg-[#214261] max-lg:bg-none h-auto lg:h-[700px] font-serif font-light"
+    class="home-two-bg h-auto font-serif font-light max-lg:bg-[#214261] max-lg:bg-none lg:h-[700px]"
   >
-    <div class="w-full bg-black h-[5px] lg:hidden"></div>
+    <div class="h-[5px] w-full bg-black lg:hidden"></div>
     <div
-      class="fourbyonegrid mx-auto mb-10 max-sm:grid-cols-1 max-lg:grid-cols-2 pt-20"
+      class="fourbyonegrid mx-auto mb-10 pt-20 max-lg:grid-cols-2 max-sm:grid-cols-1"
     >
       <div
-        class="hover:scale-110 transition-all duration-500 flex flex-col justify-center items-center"
+        class="flex flex-col items-center justify-center transition-all duration-500 hover:scale-110"
       >
         <div
-          class="rounded-full bg-munch-blue flex items-center justify-center"
+          class="flex items-center justify-center rounded-full bg-munch-blue"
           style="height: 150px; width: 150px"
         >
           <Image
@@ -119,21 +119,21 @@ const metadata = {
             style="justify-center"
           />
         </div>
-        <h5 class="mt-10 mb-10 text-3xl tracking-normal text-slate-100">
+        <h5 class="mb-10 mt-10 text-3xl tracking-normal text-slate-100">
           Accessibility
         </h5>
         <Image
           src={whitebar}
           alt="Bar"
           width={80}
-          class="justify-center hidden lg:block"
+          class="hidden justify-center lg:block"
         />
       </div>
       <div
-        class="hover:scale-110 transition-all duration-500 flex flex-col justify-center items-center"
+        class="flex flex-col items-center justify-center transition-all duration-500 hover:scale-110"
       >
         <div
-          class="rounded-full bg-munch-blue flex items-center justify-center"
+          class="flex items-center justify-center rounded-full bg-munch-blue"
           style="height: 150px; width: 150px"
         >
           <Image
@@ -143,21 +143,21 @@ const metadata = {
             style="justify-center"
           />
         </div>
-        <h5 class="mt-10 mb-10 text-3xl tracking-normal text-slate-100">
+        <h5 class="mb-10 mt-10 text-3xl tracking-normal text-slate-100">
           Intelligence
         </h5>
         <Image
           src={whitebar}
           alt="Bar"
           width={80}
-          class="justify-center hidden lg:block"
+          class="hidden justify-center lg:block"
         />
       </div>
       <div
-        class="hover:scale-110 transition-all duration-500 flex flex-col justify-center items-center"
+        class="flex flex-col items-center justify-center transition-all duration-500 hover:scale-110"
       >
         <div
-          class="rounded-full bg-munch-blue flex items-center justify-center"
+          class="flex items-center justify-center rounded-full bg-munch-blue"
           style="height: 150px; width: 150px"
         >
           <Image
@@ -167,21 +167,21 @@ const metadata = {
             style="justify-center"
           />
         </div>
-        <h5 class="mt-10 mb-10 text-3xl tracking-normal text-slate-100">
+        <h5 class="mb-10 mt-10 text-3xl tracking-normal text-slate-100">
           Consistency
         </h5>
         <Image
           src={whitebar}
           alt="Bar"
           width={80}
-          class="justify-center hidden lg:block"
+          class="hidden justify-center lg:block"
         />
       </div>
       <div
-        class="hover:scale-110 transition-all duration-500 flex flex-col justify-center items-center"
+        class="flex flex-col items-center justify-center transition-all duration-500 hover:scale-110"
       >
         <div
-          class="rounded-full bg-munch-blue flex items-center justify-center"
+          class="flex items-center justify-center rounded-full bg-munch-blue"
           style="height: 150px; width: 150px"
         >
           <Image
@@ -191,23 +191,23 @@ const metadata = {
             style="justify-center"
           />
         </div>
-        <h5 class="mt-10 mb-10 text-3xl tracking-normal text-slate-100">
+        <h5 class="mb-10 mt-10 text-3xl tracking-normal text-slate-100">
           Modularity
         </h5>
         <Image
           src={whitebar}
           alt="Bar"
           width={80}
-          class="justify-center hidden lg:block"
+          class="hidden justify-center lg:block"
         />
       </div>
     </div>
-    <div class="sm:mt-20 flex justify-center pb-5">
+    <div class="flex justify-center pb-5 sm:mt-20">
       <form action="/about">
         <Button
           id="products"
           text="READ MORE"
-          class="justify-center bg-[#ACC6DD] munch-btn font-bold mb-10"
+          class="munch-btn mb-10 justify-center bg-[#ACC6DD] font-bold"
           type="submit"
         />
       </form>
@@ -215,18 +215,18 @@ const metadata = {
   </div>
 
   <!-- Part 3 -->
-  <div class="home-three-bg max-lg:bg-none font-serif mt-10">
+  <div class="home-three-bg mt-10 font-serif max-lg:bg-none">
     <div
-      class="bg-white lg:bg-transparent border-b-8 border-black lg:border-opacity-0"
+      class="border-b-8 border-black bg-white lg:border-opacity-0 lg:bg-transparent"
     >
       <div
-        class="flex justify-start items-center ml-[10%] pb-5"
+        class="ml-[10%] flex items-center justify-start pb-5"
         style="max-width: 80%; height: auto;"
       >
         <Image src={ourproducts} alt="Our Products" width={450} />
       </div>
       <div
-        class="flex justify-start ml-[10%]"
+        class="ml-[10%] flex justify-start"
         style="max-width: 60%; height: auto; padding-top: 20px;"
       >
         <Image src={dark} alt="bar" width={70} />
@@ -236,12 +236,12 @@ const metadata = {
           <Image src={boba} alt="Boba Icon" width={80} />
           <div>
             <h3
-              class="mt-5 text-3xl tracking-normal text-munch-blue font-light"
+              class="mt-5 text-3xl font-light tracking-normal text-munch-blue"
             >
               bubble tea machine
             </h3>
             <h3
-              class="font-semibold mb-10 text-3xl underline tracking-normal text-munch-blue"
+              class="mb-10 text-3xl font-semibold tracking-normal text-munch-blue underline"
             >
               <a href="/orble-tea">Orble</a>
             </h3>
@@ -251,27 +251,27 @@ const metadata = {
           <Image src={dumpling} alt="Dumpling Icon" width={80} />
           <div>
             <h3
-              class="mt-5 text-3xl tracking-normal text-munch-blue font-light"
+              class="mt-5 text-3xl font-light tracking-normal text-munch-blue"
             >
               dumpling machine
             </h3>
             <h3
-              class="font-semibold mb-10 text-3xl tracking-normal text-munch-blue"
+              class="mb-10 text-3xl font-semibold tracking-normal text-munch-blue"
             >
               incoming
             </h3>
           </div>
         </div>
-        <div class="flex flex-col mb-14">
+        <div class="mb-14 flex flex-col">
           <Image src={smoothie} alt="Smoothie Icon" width={80} />
           <div>
             <h3
-              class="mt-5 text-3xl tracking-normal text-munch-blue font-light"
+              class="mt-5 text-3xl font-light tracking-normal text-munch-blue"
             >
               smoothie machine
             </h3>
             <h3
-              class="font-semibold mb-10 text-3xl tracking-normal text-munch-blue"
+              class="mb-10 text-3xl font-semibold tracking-normal text-munch-blue"
             >
               incoming
             </h3>
@@ -280,16 +280,16 @@ const metadata = {
       </div>
     </div>
 
-    <div class="bg-[#fff9ef] lg:bg-transparent py-24 lg:pt-40">
+    <div class="bg-[#fff9ef] py-24 lg:bg-transparent lg:pt-40">
       <div class="flex justify-center">
-        <h3 class="text-3xl tracking-normal text-munch-blue text-center">
+        <h3 class="text-center text-3xl tracking-normal text-munch-blue">
           Break into the growing bubble tea market with
         </h3>
       </div>
-      <div class="flex justify-center mt-8">
+      <div class="mt-8 flex justify-center">
         <Image src={threedots} alt="Three Dots" width={70} height={13} />
       </div>
-      <div class="fourbytwogrid lg:mt-12 max-lg:grid-cols-1">
+      <div class="fourbytwogrid max-lg:grid-cols-1 lg:mt-12">
         <div class="col-span-1 row-span-2 h-auto">
           <Image
             src={orblemachine}
@@ -300,8 +300,8 @@ const metadata = {
         </div>
         <div class="col-span-2 row-span-1">
           <Image src={orblelogo} alt="Orble Logo" width={600} class="mx-auto" />
-          <h3 class="text-3xl tracking-normal text-center text-munch-blue">
-            a fully au<span class="mr-1 italic font-bold">tea</span>matic boba
+          <h3 class="text-center text-3xl tracking-normal text-munch-blue">
+            a fully au<span class="mr-1 font-bold italic">tea</span>matic boba
             machine
           </h3>
         </div>
@@ -309,16 +309,16 @@ const metadata = {
           <Image src={classic} alt="Classic Milk Tea" width={150} />
         </div>
         <div class="col-span-2 row-span-1 flex flex-row justify-center">
-          <div class="z-10 mt-8 absolute">
+          <div class="absolute z-10 mt-8">
             <a href="/orble-tea">
               <Button
                 text="LEARN MORE"
                 type="submit"
-                class="bg-beige font-bold munch-btn flex text-3xl justify-center no-underline hover:no-underline"
+                class="munch-btn flex justify-center bg-beige text-3xl font-bold no-underline hover:no-underline"
               />
             </a>
           </div>
-          <div class="flex justify-center relative">
+          <div class="relative flex justify-center">
             <Image src={bobagroup} alt="Boba Design" />
           </div>
         </div>
@@ -329,7 +329,7 @@ const metadata = {
     </div>
 
     <div
-      class="bg-[#acc6dd] lg:bg-transparent border-y-4 border-black lg:border-none py-10"
+      class="border-y-4 border-black bg-[#acc6dd] py-10 lg:border-none lg:bg-transparent"
     >
       <!-- Part 4 -->
       <div class="fourbyonegrid lg:pt-40">
@@ -340,7 +340,7 @@ const metadata = {
           <h3 class="flex text-5xl tracking-normal text-munch-blue">
             dumpling machine
           </h3>
-          <h3 class="font-bold text-3xl tracking-normal text-munch-blue">
+          <h3 class="text-3xl font-bold tracking-normal text-munch-blue">
             incoming
           </h3>
         </div>
@@ -348,16 +348,16 @@ const metadata = {
     </div>
 
     <div
-      class="bg-white lg:bg-transparent py-10 border-b-4 border-black lg:border-none"
+      class="border-b-4 border-black bg-white py-10 lg:border-none lg:bg-transparent"
     >
       <!-- Part 5 -->
       <div class="fourbyonegrid">
         <div class="col-span-3 row-span-1 lg:mt-10 xl:mt-20">
-          <h3 class="text-5xl tracking-normal text-right text-munch-blue">
+          <h3 class="text-right text-5xl tracking-normal text-munch-blue">
             smoothie machine
           </h3>
           <h3
-            class="font-bold text-3xl tracking-normal text-right text-munch-blue"
+            class="text-right text-3xl font-bold tracking-normal text-munch-blue"
           >
             incoming
           </h3>
@@ -420,14 +420,14 @@ const metadata = {
     <div class="bg-[#214261] lg:bg-transparent">
       <!-- Part 6 -->
       <div
-        class="lg:ml-[47%] pt-14 lg:pt-44 w-[300px] md:w-[400px] xl:w-[500px] mx-auto"
+        class="mx-auto w-[300px] pt-14 md:w-[400px] lg:ml-[47%] lg:pt-44 xl:w-[500px]"
       >
         <Image src={whymunch} alt="Why Munch?" />
       </div>
-      <div class="threebyoneequalmargins mt-16 max-lg:grid-cols-1 font-serif">
+      <div class="threebyoneequalmargins mt-16 font-serif max-lg:grid-cols-1">
         <div class="relative mx-auto">
           <Image src={quotebg} alt="Quote Box" width={450} />
-          <div class="absolute top-6 left-6 text-white w-[70%]">
+          <div class="absolute left-6 top-6 w-[70%] text-white">
             <h1 class="quote">
               “As a beta tester for Munch Industries, I've had the opportunity
               to witness firsthand the potential of their innovative products.
@@ -437,7 +437,7 @@ const metadata = {
             </h1>
           </div>
           <div
-            class="absolute bottom-14 right-16 sm:right-20 lg:right-14 xl:right-20 text-white text-right font-bold w-[70%]"
+            class="absolute bottom-14 right-16 w-[70%] text-right font-bold text-white sm:right-20 lg:right-14 xl:right-20"
           >
             <h1 class="text-sm sm:text-xl lg:text-sm xl:text-base">
               Hanna Johnson, <br />Culinary Tech Enthusiast
@@ -446,7 +446,7 @@ const metadata = {
         </div>
         <div class="relative mx-auto">
           <Image src={quotebg} alt="Quote Box" width={450} />
-          <div class="absolute top-6 left-6 text-white w-[70%]">
+          <div class="absolute left-6 top-6 w-[70%] text-white">
             <h1 class="quote">
               “Partnering with Munch Industries has been an inspiring journey.
               Their passion for revolutionizing the food automation industry is
@@ -455,7 +455,7 @@ const metadata = {
             </h1>
           </div>
           <div
-            class="absolute bottom-14 right-16 sm:right-20 lg:right-14 xl:right-20 text-white text-right font-bold w-[70%]"
+            class="absolute bottom-14 right-16 w-[70%] text-right font-bold text-white sm:right-20 lg:right-14 xl:right-20"
           >
             <h1 class="text-sm sm:text-xl lg:text-sm xl:text-base">
               Ethan Wilson, <br />Food Automation Consultant
@@ -464,7 +464,7 @@ const metadata = {
         </div>
         <div class="relative mx-auto">
           <Image src={quotebg} alt="Quote Box" width={450} />
-          <div class="absolute top-6 left-6 text-white w-[70%]">
+          <div class="absolute left-6 top-6 w-[70%] text-white">
             <h1 class="quote">
               “Munch Industries’ vision for the future of food automation is
               both ambitious and promising. Having collaborated with their team
@@ -474,7 +474,7 @@ const metadata = {
             </h1>
           </div>
           <div
-            class="absolute bottom-14 right-16 sm:right-20 lg:right-14 xl:right-20 text-white text-right font-bold w-[70%]"
+            class="absolute bottom-14 right-16 w-[70%] text-right font-bold text-white sm:right-20 lg:right-14 xl:right-20"
           >
             <h1 class="text-sm sm:text-xl lg:text-sm xl:text-base">
               Daniel Martinez, <br />Industry Expert

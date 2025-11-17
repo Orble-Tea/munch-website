@@ -27,9 +27,9 @@ const {
       class={twMerge(
         `grid gap-8 gap-x-12 sm:gap-y-8 ${
           columns === 4
-            ? "lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2"
+            ? "sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
             : columns === 3
-              ? "lg:grid-cols-3 sm:grid-cols-2"
+              ? "sm:grid-cols-2 lg:grid-cols-3"
               : columns === 2
                 ? "sm:grid-cols-2 "
                 : ""
@@ -56,7 +56,7 @@ const {
               <Icon
                 name={icon || defaultIcon}
                 class={twMerge(
-                  "mb-2 w-10 h-10",
+                  "mb-2 h-10 w-10",
                   defaultIconClass,
                   itemClasses?.icon,
                 )}
@@ -74,7 +74,7 @@ const {
             {description && (
               <p
                 class={twMerge(
-                  "text-muted mt-2",
+                  "mt-2 text-muted",
                   descriptionClass,
                   itemClasses?.description,
                 )}

@@ -5,15 +5,15 @@ const {
 } = Astro.props;
 ---
 
-<header class="mb-8 md:mb-16 text-center max-w-3xl mx-auto">
+<header class="mx-auto mb-8 max-w-3xl text-center md:mb-16">
   <h1
-    class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading"
+    class="leading-tighter font-heading text-4xl font-bold tracking-tighter md:text-5xl"
     set:html={title}
   />
   {
     subtitle && (
       <div
-        class="mt-2 md:mt-3 mx-auto text-xl text-gray-500 dark:text-slate-400 font-medium"
+        class="mx-auto mt-2 text-xl font-medium text-gray-500 dark:text-slate-400 md:mt-3"
         set:html={subtitle}
       />
     )
