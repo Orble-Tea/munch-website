@@ -35,49 +35,55 @@ if (Astro.request.method === "POST") {
     const email = purify.sanitize(String(data.get("Email") || ""));
     const subject = purify.sanitize(String(data.get("Subject") || ""));
     const message = purify.sanitize(String(data.get("Message") || ""));
+    const website = purify.sanitize(String(data.get("website") || ""));
 
-    // Validate form data
-    if (firstName.length < 1) {
-      errors.firstName = "Please enter your first name.";
-    }
-    if (lastName.length < 1) {
-      errors.lastName = "Please enter your last name.";
-    }
-    if (!email.includes("@") || !email.includes(".")) {
-      errors.email = "Please enter a valid email address.";
-    }
-    if (!subject) {
-      errors.subject = "Please select a subject.";
-    }
-    if (message.length < 1) {
-      errors.message = "Please enter your message.";
-    }
-
-    const hasErrors = Object.values(errors).some((msg) => msg);
-
-    if (!hasErrors) {
-      const content = `First Name: ${firstName}\nLast Name: ${lastName}\nPhone Number: ${phoneNumber}\nEmail: ${email}\n\nSubject: ${subject}\n\nMessage: ${message}`;
-
-      const emailData = {
-        to: "info@orble-tea.com",
-        subject: "Customer Inquiry Form Submission: " + subject,
-        text: content,
-        "h:Reply-To": email,
-      };
-
-      const response = await fetch(`${Astro.url.origin}/api/send-email`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(emailData),
-      });
-
-      if (!response.ok) {
-        throw new Error("An error occurred while sending the email.");
+    if (website) {
+      log = "Form submitted successfully!"; // Fake success for bots
+    } else {
+      // Validate form data
+      if (firstName.length < 1) {
+        errors.firstName = "Please enter your first name.";
+      }
+      if (lastName.length < 1) {
+        errors.lastName = "Please enter your last name.";
+      }
+      if (!email.includes("@") || !email.includes(".")) {
+        errors.email = "Please enter a valid email address.";
+      }
+      if (!subject) {
+        errors.subject = "Please select a subject.";
+      }
+      if (message.length < 1) {
+        errors.message = "Please enter your message.";
       }
 
-      log = "Form submitted successfully!";
+      const hasErrors = Object.values(errors).some((msg) => msg);
+
+      if (!hasErrors) {
+        const content = `First Name: ${firstName}\nLast Name: ${lastName}\nPhone Number: ${phoneNumber}\nEmail: ${email}\n\nSubject: ${subject}\n\nMessage: ${message}`;
+
+        const emailData = {
+          to: "info@orble-tea.com",
+          subject: "Customer Inquiry Form Submission: " + subject,
+          text: content,
+          "h:Reply-To": email,
+          website: website
+        };
+
+        const response = await fetch(`${Astro.url.origin}/api/send-email`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(emailData),
+        });
+
+        if (!response.ok) {
+          throw new Error("An error occurred while sending the email.");
+        }
+
+        log = "Form submitted successfully!";
+      }
     }
   } catch (error) {
     console.error(error);

@@ -35,7 +35,7 @@ const getSpam = (): {
   honeypotField: string;
   honeypotDuration: number;
 } => ({
-  honeypotField: "honeypot",
+  honeypotField: "website",
   honeypotDuration: 2000,
 });
 
