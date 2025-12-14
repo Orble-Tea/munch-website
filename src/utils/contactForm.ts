@@ -16,13 +16,14 @@ function initForm(): void {
 
   form.addEventListener("submit", (e) => {
     const isSpam = form.containsSpam();
-    const honeypotValue = (form.querySelector('[name="website"]') as HTMLInputElement)?.value || '';
-    
+    const honeypotValue =
+      (form.querySelector('[name="website"]') as HTMLInputElement)?.value || "";
+
     // Track form submission with Umami
     try {
-      umami.track('form_submission', {
+      umami.track("form_submission", {
         honeypot_value: honeypotValue,
-        is_spam: isSpam
+        is_spam: isSpam,
       });
     } catch (err) {
       console.warn("Umami tracking failed:", err);

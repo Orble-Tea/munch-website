@@ -20,11 +20,14 @@ type EmailData = z.infer<typeof emailSchema>;
 
 /**
  * Track events to Umami analytics
+ * @param request
+ * @param eventName
+ * @param eventData
  */
 async function trackUmamiEvent(
   request: Request,
   eventName: string,
-  eventData: Record<string, any> = {}
+  eventData: Record<string, unknown> = {},
 ): Promise<void> {
   try {
     if (!process.env.UMAMI_WEBSITE_ID || !process.env.UMAMI_ENDPOINT) {
@@ -38,7 +41,8 @@ async function trackUmamiEvent(
       type: "event",
       payload: {
         hostname: url.hostname,
-        language: request.headers.get("accept-language")?.split(",")[0] || "en-US",
+        language:
+          request.headers.get("accept-language")?.split(",")[0] || "en-US",
         referrer: request.headers.get("referer") || "",
         screen: "1920x1080",
         title: "Contact Form Email",
@@ -53,7 +57,8 @@ async function trackUmamiEvent(
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "User-Agent": request.headers.get("user-agent") || "Mozilla/5.0 (Server)",
+        "User-Agent":
+          request.headers.get("user-agent") || "Mozilla/5.0 (Server)",
       },
       body: JSON.stringify(payload),
     });

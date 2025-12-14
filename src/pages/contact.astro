@@ -67,7 +67,7 @@ if (Astro.request.method === "POST") {
           subject: "Customer Inquiry Form Submission: " + subject,
           text: content,
           "h:Reply-To": email,
-          website: website
+          website: website,
         };
 
         const response = await fetch(`${Astro.url.origin}/api/send-email`, {
