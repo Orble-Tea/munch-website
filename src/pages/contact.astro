@@ -3,95 +3,11 @@ import Layout from "~/layouts/PageLayout.astro";
 import Image from "~/components/common/Image.astro";
 import dots from "~/assets/images/bg-design/contact-header-bg.png";
 import contactTitle from "~/assets/images/contact-title.png";
-import DOMPurify from "dompurify";
-import { JSDOM } from "jsdom";
 import "~/styles/contact.css";
 
 const metadata = {
   title: "Contact",
 };
-
-// Create a DOMPurify instance for server-side sanitization
-const window = new JSDOM("").window;
-const purify = DOMPurify(window);
-
-const errors = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  subject: "",
-  message: "",
-};
-let log =
-  "Fill out the contact form below for inquiries, partnership opportunities, and/or customer support!";
-
-if (Astro.request.method === "POST") {
-  try {
-    const data = await Astro.request.formData();
-    // Sanitize all inputs, ensuring we're working with strings
-    const firstName = purify.sanitize(String(data.get("FirstName") || ""));
-    const lastName = purify.sanitize(String(data.get("LastName") || ""));
-    const phoneNumber = purify.sanitize(String(data.get("PhoneNumber") || ""));
-    const email = purify.sanitize(String(data.get("Email") || ""));
-    const subject = purify.sanitize(String(data.get("Subject") || ""));
-    const message = purify.sanitize(String(data.get("Message") || ""));
-    const website = purify.sanitize(String(data.get("website") || ""));
-
-    if (website) {
-      log = "Form submitted successfully!"; // Fake success for bots
-    } else {
-      // Validate form data
-      if (firstName.length < 1) {
-        errors.firstName = "Please enter your first name.";
-      }
-      if (lastName.length < 1) {
-        errors.lastName = "Please enter your last name.";
-      }
-      if (!email.includes("@") || !email.includes(".")) {
-        errors.email = "Please enter a valid email address.";
-      }
-      if (!subject) {
-        errors.subject = "Please select a subject.";
-      }
-      if (message.length < 1) {
-        errors.message = "Please enter your message.";
-      }
-
-      const hasErrors = Object.values(errors).some((msg) => msg);
-
-      if (!hasErrors) {
-        const content = `First Name: ${firstName}\nLast Name: ${lastName}\nPhone Number: ${phoneNumber}\nEmail: ${email}\n\nSubject: ${subject}\n\nMessage: ${message}`;
-
-        const emailData = {
-          to: "info@orble-tea.com",
-          subject: "Customer Inquiry Form Submission: " + subject,
-          text: content,
-          "h:Reply-To": email,
-          website: website,
-        };
-
-        const response = await fetch(`${Astro.url.origin}/api/send-email`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(emailData),
-        });
-
-        if (!response.ok) {
-          throw new Error("An error occurred while sending the email.");
-        }
-
-        log = "Form submitted successfully!";
-      }
-    }
-  } catch (error) {
-    console.error(error);
-    log =
-      "Error: " +
-      (error instanceof Error ? error.message : "An unknown error occurred");
-  }
-}
 ---
 
 <Layout metadata={metadata}>
@@ -117,9 +33,11 @@ if (Astro.request.method === "POST") {
   >
     <div class="flex justify-center px-4">
       <h1
+        id="form-message"
         class="contact-subtitle mt-8 w-full max-w-[815px] text-center font-serif text-white sm:mt-12 sm:text-left lg:mt-[71px] lg:text-[#1A2634]"
       >
-        {log}
+        Fill out the contact form below for inquiries, partnership
+        opportunities, and/or customer support!
       </h1>
     </div>
 
@@ -127,7 +45,7 @@ if (Astro.request.method === "POST") {
       <div
         class="contact-form w-full max-w-[700px] rounded-md bg-white p-6 sm:w-[85%] sm:p-8 lg:w-[48%] lg:p-10"
       >
-        <form method="POST">
+        <form id="contact-form">
           <!-- Honeypot field - hidden from users but visible to bots -->
           <div class="website-field">
             <label for="website">Website</label>
@@ -152,11 +70,11 @@ if (Astro.request.method === "POST") {
                   required
                   class="contact-input w-full border-b-2 border-gray-300"
                 />
-                {
-                  errors.firstName && (
-                    <p class="mt-1 text-sm text-red-500">{errors.firstName}</p>
-                  )
-                }
+                <p
+                  class="error-message mt-1 text-sm text-red-500"
+                  data-field="firstName"
+                >
+                </p>
               </div>
               <div class="w-full sm:w-1/2">
                 <label for="LastName" class="contact-label"> Last Name</label>
@@ -166,11 +84,11 @@ if (Astro.request.method === "POST") {
                   required
                   class="contact-input w-full border-b-2 border-gray-300"
                 />
-                {
-                  errors.lastName && (
-                    <p class="mt-1 text-sm text-red-500">{errors.lastName}</p>
-                  )
-                }
+                <p
+                  class="error-message mt-1 text-sm text-red-500"
+                  data-field="lastName"
+                >
+                </p>
               </div>
             </div>
             <div
@@ -184,11 +102,11 @@ if (Astro.request.method === "POST") {
                   required
                   class="contact-input w-full border-b-2 border-gray-300"
                 />
-                {
-                  errors.email && (
-                    <p class="mt-1 text-sm text-red-500">{errors.email}</p>
-                  )
-                }
+                <p
+                  class="error-message mt-1 text-sm text-red-500"
+                  data-field="email"
+                >
+                </p>
               </div>
               <div class="w-full sm:w-1/2">
                 <label for="PhoneNumber" class="contact-label">
@@ -222,7 +140,7 @@ if (Astro.request.method === "POST") {
                       type="radio"
                       id={subject.toLowerCase().replace(/\s/g, "-")}
                       name="Subject"
-                      value={subject.toLowerCase().replace(/\s/g, "-")}
+                      value={subject}
                       class="mr-[10px]"
                       required
                     />
@@ -236,11 +154,11 @@ if (Astro.request.method === "POST") {
                 ))
               }
             </div>
-            {
-              errors.subject && (
-                <p class="mt-1 text-sm text-red-500">{errors.subject}</p>
-              )
-            }
+            <p
+              class="error-message mt-1 text-sm text-red-500"
+              data-field="subject"
+            >
+            </p>
           </div>
 
           <div class="my-6 flex flex-col sm:my-[45px]">
@@ -254,17 +172,18 @@ if (Astro.request.method === "POST") {
               class="contact-input mt-3 w-full border-b-2 border-gray-300 pb-[10px] placeholder-[#BDBDBD]"
               maxlength="500"
             />
-            {
-              errors.message && (
-                <p class="mt-1 text-sm text-red-500">{errors.message}</p>
-              )
-            }
+            <p
+              class="error-message mt-1 text-sm text-red-500"
+              data-field="message"
+            >
+            </p>
           </div>
 
           <div class="mb-2 flex justify-end">
             <button
               type="submit"
               class="munch-btn w-full bg-[#214260] font-serif sm:w-auto"
+              id="submit-btn"
             >
               SEND MESSAGE
             </button>

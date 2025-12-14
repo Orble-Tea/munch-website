@@ -15,7 +15,6 @@ const emailSchema = z.object({
   website: z.string().optional(),
 });
 
-// Type from Zod schema
 type EmailData = z.infer<typeof emailSchema>;
 
 /**
@@ -27,7 +26,7 @@ type EmailData = z.infer<typeof emailSchema>;
 async function trackUmamiEvent(
   request: Request,
   eventName: string,
-  eventData: Record<string, unknown> = {},
+  eventData: Record<string, string> = {},
 ): Promise<void> {
   try {
     if (!process.env.UMAMI_WEBSITE_ID || !process.env.UMAMI_ENDPOINT) {
@@ -65,21 +64,24 @@ async function trackUmamiEvent(
 
     if (!response.ok) {
       console.error(`Umami tracking failed with status: ${response.status}`);
+    } else {
+      console.log("Umami tracking success");
     }
   } catch (error) {
-    console.error("Failed to track Umami event:", error);
+    console.error("Umami tracking error:", error);
   }
 }
 
 /**
  * Handle POST requests to send email through Mailgun.
- * @param {{ request: Request }} params - API context object containing the incoming request.
- * @param {Request} params.request - The incoming Request object.
- * @returns {Promise<Response>} A JSON response indicating success or failure.
+ * @param root0
+ * @param root0.request
  */
-export async function POST(params: { request: Request }): Promise<Response> {
-  const { request } = params;
-
+export async function POST({
+  request,
+}: {
+  request: Request;
+}): Promise<Response> {
   try {
     const emailData: unknown = await request.json();
     const validationResult = emailSchema.safeParse(emailData);
@@ -92,7 +94,10 @@ export async function POST(params: { request: Request }): Promise<Response> {
           message: "Validation failed",
           errors,
         }),
-        { status: 400 },
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json" },
+        },
       );
     }
 
@@ -105,7 +110,7 @@ export async function POST(params: { request: Request }): Promise<Response> {
       website,
     } = validationResult.data as EmailData;
 
-    // Track email received with honeypot status
+    // Track the form submission with honeypot status
     await trackUmamiEvent(request, "form_received", {
       honeypot_value: website || "",
       is_spam: website ? "true" : "false",
@@ -113,10 +118,13 @@ export async function POST(params: { request: Request }): Promise<Response> {
 
     // Honeypot trap—if filled, silently accept
     if (website) {
-      console.log("Honeypot triggered");
+      console.log("Honeypot triggered - returning fake success");
       return new Response(
         JSON.stringify({ success: true, message: "Form received" }),
-        { status: 200 },
+        {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        },
       );
     }
 
@@ -135,21 +143,32 @@ export async function POST(params: { request: Request }): Promise<Response> {
       to,
       subject,
       text,
-      html,
+      ...(html && { html }),
       ...(replyTo && { "h:Reply-To": replyTo }),
     };
 
     await mg.messages.create("mg.munch-industries.com", messageData);
 
+    console.log("Email sent successfully");
     return new Response(
       JSON.stringify({ success: true, message: "Email sent" }),
-      { status: 200 },
+      {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      },
     );
   } catch (error) {
-    console.error("Mailgun error:", error);
+    console.error("Email sending error:", error);
     return new Response(
-      JSON.stringify({ success: false, message: "Failed to send email" }),
-      { status: 500 },
+      JSON.stringify({
+        success: false,
+        message:
+          error instanceof Error ? error.message : "Failed to send email",
+      }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      },
     );
   }
 }
