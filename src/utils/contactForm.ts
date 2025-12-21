@@ -107,7 +107,7 @@ function initForm(): void {
     try {
       if (typeof umami !== "undefined") {
         umami.track("form_submission", {
-          honeypot_value: honeypotValue,
+          honeypot_value: honeypotValue ? "true" : "false",
           is_spam: String(isSpam),
         });
       }
@@ -147,7 +147,6 @@ Subject: ${formData.Subject}
 Message: ${formData.Message}`;
 
     const emailData = {
-      to: "info@orble-tea.com",
       subject: `Customer Inquiry Form Submission: ${formData.Subject}`,
       text: content,
       "h:Reply-To": formData.Email,

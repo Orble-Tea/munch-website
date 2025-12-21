@@ -4,10 +4,10 @@ import Mailgun from "mailgun.js";
 import { z } from "zod";
 
 dotenv.config();
+const CONTACT_EMAIL = process.env.CONTACT_EMAIL;
 
 // Zod schema for email validation
 const emailSchema = z.object({
-  to: z.string().trim().email("Recipient email must be valid"),
   subject: z.string().min(1, "Subject is required"),
   text: z.string().min(1, "Message must be nonempty"),
   html: z.string().optional(),
@@ -39,13 +39,6 @@ async function trackUmamiEvent(
     const payload = {
       type: "event",
       payload: {
-        hostname: url.hostname,
-        language:
-          request.headers.get("accept-language")?.split(",")[0] || "en-US",
-        referrer: request.headers.get("referer") || "",
-        screen: "1920x1080",
-        title: "Contact Form Email",
-        url: url.pathname,
         website: process.env.UMAMI_WEBSITE_ID,
         name: eventName,
         data: eventData,
@@ -65,7 +58,7 @@ async function trackUmamiEvent(
     if (!response.ok) {
       console.error(`Umami tracking failed with status: ${response.status}`);
     } else {
-      console.log("Umami tracking success");
+      console.debug("Umami tracking success");
     }
   } catch (error) {
     console.error("Umami tracking error:", error);
@@ -102,7 +95,6 @@ export async function POST({
     }
 
     const {
-      to,
       subject,
       text,
       html,
@@ -111,14 +103,13 @@ export async function POST({
     } = validationResult.data as EmailData;
 
     // Track the form submission with honeypot status
-    await trackUmamiEvent(request, "form_received", {
-      honeypot_value: website || "",
+    trackUmamiEvent(request, "form_received", {
       is_spam: website ? "true" : "false",
     });
 
     // Honeypot trap—if filled, silently accept
     if (website) {
-      console.log("Honeypot triggered - returning fake success");
+      console.debug("Honeypot triggered - returning fake success");
       return new Response(
         JSON.stringify({ success: true, message: "Form received" }),
         {
@@ -140,7 +131,7 @@ export async function POST({
 
     const messageData = {
       from: "Munch Industries <postmaster@mg.munch-industries.com>",
-      to,
+      to: CONTACT_EMAIL,
       subject,
       text,
       ...(html && { html }),
@@ -149,7 +140,7 @@ export async function POST({
 
     await mg.messages.create("mg.munch-industries.com", messageData);
 
-    console.log("Email sent successfully");
+    console.debug("Email sent successfully");
     return new Response(
       JSON.stringify({ success: true, message: "Email sent" }),
       {
