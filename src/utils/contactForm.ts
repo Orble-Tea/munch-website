@@ -107,7 +107,7 @@ function initForm(): void {
     try {
       if (typeof umami !== "undefined") {
         umami.track("form_submission", {
-          honeypot_value: honeypotValue ? "true" : "false",
+          honeypot_present: honeypotValue ? "true" : "false",
           is_spam: String(isSpam),
         });
       }
