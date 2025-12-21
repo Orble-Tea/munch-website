@@ -4,10 +4,10 @@ import Mailgun from "mailgun.js";
 import { z } from "zod";
 
 dotenv.config();
+const CONTACT_EMAIL = process.env.CONTACT_EMAIL;
 
 // Zod schema for email validation
 const emailSchema = z.object({
-  to: z.string().trim().email("Recipient email must be valid"),
   subject: z.string().min(1, "Subject is required"),
   text: z.string().min(1, "Message must be nonempty"),
   html: z.string().optional(),
@@ -15,18 +15,66 @@ const emailSchema = z.object({
   website: z.string().optional(),
 });
 
-// Type from Zod schema
 type EmailData = z.infer<typeof emailSchema>;
 
 /**
- * Handle POST requests to send email through Mailgun.
- * @param {{ request: Request }} params - API context object containing the incoming request.
- * @param {Request} params.request - The incoming Request object.
- * @returns {Promise<Response>} A JSON response indicating success or failure.
+ * Track events to Umami analytics
+ * @param request
+ * @param eventName
+ * @param eventData
  */
-export async function POST(params: { request: Request }): Promise<Response> {
-  const { request } = params;
+async function trackUmamiEvent(
+  request: Request,
+  eventName: string,
+  eventData: Record<string, string> = {},
+): Promise<void> {
+  try {
+    if (!process.env.UMAMI_WEBSITE_ID || !process.env.UMAMI_ENDPOINT) {
+      console.warn("Umami environment variables not configured");
+      return;
+    }
 
+    const url = new URL(request.url);
+
+    const payload = {
+      type: "event",
+      payload: {
+        website: process.env.UMAMI_WEBSITE_ID,
+        name: eventName,
+        data: eventData,
+      },
+    };
+
+    const response = await fetch(`${process.env.UMAMI_ENDPOINT}/api/send`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "User-Agent":
+          request.headers.get("user-agent") || "Mozilla/5.0 (Server)",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      console.error(`Umami tracking failed with status: ${response.status}`);
+    } else {
+      console.debug("Umami tracking success");
+    }
+  } catch (error) {
+    console.error("Umami tracking error:", error);
+  }
+}
+
+/**
+ * Handle POST requests to send email through Mailgun.
+ * @param root0
+ * @param root0.request
+ */
+export async function POST({
+  request,
+}: {
+  request: Request;
+}): Promise<Response> {
   try {
     const emailData: unknown = await request.json();
     const validationResult = emailSchema.safeParse(emailData);
@@ -39,12 +87,14 @@ export async function POST(params: { request: Request }): Promise<Response> {
           message: "Validation failed",
           errors,
         }),
-        { status: 400 },
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json" },
+        },
       );
     }
 
     const {
-      to,
       subject,
       text,
       html,
@@ -52,12 +102,20 @@ export async function POST(params: { request: Request }): Promise<Response> {
       website,
     } = validationResult.data as EmailData;
 
+    // Track the form submission with honeypot status
+    trackUmamiEvent(request, "form_received", {
+      is_spam: website ? "true" : "false",
+    });
+
     // Honeypot trap—if filled, silently accept
     if (website) {
-      console.log("Honeypot triggered");
+      console.debug("Honeypot triggered - returning fake success");
       return new Response(
         JSON.stringify({ success: true, message: "Form received" }),
-        { status: 200 },
+        {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        },
       );
     }
 
@@ -73,24 +131,35 @@ export async function POST(params: { request: Request }): Promise<Response> {
 
     const messageData = {
       from: "Munch Industries <postmaster@mg.munch-industries.com>",
-      to,
+      to: CONTACT_EMAIL,
       subject,
       text,
-      html,
+      ...(html && { html }),
       ...(replyTo && { "h:Reply-To": replyTo }),
     };
 
     await mg.messages.create("mg.munch-industries.com", messageData);
 
+    console.debug("Email sent successfully");
     return new Response(
       JSON.stringify({ success: true, message: "Email sent" }),
-      { status: 200 },
+      {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      },
     );
   } catch (error) {
-    console.error("Mailgun error:", error);
+    console.error("Email sending error:", error);
     return new Response(
-      JSON.stringify({ success: false, message: "Failed to send email" }),
-      { status: 500 },
+      JSON.stringify({
+        success: false,
+        message:
+          error instanceof Error ? error.message : "Failed to send email",
+      }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      },
     );
   }
 }
