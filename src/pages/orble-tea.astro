@@ -16,64 +16,83 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-    <div
-      class="justify-left ml-[10%] mt-10 flex items-center gap-4 max-sm:ml-0 max-sm:justify-center"
-    >
-      <Image src={logo} alt="Orble Logo" width={140} class="max-sm:w-20" />
-      <div class="flex flex-col">
-        <div class="flex items-baseline gap-2">
-          <h1
-            class="font-staatliches leading-none tracking-tight text-9xl max-sm:text-7xl"
-          >
-            ORBLE
-          </h1>
-        </div>
-        <p
-          class="font-sans -mt-3 ml-1 tracking-[0.1em] text-base max-sm:-mt-2 max-sm:text-sm"
+  <div
+    class="justify-left ml-[10%] mt-10 flex items-center gap-4 max-sm:ml-0 max-sm:justify-center"
+  >
+    <Image src={logo} alt="Orble Logo" width={140} class="max-sm:w-20" />
+    <div class="flex flex-col">
+      <div class="flex items-baseline gap-2">
+        <h1
+          class="font-staatliches text-9xl leading-none tracking-tight max-sm:text-7xl"
         >
-          a fully au<span class="font-bold italic">tea</span>matic boba machine
-        </p>
+          ORBLE
+        </h1>
       </div>
+      <p
+        class="-mt-3 ml-1 font-sans text-base tracking-[0.1em] max-sm:-mt-2 max-sm:text-sm"
+      >
+        a fully au<span class="font-bold italic">tea</span>matic boba machine
+      </p>
     </div>
+  </div>
 
-  <div class="orble-tea-bg-one w-screen pb-2 font-serif -mt-10 max-sm:-mt-12">
-    <div class="mx-[10%] grid grid-cols-1 gap-10 sm:grid-cols-2 max-sm:flex max-sm:flex-col max-sm:gap-6">
+  <div class="orble-tea-bg-one -mt-10 w-screen pb-2 font-serif max-sm:-mt-12">
+    <div
+      class="mx-[10%] grid grid-cols-1 gap-10 max-sm:flex max-sm:flex-col max-sm:gap-6 sm:grid-cols-2"
+    >
       <div class="col-span-1 row-span-1 mt-20">
         <div class="max-sm:text-center">
           <span
-            class="inline align-baseline font-staatliches leading-none text-white text-6xl max-sm:text-6xl lg:text-7xl"
+            class="inline align-baseline font-staatliches text-6xl leading-none text-white max-sm:text-6xl lg:text-7xl"
           >
             ORBLE
           </span>
         </div>
         <h3
-          class="font-medium italic tracking-normal text-white text-2xl max-sm:text-center"
+          class="text-2xl font-medium italic tracking-normal text-white max-sm:text-center"
         >
           is a revolutionary boba tea machine
         </h3>
         <h3
-          class="font-medium font-sans text-lg my-6 tracking-normal max-sm:text-center"
+          class="my-6 font-sans text-lg font-medium tracking-normal max-sm:text-center"
         >
           Orble is the only machine that can cook both tapioca pearls and tea,
           designed to deliver freshly brewed bubble tea with unparalleled
           convenience and customization.
         </h3>
       </div>
-      <div class="col-span-1 row-span-2 flex items-center justify-center max-sm:order-2">
-        <Image src={cad} alt="Orble Machine 3d render" width={600} class="w-full max-w-[500px] h-auto" />
+      <div
+        class="col-span-1 row-span-2 flex items-center justify-center max-sm:order-2"
+      >
+        <Image
+          src={cad}
+          alt="Orble Machine 3d render"
+          width={600}
+          class="h-auto w-full max-w-[500px]"
+        />
       </div>
-      <div class="col-span-1 row-span-2 mt-2 flex items-start justify-center max-sm:order-3 max-sm:mt-0">
-        <video width="500" autoplay loop muted playsinline id="orble-video" class="w-full max-w-[500px] h-auto">
+      <div
+        class="col-span-1 row-span-2 mt-2 flex items-start justify-center max-sm:order-3 max-sm:mt-0"
+      >
+        <video
+          width="500"
+          autoplay
+          loop
+          muted
+          playsinline
+          id="orble-video"
+          class="h-auto w-full max-w-[500px]"
+        >
           <source src="/render-video.mp4" type="video/mp4" />
           Your browser does not support this video.
         </video>
       </div>
-      <div class="col-span-1 row-span-1 max-sm:text-center flex flex-col justify-center max-sm:order-4">
+      <div
+        class="col-span-1 row-span-1 flex flex-col justify-center max-sm:order-4 max-sm:text-center"
+      >
         <div>
-          <span class="text-lg mt-6 tracking-normal max-sm:mt-0"
-            >With its</span
-          >
-          <span class="ml-2 italic tracking-normal text-3xl"
+          <span class="mt-6 text-lg tracking-normal max-sm:mt-0">With its</span>
+          <span class="ml-2 text-3xl italic tracking-normal"
             >sleek and compact design,</span
           >
           <h3 class="text-l tracking-normal">
@@ -82,14 +101,23 @@ const metadata = {
             a button.
           </h3>
         </div>
-        <Image src={tealbar} alt="Bar" width={400} class="mx-auto mt-10 max-sm:mt-6" />
+        <Image
+          src={tealbar}
+          alt="Bar"
+          width={400}
+          class="mx-auto mt-10 max-sm:mt-6"
+        />
       </div>
     </div>
 
     <div class="mt-12 flex flex-col items-center lg:mx-[10%] lg:mt-24">
-      <div class="w-full max-w-[1400px] flex flex-col lg:flex-row items-center lg:items-start justify-center">
+      <div
+        class="flex w-full max-w-[1400px] flex-col items-center justify-center lg:flex-row lg:items-start"
+      >
         <!-- Machine Image -->
-        <div class="flex justify-center lg:justify-start z-10 mb-[-80px] lg:mb-0 lg:mr-[-80px]">
+        <div
+          class="z-10 mb-[-80px] flex justify-center lg:mb-0 lg:mr-[-80px] lg:justify-start"
+        >
           <Image
             src={orblemachine}
             alt="Orble Machines"
@@ -98,23 +126,29 @@ const metadata = {
         </div>
 
         <!-- Specifications Box -->
-        <div class="relative flex flex-col items-center px-4 lg:px-0 w-full lg:w-auto">
+        <div
+          class="relative flex w-full flex-col items-center px-4 lg:w-auto lg:px-0"
+        >
           <!-- Blue rounded box -->
-          <div class="relative w-full max-w-[750px] border-4 border-[#B1D9CD] rounded-[40px] p-8 pt-20 lg:pt-12 lg:p-12 lg:pl-24 bg-[#FDF8F0]">
-            <h3 class="text-3xl italic tracking-normal  underline text-center mb-8">
+          <div
+            class="relative w-full max-w-[750px] rounded-[40px] border-4 border-[#B1D9CD] bg-[#FDF8F0] p-8 pt-20 lg:p-12 lg:pl-24 lg:pt-12"
+          >
+            <h3
+              class="mb-8 text-center text-3xl italic tracking-normal underline"
+            >
               Specifications
             </h3>
-            
-            <div class="flex flex-col gap-6 mb-12 text-center">
+
+            <div class="mb-12 flex flex-col gap-6 text-center">
               <div>
-                <h3 class="text-l tracking-normal ">
+                <h3 class="text-l tracking-normal">
                   <span class="font-bold">Dimensions:</span><br />
                   70 inches (H) x 35.5 inches (W) x 35.5 inches (D)
                 </h3>
               </div>
 
               <div>
-                <h3 class="text-l tracking-normal ">
+                <h3 class="text-l tracking-normal">
                   <span class="font-bold">Weight:</span><br />
                   771 lb. (fully loaded, including water)<br />
                   716 lb. (empty weight)<br />
@@ -123,14 +157,14 @@ const metadata = {
               </div>
 
               <div>
-                <h3 class="text-l tracking-normal ">
+                <h3 class="text-l tracking-normal">
                   <span class="font-bold">Capacity:</span><br />
                   Up to 12 different flavors of tea and toppings
                 </h3>
               </div>
 
               <div>
-                <h3 class="text-l tracking-normal ">
+                <h3 class="text-l tracking-normal">
                   <span class="font-bold">Power:</span><br />
                   Requires a dedicated 15A outlet, 120V circuit<br />
                   Ice maker requires a separate 15A
@@ -139,18 +173,24 @@ const metadata = {
             </div>
 
             <!-- Icons and additional specifications -->
-            <div class="flex flex-col gap-8 lg:gap-6 mt-8">
+            <div class="mt-8 flex flex-col gap-8 lg:gap-6">
               <!-- Interface -->
               <SpecItem title="Interface">
-                <svg 
+                <svg
                   slot="icon"
-                  xmlns="http://www.w3.org/2000/svg" 
-                  class="w-6 h-6 lg:w-8 lg:h-8" 
-                  viewBox="0 0 24 24" 
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 lg:h-8 lg:w-8"
+                  viewBox="0 0 24 24"
                   fill="white"
                 >
-                  <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" fill="none"/>
-                  <circle cx="12" cy="12" r="3" fill="white"/>
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="white"
+                    stroke-width="2"
+                    fill="none"></circle>
+                  <circle cx="12" cy="12" r="3" fill="white"></circle>
                 </svg>
                 <Fragment slot="default">
                   Intuitive touchscreen display for easy operation
@@ -158,19 +198,20 @@ const metadata = {
               </SpecItem>
 
               <SpecItem title="Customization">
-                <svg 
+                <svg
                   slot="icon"
-                  xmlns="http://www.w3.org/2000/svg" 
+                  xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  class="w-6 h-6 lg:w-8 lg:h-8" 
+                  class="h-6 w-6 lg:h-8 lg:w-8"
                   fill="none"
-                  stroke="currentColor" 
-                  stroke-width="2" 
-                  stroke-linecap="round" 
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
                   stroke-linejoin="round"
                 >
-                  <path d="M12 20h9" />
-                  <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4L16.5 3.5z" />
+                  <path d="M12 20h9"></path>
+                  <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4L16.5 3.5z"
+                  ></path>
                 </svg>
                 <Fragment slot="default">
                   Adjustable sugar levels, ice levels, and topping combinations
@@ -179,20 +220,26 @@ const metadata = {
 
               <!-- Cleaning -->
               <SpecItem title="Cleaning">
-                <svg 
+                <svg
                   slot="icon"
-                  xmlns="http://www.w3.org/2000/svg" 
+                  xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  class="w-6 h-6 lg:w-8 lg:h-8" 
+                  class="h-6 w-6 lg:h-8 lg:w-8"
                   fill="none"
-                  stroke="currentColor" 
-                  stroke-width="2" 
-                  stroke-linecap="round" 
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
                   stroke-linejoin="round"
                 >
-                  <path d="M12 2l1.2 3.6L17 7l-3.8 1.4L12 12l-1.2-3.6L7 7l3.8-1.4L12 2z" />
-                  <path d="M5 12l.7 2.1L8 15l-2.3.9L5 18l-.7-2.1L2 15l2.3-.9L5 12z" />
-                  <path d="M19 13l.7 2.1L22 16l-2.3.9L19 19l-.7-2.1L16 16l2.3-.9L19 13z" />
+                  <path
+                    d="M12 2l1.2 3.6L17 7l-3.8 1.4L12 12l-1.2-3.6L7 7l3.8-1.4L12 2z"
+                  ></path>
+                  <path
+                    d="M5 12l.7 2.1L8 15l-2.3.9L5 18l-.7-2.1L2 15l2.3-.9L5 12z"
+                  ></path>
+                  <path
+                    d="M19 13l.7 2.1L22 16l-2.3.9L19 19l-.7-2.1L16 16l2.3-.9L19 13z"
+                  ></path>
                 </svg>
                 <Fragment slot="default">
                   Self-cleaning system for hassle-free maintenance
@@ -205,40 +252,47 @@ const metadata = {
     </div>
   </div>
 
-<div class="max-w-6xl mx-auto mt-8 px-4 sm:px-6">
-  <div class="bg-[#FFF9F0] rounded-2xl p-2 md:p-3">
-    <div class="bg-white rounded-2xl px-8 py-10 md:px-16 md:py-12">
-      <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 lg:gap-12">
-        
-        <!-- Lease Fee -->
-        <div class="flex flex-col md:flex-row items-center gap-3 md:gap-4">
-          <span class="text-xl md:text-2xl font-medium italic whitespace-nowrap">
-            Lease Fee:
-          </span>
-          <div class="bg-[#A8D5BA] rounded-full px-8 py-3 md:px-10 md:py-4">
-            <span class="text-white text-2xl md:text-3xl font-semibold whitespace-nowrap">
-              $320 per month
+  <div class="mx-auto mt-8 max-w-6xl px-4 sm:px-6">
+    <div class="rounded-2xl bg-[#FFF9F0] p-2 md:p-3">
+      <div class="rounded-2xl bg-white px-8 py-10 md:px-16 md:py-12">
+        <div
+          class="flex flex-col items-center justify-center gap-6 md:flex-row md:gap-8 lg:gap-12"
+        >
+          <!-- Lease Fee -->
+          <div class="flex flex-col items-center gap-3 md:flex-row md:gap-4">
+            <span
+              class="whitespace-nowrap text-xl font-medium italic md:text-2xl"
+            >
+              Lease Fee:
             </span>
+            <div class="rounded-full bg-[#A8D5BA] px-8 py-3 md:px-10 md:py-4">
+              <span
+                class="whitespace-nowrap text-2xl font-semibold text-white md:text-3xl"
+              >
+                $320 per month
+              </span>
+            </div>
+          </div>
+
+          <!-- Purchase Price -->
+          <div class="flex flex-col items-center gap-3 md:flex-row md:gap-4">
+            <span
+              class="whitespace-nowrap text-xl font-medium italic md:text-2xl"
+            >
+              Purchase Price:
+            </span>
+            <div class="rounded-full bg-[#A8D5BA] px-8 py-3 md:px-10 md:py-4">
+              <span
+                class="whitespace-nowrap text-2xl font-semibold text-white md:text-3xl"
+              >
+                $24,000
+              </span>
+            </div>
           </div>
         </div>
-
-        <!-- Purchase Price -->
-        <div class="flex flex-col md:flex-row items-center gap-3 md:gap-4">
-          <span class="text-xl md:text-2xl font-medium italic whitespace-nowrap">
-            Purchase Price:
-          </span>
-          <div class="bg-[#A8D5BA] rounded-full px-8 py-3 md:px-10 md:py-4">
-            <span class="text-white text-2xl md:text-3xl font-semibold whitespace-nowrap">
-              $24,000
-            </span>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
-</div>
-
 
   <div id="features" class="z-10 mt-8 flex justify-center font-serif">
     <div
@@ -335,10 +389,7 @@ const metadata = {
         >GET STARTED WITH ORBLE</button
       >
     </a>
-    <div
-      class="hidden h-[4px] w-[80%] rounded-full bg-[#B1D9CD]"
-    >
-    </div>
+    <div class="hidden h-[4px] w-[80%] rounded-full bg-[#B1D9CD]"></div>
     <div class="-mb-12 flex justify-center lg:mt-[-271px]">
       <Image
         src={getStartedBg}

@@ -34,8 +34,6 @@ async function trackUmamiEvent(
       return;
     }
 
-    const url = new URL(request.url);
-
     const payload = {
       type: "event",
       payload: {
@@ -69,6 +67,7 @@ async function trackUmamiEvent(
  * Handle POST requests to send email through Mailgun.
  * @param root0
  * @param root0.request
+ * @returns Response
  */
 export async function POST({
   request,
