@@ -3,11 +3,9 @@ import Layout from "~/layouts/PageLayout.astro";
 // import Image from "~/components/common/Image.astro";
 import { Image } from "astro:assets";
 
-import orblelogo from "~/assets/images/orble-page-logo.png";
+import logo from "~/assets/images/logo_inkscape.svg";
 import tealbar from "~/assets/images/teal-bar.png";
 import cad from "~/assets/images/cad-render.png";
-import twomachines from "~/assets/images/two-machine-render.png";
-import pricing from "~/assets/images/pricing.svg";
 import getStartedBg from "~/assets/images/bg-design/orble-get-started-bg.png";
 import orblemachine from "~/assets/images/orble-machine.png";
 
@@ -17,57 +15,73 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <div class="my-10 ml-[10%] flex justify-start">
-    <Image src={orblelogo} alt="Orble Logo" width={700} />
-  </div>
+    <div
+      class="justify-left ml-[10%] mt-10 flex items-center gap-4 max-sm:ml-0 max-sm:justify-center"
+    >
+      <Image src={logo} alt="Orble Logo" width={140} class="max-sm:w-20" />
+      <div class="flex flex-col">
+        <div class="flex items-baseline gap-2">
+          <h1
+            class="font-staatliches leading-none tracking-tight text-9xl max-sm:text-7xl"
+          >
+            ORBLE
+          </h1>
+        </div>
+        <p
+          class="font-sans -mt-3 ml-1 tracking-[0.1em] text-base max-sm:-mt-2 max-sm:text-sm"
+        >
+          a fully au<span class="font-bold italic">tea</span>matic boba machine
+        </p>
+      </div>
+    </div>
 
-  <div class="orble-tea-bg-one w-screen pb-2 font-serif">
-    <div class="mx-[10%] grid grid-cols-1 gap-10 gap-y-2 sm:grid-cols-2">
+  <div class="orble-tea-bg-one w-screen pb-2 font-serif -mt-10 max-sm:-mt-12">
+    <div class="mx-[10%] grid grid-cols-1 gap-10 sm:grid-cols-2 max-sm:flex max-sm:flex-col max-sm:gap-6">
       <div class="col-span-1 row-span-1 mt-20">
         <div class="max-sm:text-center">
           <span
-            class="inline align-baseline font-heading leading-none text-white text-6xl max-sm:text-6xl lg:text-6xl"
+            class="inline align-baseline font-staatliches leading-none text-white text-6xl max-sm:text-6xl lg:text-7xl"
           >
             ORBLE
           </span>
         </div>
         <h3
-          class="italic tracking-normal text-white text-2xl max-sm:text-center"
+          class="font-medium italic tracking-normal text-white text-2xl max-sm:text-center"
         >
           is a revolutionary boba tea machine
         </h3>
         <h3
-          class="text-munch-blue my-6 tracking-normal text-sm max-sm:text-center"
+          class="font-medium font-sans text-lg my-6 tracking-normal max-sm:text-center"
         >
           Orble is the only machine that can cook both tapioca pearls and tea,
           designed to deliver freshly brewed bubble tea with unparalleled
           convenience and customization.
         </h3>
       </div>
-      <div class="col-span-1 row-span-2 flex items-center justify-center">
-        <Image src={cad} alt="Orble Machine 3d render" width={600} class="w-full max-w-[600px] h-auto" />
+      <div class="col-span-1 row-span-2 flex items-center justify-center max-sm:order-2">
+        <Image src={cad} alt="Orble Machine 3d render" width={600} class="w-full max-w-[500px] h-auto" />
       </div>
-      <div class="col-span-1 row-span-2 my-12 flex items-start justify-center">
+      <div class="col-span-1 row-span-2 mt-2 flex items-start justify-center max-sm:order-3 max-sm:mt-0">
         <video width="500" autoplay loop muted playsinline id="orble-video" class="w-full max-w-[500px] h-auto">
-          <source src="/next-gen-render-video.mp4" type="video/mp4" />
+          <source src="/render-video.mp4" type="video/mp4" />
           Your browser does not support this video.
         </video>
       </div>
-      <div class="col-span-1 row-span-1 max-sm:text-center flex flex-col justify-center">
+      <div class="col-span-1 row-span-1 max-sm:text-center flex flex-col justify-center max-sm:order-4">
         <div>
-          <span class="text-l text-munch-blue mt-6 tracking-normal"
+          <span class="text-lg mt-6 tracking-normal max-sm:mt-0"
             >With its</span
           >
-          <span class="text-munch-blue ml-2 italic tracking-normal text-3xl"
+          <span class="ml-2 italic tracking-normal text-3xl"
             >sleek and compact design,</span
           >
-          <h3 class="text-l text-munch-blue tracking-normal">
+          <h3 class="text-l tracking-normal">
             Orble seamlessly integrates into any food service environment,
             offering customers a delightful boba tea experience at the touch of
             a button.
           </h3>
         </div>
-        <Image src={tealbar} alt="Bar" width={400} class="mx-auto mt-10" />
+        <Image src={tealbar} alt="Bar" width={400} class="mx-auto mt-10 max-sm:mt-6" />
       </div>
     </div>
 
@@ -86,20 +100,20 @@ const metadata = {
         <div class="relative flex flex-col items-center px-4 lg:px-0 w-full lg:w-auto">
           <!-- Blue rounded box -->
           <div class="relative w-full max-w-[750px] border-4 border-[#B1D9CD] rounded-[40px] p-8 pt-20 lg:pt-12 lg:p-12 lg:pl-24 bg-[#FDF8F0]">
-            <h3 class="text-3xl italic tracking-normal text-munch-blue underline text-center mb-8">
+            <h3 class="text-3xl italic tracking-normal  underline text-center mb-8">
               Specifications
             </h3>
             
             <div class="flex flex-col gap-6 mb-12 text-center">
               <div>
-                <h3 class="text-l tracking-normal text-munch-blue">
+                <h3 class="text-l tracking-normal ">
                   <span class="font-bold">Dimensions:</span><br />
                   70 inches (H) x 35.5 inches (W) x 35.5 inches (D)
                 </h3>
               </div>
 
               <div>
-                <h3 class="text-l tracking-normal text-munch-blue">
+                <h3 class="text-l tracking-normal ">
                   <span class="font-bold">Weight:</span><br />
                   771 lb. (fully loaded, including water)<br />
                   716 lb. (empty weight)<br />
@@ -108,14 +122,14 @@ const metadata = {
               </div>
 
               <div>
-                <h3 class="text-l tracking-normal text-munch-blue">
+                <h3 class="text-l tracking-normal ">
                   <span class="font-bold">Capacity:</span><br />
                   Up to 12 different flavors of tea and toppings
                 </h3>
               </div>
 
               <div>
-                <h3 class="text-l tracking-normal text-munch-blue">
+                <h3 class="text-l tracking-normal ">
                   <span class="font-bold">Power:</span><br />
                   Requires a dedicated 15A outlet, 120V circuit<br />
                   Ice maker requires a separate 15A
@@ -134,7 +148,7 @@ const metadata = {
                   </svg>
                 </div>
                 <div class="text-left">
-                  <h3 class="text-base lg:text-l tracking-normal text-munch-blue">
+                  <h3 class="text-base lg:text-l tracking-normal ">
                     <span class="font-bold">Interface:</span> Intuitive touchscreen display for easy operation
                   </h3>
                 </div>
@@ -148,7 +162,7 @@ const metadata = {
                   </svg>
                 </div>
                 <div class="text-left">
-                  <h3 class="text-base lg:text-l tracking-normal text-munch-blue">
+                  <h3 class="text-base lg:text-l tracking-normal ">
                     <span class="font-bold">Customization:</span> Adjustable sugar levels, ice levels, and topping combinations
                   </h3>
                 </div>
@@ -162,7 +176,7 @@ const metadata = {
                   </svg>
                 </div>
                 <div class="text-left">
-                  <h3 class="text-base lg:text-l tracking-normal text-munch-blue">
+                  <h3 class="text-base lg:text-l tracking-normal ">
                     <span class="font-bold">Cleaning:</span> Self-cleaning system for hassle-free maintenance
                   </h3>
                 </div>
@@ -174,9 +188,40 @@ const metadata = {
     </div>
   </div>
 
-  <div class="mt-10 flex justify-center">
-    <Image src={pricing} alt="Orble Pricing" width={1000} />
+<div class="max-w-6xl mx-auto mt-8 md:mt-8">
+  <div class="bg-[#FFF9F0] rounded-2xl p-2 md:p-3">
+    <div class="bg-white rounded-2xl px-8 py-10 md:px-16 md:py-12">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 lg:gap-12">
+        
+        <!-- Lease Fee -->
+        <div class="flex flex-col md:flex-row items-center gap-3 md:gap-4">
+          <span class="text-xl md:text-2xl font-medium italic whitespace-nowrap">
+            Lease Fee:
+          </span>
+          <div class="bg-[#A8D5BA] rounded-full px-8 py-3 md:px-10 md:py-4">
+            <span class="text-white text-2xl md:text-3xl font-semibold whitespace-nowrap">
+              $320 per month
+            </span>
+          </div>
+        </div>
+
+        <!-- Purchase Price -->
+        <div class="flex flex-col md:flex-row items-center gap-3 md:gap-4">
+          <span class="text-xl md:text-2xl font-medium italic whitespace-nowrap">
+            Purchase Price:
+          </span>
+          <div class="bg-[#A8D5BA] rounded-full px-8 py-3 md:px-10 md:py-4">
+            <span class="text-white text-2xl md:text-3xl font-semibold whitespace-nowrap">
+              $24,000
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
+</div>
+
 
   <div id="features" class="z-10 mt-8 flex justify-center font-serif">
     <div
@@ -268,16 +313,26 @@ const metadata = {
 
   <div class="mb-24 h-auto w-full">
     <a href="/contact" class="no-underline hover:no-underline">
+    <div class="mt-16 flex justify-center lg:justify-start lg:pl-64 lg:mt-32">
       <button
-        class="get-started m-auto mt-16 flex h-[92px] w-[90%] items-center justify-center rounded-[11px] border-[3px] border-black bg-[#B1D9CD] font-serif max-lg:py-20 lg:ml-[273px] lg:mt-[134px] lg:w-[482px]"
-        >GET STARTED WITH ORBLE</button
+        class="
+          get-started
+          w-full max-w-md
+          flex items-center justify-center
+          rounded-lg border-2 border-[#B1D9CD] bg-[#B1D9CD]
+          font-serif
+
+          py-3 text-base
+          sm:py-4 sm:text-lg
+          lg:py-6 lg:text-2xl
+        "
       >
-    </a>
-    <div
-      class="mt-[50px] hidden h-[4px] w-[80%] rounded-full bg-[#B1D9CD] lg:block lg:w-[755px]"
-    >
+        GET STARTED WITH ORBLE
+      </button>
     </div>
-    <div class="-mb-12 flex justify-center lg:mt-[-271px]">
+    </a>
+    </div>
+    <div class="flex justify-center lg:mt-[-271px]">
       <Image
         src={getStartedBg}
         alt="Background"
