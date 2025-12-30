@@ -235,14 +235,10 @@ const metadata = {
         <div class="flex flex-col">
           <Image src={boba} alt="Boba Icon" width={80} />
           <div>
-            <h3
-              class="mt-5 text-3xl font-light tracking-normal text-munch-blue"
-            >
+            <h3 class="mt-5 text-3xl font-light tracking-normal">
               bubble tea machine
             </h3>
-            <h3
-              class="mb-10 text-3xl font-semibold tracking-normal text-munch-blue underline"
-            >
+            <h3 class="mb-10 text-3xl font-semibold tracking-normal underline">
               <a href="/orble-tea">Orble</a>
             </h3>
           </div>
@@ -250,14 +246,10 @@ const metadata = {
         <div class="flex flex-col">
           <Image src={dumpling} alt="Dumpling Icon" width={80} />
           <div>
-            <h3
-              class="mt-5 text-3xl font-light tracking-normal text-munch-blue"
-            >
+            <h3 class="mt-5 text-3xl font-light tracking-normal">
               dumpling machine
             </h3>
-            <h3
-              class="mb-10 text-3xl font-semibold tracking-normal text-munch-blue"
-            >
+            <h3 class="mb-10 text-3xl font-semibold tracking-normal">
               incoming
             </h3>
           </div>
@@ -265,14 +257,10 @@ const metadata = {
         <div class="mb-14 flex flex-col">
           <Image src={smoothie} alt="Smoothie Icon" width={80} />
           <div>
-            <h3
-              class="mt-5 text-3xl font-light tracking-normal text-munch-blue"
-            >
+            <h3 class="mt-5 text-3xl font-light tracking-normal">
               smoothie machine
             </h3>
-            <h3
-              class="mb-10 text-3xl font-semibold tracking-normal text-munch-blue"
-            >
+            <h3 class="mb-10 text-3xl font-semibold tracking-normal">
               incoming
             </h3>
           </div>
@@ -282,7 +270,7 @@ const metadata = {
 
     <div class="bg-[#fff9ef] py-24 lg:bg-transparent lg:pt-40">
       <div class="flex justify-center">
-        <h3 class="text-center text-3xl tracking-normal text-munch-blue">
+        <h3 class="text-center text-3xl tracking-normal">
           Break into the growing bubble tea market with
         </h3>
       </div>
@@ -290,26 +278,44 @@ const metadata = {
         <Image src={threedots} alt="Three Dots" width={70} height={13} />
       </div>
       <div class="fourbytwogrid max-lg:grid-cols-1 lg:mt-12">
-        <div class="col-span-1 row-span-2 h-auto">
-          <Image
-            src={orblemachine}
-            alt="Orble Machine"
-            width={400}
-            class="mx-auto"
-          />
+        <!-- Left column: 2 boba images stacked -->
+        <div class="col-span-1 row-span-1 flex items-center justify-center">
+          <Image src={classic} alt="Classic Milk Tea" width={150} />
         </div>
-        <div class="col-span-2 row-span-1">
+
+        <!-- Center column: Logo and tagline -->
+        <div class="col-span-2 row-span-1 flex flex-col justify-center">
           <Image src={orblelogo} alt="Orble Logo" width={600} class="mx-auto" />
-          <h3 class="text-center text-3xl tracking-normal text-munch-blue">
+          <h3 class="text-center text-3xl tracking-normal">
             a fully au<span class="mr-1 font-bold italic">tea</span>matic boba
             machine
           </h3>
         </div>
-        <div class="col-span-1 row-span-1 flex justify-center">
-          <Image src={classic} alt="Classic Milk Tea" width={150} />
+
+        <!-- Right column: Machine image -->
+        <div
+          class="col-span-1 row-span-2 flex h-auto items-center justify-center"
+        >
+          <Image
+            src={orblemachine}
+            alt="Orble Machine"
+            width={800}
+            class="mx-auto"
+          />
         </div>
-        <div class="col-span-2 row-span-1 flex flex-row justify-center">
-          <div class="absolute z-10 mt-8">
+
+        <!-- Left column: Second boba image -->
+        <div
+          class="col-span-1 row-span-1 mx-auto flex w-auto max-w-[300px] items-center"
+        >
+          <Image src={threebobas} alt="Three Bobas" />
+        </div>
+
+        <!-- Center column: Learn more button with boba design -->
+        <div
+          class="col-span-2 row-span-1 flex flex-row items-center justify-center"
+        >
+          <div class="absolute z-10">
             <a href="/orble-tea">
               <Button
                 text="LEARN MORE"
@@ -321,9 +327,6 @@ const metadata = {
           <div class="relative flex justify-center">
             <Image src={bobagroup} alt="Boba Design" />
           </div>
-        </div>
-        <div class="col-span-1 row-span-1 mx-auto w-auto max-w-[300px]">
-          <Image src={threebobas} alt="Three Bobas" />
         </div>
       </div>
     </div>
@@ -337,12 +340,8 @@ const metadata = {
           <Image src={dumplingdesign} alt="Dumpling Design" width={330} />
         </div>
         <div class="col-span-3 row-span-1 lg:-mt-16 xl:mt-16">
-          <h3 class="flex text-5xl tracking-normal text-munch-blue">
-            dumpling machine
-          </h3>
-          <h3 class="text-3xl font-bold tracking-normal text-munch-blue">
-            incoming
-          </h3>
+          <h3 class="flex text-5xl tracking-normal">dumpling machine</h3>
+          <h3 class="text-3xl font-bold tracking-normal">incoming</h3>
         </div>
       </div>
     </div>
@@ -353,12 +352,8 @@ const metadata = {
       <!-- Part 5 -->
       <div class="fourbyonegrid">
         <div class="col-span-3 row-span-1 lg:mt-10 xl:mt-20">
-          <h3 class="text-right text-5xl tracking-normal text-munch-blue">
-            smoothie machine
-          </h3>
-          <h3
-            class="text-right text-3xl font-bold tracking-normal text-munch-blue"
-          >
+          <h3 class="text-right text-5xl tracking-normal">smoothie machine</h3>
+          <h3 class="text-right text-3xl font-bold tracking-normal">
             incoming
           </h3>
         </div>

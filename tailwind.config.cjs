@@ -17,6 +17,7 @@ module.exports = {
         sans: ['Lato'],
         serif: ['var(--aw-font-serif)', ...defaultTheme.fontFamily.serif],
         heading: ['var(--aw-font-heading)', ...defaultTheme.fontFamily.sans],
+        staatliches: ['"Staatliches"', 'sans-serif'],
       },
       fontSize: {
         sm: '0.8rem',

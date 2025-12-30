@@ -1,0 +1,20 @@
+---
+const { title } = Astro.props;
+---
+
+<div class="flex items-center gap-4 lg:gap-6">
+  <!-- Icon circle -->
+  <div
+    class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#B1D9CD] text-white lg:h-14 lg:w-14"
+  >
+    <slot name="icon" />
+  </div>
+
+  <!-- Text -->
+  <div class="text-left">
+    <h3 class="text-base tracking-normal lg:text-lg">
+      <span class="font-bold">{title}:</span>
+      <slot />
+    </h3>
+  </div>
+</div>
