@@ -8,6 +8,7 @@ import tealbar from "~/assets/images/teal-bar.png";
 import cad from "~/assets/images/cad-render.png";
 import getStartedBg from "~/assets/images/bg-design/orble-get-started-bg.png";
 import orblemachine from "~/assets/images/orble-machine.png";
+import SpecItem from "~/components/widgets/SpecItem.astro";
 
 const metadata = {
   title: "Orble Tea",
@@ -140,47 +141,63 @@ const metadata = {
             <!-- Icons and additional specifications -->
             <div class="flex flex-col gap-8 lg:gap-6 mt-8">
               <!-- Interface -->
-              <div class="flex items-center gap-4 lg:gap-6">
-                <div class="flex-shrink-0 w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-[#B1D9CD] flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 lg:w-8 lg:h-8" viewBox="0 0 24 24" fill="white">
-                    <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" fill="none"/>
-                    <circle cx="12" cy="12" r="3" fill="white"/>
-                  </svg>
-                </div>
-                <div class="text-left">
-                  <h3 class="text-base lg:text-l tracking-normal ">
-                    <span class="font-bold">Interface:</span> Intuitive touchscreen display for easy operation
-                  </h3>
-                </div>
-              </div>
+              <SpecItem title="Interface">
+                <svg 
+                  slot="icon"
+                  xmlns="http://www.w3.org/2000/svg" 
+                  class="w-6 h-6 lg:w-8 lg:h-8" 
+                  viewBox="0 0 24 24" 
+                  fill="white"
+                >
+                  <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" fill="none"/>
+                  <circle cx="12" cy="12" r="3" fill="white"/>
+                </svg>
+                <Fragment slot="default">
+                  Intuitive touchscreen display for easy operation
+                </Fragment>
+              </SpecItem>
 
-              <!-- Customization -->
-              <div class="flex items-center gap-4 lg:gap-6">
-                <div class="flex-shrink-0 w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-[#B1D9CD] flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 lg:w-8 lg:h-8" viewBox="0 0 24 24" fill="white">
-                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="white"/>
-                  </svg>
-                </div>
-                <div class="text-left">
-                  <h3 class="text-base lg:text-l tracking-normal ">
-                    <span class="font-bold">Customization:</span> Adjustable sugar levels, ice levels, and topping combinations
-                  </h3>
-                </div>
-              </div>
+              <SpecItem title="Customization">
+                <svg 
+                  slot="icon"
+                  xmlns="http://www.w3.org/2000/svg" 
+                  viewBox="0 0 24 24"
+                  class="w-6 h-6 lg:w-8 lg:h-8" 
+                  fill="none"
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 20h9" />
+                  <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4L16.5 3.5z" />
+                </svg>
+                <Fragment slot="default">
+                  Adjustable sugar levels, ice levels, and topping combinations
+                </Fragment>
+              </SpecItem>
 
               <!-- Cleaning -->
-              <div class="flex items-center gap-4 lg:gap-6">
-                <div class="flex-shrink-0 w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-[#B1D9CD] flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 lg:w-8 lg:h-8" viewBox="0 0 24 24" fill="white">
-                    <rect x="3" y="3" width="18" height="18" rx="2" fill="white"/>
-                  </svg>
-                </div>
-                <div class="text-left">
-                  <h3 class="text-base lg:text-l tracking-normal ">
-                    <span class="font-bold">Cleaning:</span> Self-cleaning system for hassle-free maintenance
-                  </h3>
-                </div>
-              </div>
+              <SpecItem title="Cleaning">
+                <svg 
+                  slot="icon"
+                  xmlns="http://www.w3.org/2000/svg" 
+                  viewBox="0 0 24 24"
+                  class="w-6 h-6 lg:w-8 lg:h-8" 
+                  fill="none"
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 2l1.2 3.6L17 7l-3.8 1.4L12 12l-1.2-3.6L7 7l3.8-1.4L12 2z" />
+                  <path d="M5 12l.7 2.1L8 15l-2.3.9L5 18l-.7-2.1L2 15l2.3-.9L5 12z" />
+                  <path d="M19 13l.7 2.1L22 16l-2.3.9L19 19l-.7-2.1L16 16l2.3-.9L19 13z" />
+                </svg>
+                <Fragment slot="default">
+                  Self-cleaning system for hassle-free maintenance
+                </Fragment>
+              </SpecItem>
             </div>
           </div>
         </div>
@@ -188,7 +205,7 @@ const metadata = {
     </div>
   </div>
 
-<div class="max-w-6xl mx-auto mt-8 md:mt-8">
+<div class="max-w-6xl mx-auto mt-8 px-4 sm:px-6">
   <div class="bg-[#FFF9F0] rounded-2xl p-2 md:p-3">
     <div class="bg-white rounded-2xl px-8 py-10 md:px-16 md:py-12">
       <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 lg:gap-12">
@@ -313,26 +330,16 @@ const metadata = {
 
   <div class="mb-24 h-auto w-full">
     <a href="/contact" class="no-underline hover:no-underline">
-    <div class="mt-16 flex justify-center lg:justify-start lg:pl-64 lg:mt-32">
       <button
-        class="
-          get-started
-          w-full max-w-md
-          flex items-center justify-center
-          rounded-lg border-2 border-[#B1D9CD] bg-[#B1D9CD]
-          font-serif
-
-          py-3 text-base
-          sm:py-4 sm:text-lg
-          lg:py-6 lg:text-2xl
-        "
+        class="get-started m-auto mt-16 flex h-[92px] w-[90%] items-center justify-center rounded-[11px] border-[3px] border-black bg-[#B1D9CD] font-serif max-lg:py-20 lg:ml-[273px] lg:mt-[134px] lg:w-[482px]"
+        >GET STARTED WITH ORBLE</button
       >
-        GET STARTED WITH ORBLE
-      </button>
-    </div>
     </a>
+    <div
+      class="hidden h-[4px] w-[80%] rounded-full bg-[#B1D9CD]"
+    >
     </div>
-    <div class="flex justify-center lg:mt-[-271px]">
+    <div class="-mb-12 flex justify-center lg:mt-[-271px]">
       <Image
         src={getStartedBg}
         alt="Background"
