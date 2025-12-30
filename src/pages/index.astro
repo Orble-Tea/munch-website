@@ -290,26 +290,39 @@ const metadata = {
         <Image src={threedots} alt="Three Dots" width={70} height={13} />
       </div>
       <div class="fourbytwogrid max-lg:grid-cols-1 lg:mt-12">
-        <div class="col-span-1 row-span-2 h-auto">
-          <Image
-            src={orblemachine}
-            alt="Orble Machine"
-            width={400}
-            class="mx-auto"
-          />
+        <!-- Left column: 2 boba images stacked -->
+        <div class="col-span-1 row-span-1 flex justify-center items-center">
+          <Image src={classic} alt="Classic Milk Tea" width={150} />
         </div>
-        <div class="col-span-2 row-span-1">
+        
+        <!-- Center column: Logo and tagline -->
+        <div class="col-span-2 row-span-1 flex flex-col justify-center">
           <Image src={orblelogo} alt="Orble Logo" width={600} class="mx-auto" />
           <h3 class="text-center text-3xl tracking-normal text-munch-blue">
             a fully au<span class="mr-1 font-bold italic">tea</span>matic boba
             machine
           </h3>
         </div>
-        <div class="col-span-1 row-span-1 flex justify-center">
-          <Image src={classic} alt="Classic Milk Tea" width={150} />
+        
+        <!-- Right column: Machine image -->
+        <div class="col-span-1 row-span-2 h-auto flex items-center justify-center">
+          <Image
+            src={orblemachine}
+            alt="Orble Machine"
+            width={800}
+            class="mx-auto"
+          />
         </div>
-        <div class="col-span-2 row-span-1 flex flex-row justify-center">
-          <div class="absolute z-10 mt-8">
+
+        
+        <!-- Left column: Second boba image -->
+        <div class="col-span-1 row-span-1 mx-auto w-auto max-w-[300px] flex items-center">
+          <Image src={threebobas} alt="Three Bobas" />
+        </div>
+        
+        <!-- Center column: Learn more button with boba design -->
+        <div class="col-span-2 row-span-1 flex flex-row justify-center items-center">
+          <div class="absolute z-10">
             <a href="/orble-tea">
               <Button
                 text="LEARN MORE"
@@ -321,9 +334,6 @@ const metadata = {
           <div class="relative flex justify-center">
             <Image src={bobagroup} alt="Boba Design" />
           </div>
-        </div>
-        <div class="col-span-1 row-span-1 mx-auto w-auto max-w-[300px]">
-          <Image src={threebobas} alt="Three Bobas" />
         </div>
       </div>
     </div>

@@ -116,21 +116,19 @@ a:hover {
   background-size: 100% 19%, 100% 98.7%;
   background-position: 0px -100px, 0px 300px
 }
-
+/* 
 .orble-tea-bg-one{
   background-image: url("../images/bg-design/orble-tea-bg.png");
   background-repeat: no-repeat;
   background-size: 100% 97%;
   background-position: 0px 40px
-}
-@media (max-width: 1024px) {
+} */
   .orble-tea-bg-one {
     background-image: url("../images/bg-design/orble-tea-bg.svg");
     background-repeat: no-repeat; 
     background-position: 0px 40px;
     background-size: cover;
   }
-}
 
 
 .features-title {

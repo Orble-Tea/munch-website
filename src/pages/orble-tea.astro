@@ -2,15 +2,14 @@
 import Layout from "~/layouts/PageLayout.astro";
 // import Image from "~/components/common/Image.astro";
 import { Image } from "astro:assets";
-import Button from "~/components/ui/Button.astro";
 
 import orblelogo from "~/assets/images/orble-page-logo.png";
 import tealbar from "~/assets/images/teal-bar.png";
-import orblewhite from "~/assets/images/orble-white.png";
 import cad from "~/assets/images/cad-render.png";
 import twomachines from "~/assets/images/two-machine-render.png";
 import pricing from "~/assets/images/pricing.svg";
 import getStartedBg from "~/assets/images/bg-design/orble-get-started-bg.png";
+import orblemachine from "~/assets/images/orble-machine.png";
 
 const metadata = {
   title: "Orble Tea",
@@ -23,117 +22,155 @@ const metadata = {
   </div>
 
   <div class="orble-tea-bg-one w-screen pb-2 font-serif">
-    <div class="mx-[10%] flex flex-col gap-10 gap-y-2 lg:grid lg:grid-cols-2">
-      <div class="col-span-1 row-span-1 mt-28">
-        <Image
-          src={orblewhite}
-          alt="Orble"
-          width={200}
-          class="max-lg:mx-auto"
-        />
+    <div class="mx-[10%] grid grid-cols-1 gap-10 gap-y-2 sm:grid-cols-2">
+      <div class="col-span-1 row-span-1 mt-20">
+        <div class="max-sm:text-center">
+          <span
+            class="inline align-baseline font-heading leading-none text-white text-6xl max-sm:text-6xl lg:text-6xl"
+          >
+            ORBLE
+          </span>
+        </div>
         <h3
-          class="text-2xl italic tracking-normal text-white max-lg:text-center"
+          class="italic tracking-normal text-white text-2xl max-sm:text-center"
         >
           is a revolutionary boba tea machine
         </h3>
         <h3
-          class="text-md my-6 tracking-normal text-munch-blue max-lg:text-center"
+          class="text-munch-blue my-6 tracking-normal text-sm max-sm:text-center"
         >
+          Orble is the only machine that can cook both tapioca pearls and tea,
           designed to deliver freshly brewed bubble tea with unparalleled
           convenience and customization.
         </h3>
       </div>
-      <div class="col-span-1 row-span-2">
-        <Image src={cad} alt="Orble Machine" />
+      <div class="col-span-1 row-span-2 flex items-center justify-center">
+        <Image src={cad} alt="Orble Machine 3d render" width={600} class="w-full max-w-[600px] h-auto" />
       </div>
-      <div class="col-span-1 row-span-2 my-12">
-        <video
-          width="600"
-          autoplay
-          loop
-          muted
-          playsinline
-          id="orble-video"
-          class="mx-auto"
-        >
-          <source src="render-video.mp4" type="video/mp4" />
+      <div class="col-span-1 row-span-2 my-12 flex items-start justify-center">
+        <video width="500" autoplay loop muted playsinline id="orble-video" class="w-full max-w-[500px] h-auto">
+          <source src="/next-gen-render-video.mp4" type="video/mp4" />
           Your browser does not support this video.
         </video>
       </div>
-      <div class="col-span-1 row-span-1 max-lg:text-center">
-        <span class="text-l mt-6 tracking-normal text-munch-blue">With its</span
-        >
-        <span class="ml-2 text-3xl italic tracking-normal text-munch-blue"
-          >sleek and compact design,</span
-        >
-        <h3 class="text-l tracking-normal text-munch-blue">
-          Orble seamlessly integrates into any food service environment,
-          offering customers a delightful boba tea experience at the touch of a
-          button.
-        </h3>
+      <div class="col-span-1 row-span-1 max-sm:text-center flex flex-col justify-center">
+        <div>
+          <span class="text-l text-munch-blue mt-6 tracking-normal"
+            >With its</span
+          >
+          <span class="text-munch-blue ml-2 italic tracking-normal text-3xl"
+            >sleek and compact design,</span
+          >
+          <h3 class="text-l text-munch-blue tracking-normal">
+            Orble seamlessly integrates into any food service environment,
+            offering customers a delightful boba tea experience at the touch of
+            a button.
+          </h3>
+        </div>
         <Image src={tealbar} alt="Bar" width={400} class="mx-auto mt-10" />
       </div>
     </div>
 
-    <div
-      class="mt-12 flex flex-col items-center text-center lg:mx-[10%] lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-10"
-    >
-      <div>
-        <Image
-          src={twomachines}
-          alt="Orble Machines"
-          class="w-[60vw] lg:w-[600px]"
-        />
+    <div class="mt-12 flex flex-col items-center lg:mx-[10%] lg:mt-24">
+      <div class="w-full max-w-[1400px] flex flex-col lg:flex-row items-center lg:items-start justify-center">
+        <!-- Machine Image -->
+        <div class="flex justify-center lg:justify-start z-10 mb-[-80px] lg:mb-0 lg:mr-[-80px]">
+          <Image
+            src={orblemachine}
+            alt="Orble Machines"
+            class="w-[60vw] max-w-[350px] lg:w-[400px]"
+          />
+        </div>
+
+        <!-- Specifications Box -->
+        <div class="relative flex flex-col items-center px-4 lg:px-0 w-full lg:w-auto">
+          <!-- Blue rounded box -->
+          <div class="relative w-full max-w-[750px] border-4 border-[#B1D9CD] rounded-[40px] p-8 pt-20 lg:pt-12 lg:p-12 lg:pl-24 bg-[#FDF8F0]">
+            <h3 class="text-3xl italic tracking-normal text-munch-blue underline text-center mb-8">
+              Specifications
+            </h3>
+            
+            <div class="flex flex-col gap-6 mb-12 text-center">
+              <div>
+                <h3 class="text-l tracking-normal text-munch-blue">
+                  <span class="font-bold">Dimensions:</span><br />
+                  70 inches (H) x 35.5 inches (W) x 35.5 inches (D)
+                </h3>
+              </div>
+
+              <div>
+                <h3 class="text-l tracking-normal text-munch-blue">
+                  <span class="font-bold">Weight:</span><br />
+                  771 lb. (fully loaded, including water)<br />
+                  716 lb. (empty weight)<br />
+                  Additional 150 lb. for ice maker
+                </h3>
+              </div>
+
+              <div>
+                <h3 class="text-l tracking-normal text-munch-blue">
+                  <span class="font-bold">Capacity:</span><br />
+                  Up to 12 different flavors of tea and toppings
+                </h3>
+              </div>
+
+              <div>
+                <h3 class="text-l tracking-normal text-munch-blue">
+                  <span class="font-bold">Power:</span><br />
+                  Requires a dedicated 15A outlet, 120V circuit<br />
+                  Ice maker requires a separate 15A
+                </h3>
+              </div>
+            </div>
+
+            <!-- Icons and additional specifications -->
+            <div class="flex flex-col gap-8 lg:gap-6 mt-8">
+              <!-- Interface -->
+              <div class="flex items-center gap-4 lg:gap-6">
+                <div class="flex-shrink-0 w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-[#B1D9CD] flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 lg:w-8 lg:h-8" viewBox="0 0 24 24" fill="white">
+                    <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" fill="none"/>
+                    <circle cx="12" cy="12" r="3" fill="white"/>
+                  </svg>
+                </div>
+                <div class="text-left">
+                  <h3 class="text-base lg:text-l tracking-normal text-munch-blue">
+                    <span class="font-bold">Interface:</span> Intuitive touchscreen display for easy operation
+                  </h3>
+                </div>
+              </div>
+
+              <!-- Customization -->
+              <div class="flex items-center gap-4 lg:gap-6">
+                <div class="flex-shrink-0 w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-[#B1D9CD] flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 lg:w-8 lg:h-8" viewBox="0 0 24 24" fill="white">
+                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="white"/>
+                  </svg>
+                </div>
+                <div class="text-left">
+                  <h3 class="text-base lg:text-l tracking-normal text-munch-blue">
+                    <span class="font-bold">Customization:</span> Adjustable sugar levels, ice levels, and topping combinations
+                  </h3>
+                </div>
+              </div>
+
+              <!-- Cleaning -->
+              <div class="flex items-center gap-4 lg:gap-6">
+                <div class="flex-shrink-0 w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-[#B1D9CD] flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 lg:w-8 lg:h-8" viewBox="0 0 24 24" fill="white">
+                    <rect x="3" y="3" width="18" height="18" rx="2" fill="white"/>
+                  </svg>
+                </div>
+                <div class="text-left">
+                  <h3 class="text-base lg:text-l tracking-normal text-munch-blue">
+                    <span class="font-bold">Cleaning:</span> Self-cleaning system for hassle-free maintenance
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <h3
-          class="ml-2 mt-[46px] text-3xl italic tracking-normal text-munch-blue underline"
-        >
-          Specifications
-        </h3>
-        <h3 class="text-l mt-8 tracking-normal text-munch-blue">
-          <span class="font-bold">Dimensions:</span><br />
-          70 inches (H) x 35.5 inches (W) x 35.5 inches (D)
-        </h3>
-
-        <h3 class="text-l mt-8 tracking-normal text-munch-blue">
-          <span class="font-bold">Weight:</span>
-        </h3>
-        771 lb. (fully loaded, including water) <br />
-        716 lb. (empty weight) <br />
-        Additional 150 lb. for ice maker
-
-        <h3 class="text-l mt-8 tracking-normal text-munch-blue">
-          <span class="font-bold">Capacity:</span>
-          <br />
-          Up to 12 different flavors of tea and toppings
-        </h3>
-
-        <h3 class="text-l mt-8 tracking-normal text-munch-blue">
-          <span class="font-bold">Power:</span>
-          <br />
-          Requires a dedicated 15A outlet, 120V circuit <br />
-          Ice maker requires a separate 15A
-        </h3>
-      </div>
-    </div>
-
-    <div
-      class="text-l mt-16 flex flex-col gap-14 text-wrap tracking-normal text-munch-blue max-lg:text-center lg:ml-[35%]"
-    >
-      <h3 class="">
-        <span class="font-bold">Interface:</span><br class="block lg:hidden" /> Intuitive
-        touchscreen display for easy operation
-      </h3>
-      <h3 class="">
-        <span class="font-bold">Customization:</span><br
-          class="block lg:hidden"
-        /> Adjustable sugar levels, ice levels, and topping combinations
-      </h3>
-      <h3 class="mb-12">
-        <span class="font-bold">Cleaning:</span><br class="block lg:hidden" /> Self-cleaning
-        system for hassle-free maintenance
-      </h3>
     </div>
   </div>
 
